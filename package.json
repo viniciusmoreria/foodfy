@@ -1,0 +1,27 @@
+{
+  "name": "foodfy",
+  "version": "1.0.0",
+  "description": "Nesse desafio você vai construir um site completo para uma empresa de receitas chamada Foodfy.",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viniciusmoreeira/foodfy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viniciusmoreeira/foodfy/issues"
+  },
+  "homepage": "https://github.com/viniciusmoreeira/foodfy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "nunjucks": "^3.2.0",
+    "start": "^5.1.0"
+  }
+}
