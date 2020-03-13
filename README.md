@@ -3,11 +3,40 @@
 Foodfy Challenge - LaunchBase 2020 - Rocketseat
 
 <div align="center">
-  <img src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/mockup.png" />
+  <img src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/mockup.png" width="850px"/>
 </div>
 
-## 💻 Tech
+## Features
 
-HTML, CSS and Javascript.
+- [x] Dynamic pages and content powered by Nunjucks.
+- [x] Overall redesign of the project structure.
+- [x] Overall change in the routes design with the addition of the administrator route.
+- [x] Being able to add new recipes, update and delete them.
+- [x] Consume the data from a JSON file.
+- [ ] Move to a database.
+- [ ] Chefs tab.
+- [ ] Search recipes.
+- [ ] Upload images to database.
+- [ ] Display new recipes first.
+- [ ] Login system.
 
-by Vinícius Moreira 👋
+## Getting Started
+
+1. Fork this repository and clone it into the current directory
+
+   ```bash
+   git clone https://github.com/viniciusmoreeira/foodfy.git
+   ```
+
+2. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+3. Fire up the server and watch files
+
+   ```bash
+   npm start
+   ```
+

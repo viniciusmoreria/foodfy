@@ -1,0 +1,31 @@
+{%extends "./layout.njk" %}
+{% block content %}
+
+  <section class="hero">
+
+    <div class="top">
+      <h1>Gerenciar receitas</h1>
+      <a class="button" href="/admin/create">Nova receita</a>
+    </div>
+
+    <div class="list">
+      {% for recipe in recipes %}
+
+        <div class="recipe">
+          <a href="/admin/recipe/{{recipe.id}}">
+            <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
+          </a>
+
+          <div>
+            <p class="title">{{recipe.title}}</p>
+            <p class="chef">por
+              {{recipe.chef}}</p>
+            <a href="/admin/recipe/{{recipe.id}}">Visualizar</a>
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+  </section>
+
+{% endblock %}

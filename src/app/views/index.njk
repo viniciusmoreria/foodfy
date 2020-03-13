@@ -1,7 +1,7 @@
 {%extends "layout.njk" %}
 {% block content %}
 
-  <section id="header">
+  <section class="hero">
     <div class="banner">
       <div class="texts">
         <h1>As melhores receitas</h1>
@@ -10,22 +10,24 @@
         </p>
       </div>
       <div>
-        <img src="./img/chef.png" alt="Chef"/>
+        <img src="/static/chef.png" alt="Chef"/>
       </div>
     </div>
   </section>
 
-  <section class="recipes">
-    {% for item in items %}
+  <section class="list">
 
+    {% for recipe in recipes %}
       <div class="recipe">
-        <img src="{{item.image}}" alt="Imagem de {{item.title}}"/>
-        <p class="recipe-title">{{item.title}}</p>
-        <p class="recipe-author">por
-          {{item.author}}</p>
+        <a href="/recipe/{{recipe.id}}">
+          <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
+        </a>
+        <p class="title">{{recipe.title}}</p>
+        <p class="chef">por
+          {{recipe.chef}}</p>
       </div>
-
     {% endfor %}
+
   </section>
 
 {% endblock %}

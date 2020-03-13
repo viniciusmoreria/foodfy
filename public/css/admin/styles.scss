@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+@import "./_variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 7em;
+}
+
+/* Header Section */
+
+.header {
+  background-color: #000000;
+  width: 100%;
+  padding: 30px;
+  margin: 0;
+
+  .navbar {
+    @include maxWidth;
+    margin: 0 auto;
+  }
+}
+
+/* Receipts Section */
+
+.hero {
+  .top {
+    margin: auto;
+
+    h1 {
+      @include maxWidth;
+      margin: 36px auto;
+      color: var(--dark-text);
+    }
+
+    a {
+      @include primaryBtn;
+      text-decoration: none;
+    }
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  @include maxWidth;
+  margin: 0 auto;
+
+  .title {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 21px;
+    margin-bottom: 5px;
+  }
+
+  .chef {
+    font-size: 14px;
+    color: var(--light-text);
+    line-height: 16px;
+  }
+}
+
+.recipe {
+  @include flex;
+
+  img {
+    width: 270px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+
+  a {
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    color: #6558c3;
+  }
+}
+
+/* Footer Section */
+
+#footer {
+  background: #eeeeee;
+  width: 100%;
+  padding: 25px;
+  position: absolute;
+  bottom: 0;
+
+  p {
+    font-size: 14px;
+    color: var(--light-text);
+    text-align: center;
+  }
+}
+
+/* Detailed Recipe Page */
+
+.detailed.list {
+  @include maxWidth;
+  margin: 30px auto;
+
+  img {
+    @include maxWidth;
+    height: 300px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    margin-right: 0;
+  }
+
+  .title {
+    font-size: 36px;
+    color: var(--dark-text);
+    line-height: 42px;
+    margin-bottom: 5px;
+  }
+
+  .chef {
+    font-size: 20px;
+    color: var(--light-text);
+    line-height: 24px;
+  }
+}
+
+.detailed .recipe {
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  @include flex;
+  @include maxWidth;
+  justify-content: space-between;
+
+  h1 {
+    margin: 25px 0 24px;
+  }
+
+  a {
+    @include primaryBtn;
+  }
+}
+
+.main {
+  @include maxWidth;
+  padding: 50px 0 20px;
+  margin: 0 auto;
+
+  .style {
+    h2 {
+      padding: 0 8px 20px 0;
+    }
+
+    p,
+    li {
+      font-size: 18px;
+      color: var(--light-text);
+      line-height: 28px;
+      list-style: inside;
+    }
+
+    li {
+      color: var(--dark-text);
+    }
+
+    h2,
+    a {
+      display: inline-block;
+    }
+
+    a {
+      font-size: 12px;
+      color: var(--light-text);
+      cursor: pointer;
+    }
+
+    .preparation {
+      list-style: none;
+    }
+
+    .hiding {
+      display: none;
+    }
+  }
+}
+
+/* New Recipe Section */
+
+form {
+  @include maxWidth;
+  margin: 55px auto;
+  position: relative;
+
+  h3 {
+    margin: 30px 0 10px;
+  }
+
+  a {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #6558c3;
+    cursor: pointer;
+  }
+}
+
+.details.new {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details {
+  margin-bottom: 30px;
+
+  button.save {
+    @include primaryBtn;
+  }
+
+  .heading {
+    @include flex;
+    justify-content: space-between;
+  }
+
+  .delete {
+    @include secondaryBtn;
+    position: absolute;
+    right: 145px;
+  }
+}
+
+input {
+  @include inputForm;
+  height: 49px;
+}
+
+textarea {
+  @include inputForm;
+  min-height: 257px;
+}

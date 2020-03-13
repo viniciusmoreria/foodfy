@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+:root {
+  --bg-color: #fbdfdb;
+  --dark-text: #000000;
+  --light-text: #777777;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 7em;
+}
+
+/* Header Section */
+.header {
+  background-color: #000000;
+  width: 100%;
+  padding: 30px;
+  margin: 0;
+}
+
+.header .navbar {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Receipts Section */
+.hero .top {
+  margin: auto;
+}
+
+.hero .top h1 {
+  width: 980px;
+  margin: 36px auto;
+  color: var(--dark-text);
+}
+
+.hero .top a {
+  background-color: #6558c3;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 136px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.list {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 980px;
+  margin: 0 auto;
+}
+
+.list .title {
+  font-size: 18px;
+  color: var(--dark-text);
+  line-height: 21px;
+  margin-bottom: 5px;
+}
+
+.list .chef {
+  font-size: 14px;
+  color: var(--light-text);
+  line-height: 16px;
+}
+
+.recipe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.recipe img {
+  width: 270px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.recipe a {
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  color: #6558c3;
+}
+
+/* Footer Section */
+#footer {
+  background: #eeeeee;
+  width: 100%;
+  padding: 25px;
+  position: absolute;
+  bottom: 0;
+}
+
+#footer p {
+  font-size: 14px;
+  color: var(--light-text);
+  text-align: center;
+}
+
+/* Detailed Recipe Page */
+.detailed.list {
+  width: 980px;
+  margin: 30px auto;
+}
+
+.detailed.list img {
+  width: 980px;
+  height: 300px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  margin-right: 0;
+}
+
+.detailed.list .title {
+  font-size: 36px;
+  color: var(--dark-text);
+  line-height: 42px;
+  margin-bottom: 5px;
+}
+
+.detailed.list .chef {
+  font-size: 20px;
+  color: var(--light-text);
+  line-height: 24px;
+}
+
+.detailed .recipe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 980px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.top h1 {
+  margin: 25px 0 24px;
+}
+
+.top a {
+  background-color: #6558c3;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 136px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+}
+
+.main {
+  width: 980px;
+  padding: 50px 0 20px;
+  margin: 0 auto;
+}
+
+.main .style h2 {
+  padding: 0 8px 20px 0;
+}
+
+.main .style p,
+.main .style li {
+  font-size: 18px;
+  color: var(--light-text);
+  line-height: 28px;
+  list-style: inside;
+}
+
+.main .style li {
+  color: var(--dark-text);
+}
+
+.main .style h2,
+.main .style a {
+  display: inline-block;
+}
+
+.main .style a {
+  font-size: 12px;
+  color: var(--light-text);
+  cursor: pointer;
+}
+
+.main .style .preparation {
+  list-style: none;
+}
+
+.main .style .hiding {
+  display: none;
+}
+
+/* New Recipe Section */
+form {
+  width: 980px;
+  margin: 55px auto;
+  position: relative;
+}
+
+form h3 {
+  margin: 30px 0 10px;
+}
+
+form a {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #6558c3;
+  cursor: pointer;
+}
+
+.details.new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.details {
+  margin-bottom: 30px;
+}
+
+.details button.save {
+  background-color: #6558c3;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 136px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+}
+
+.details .heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.details .delete {
+  background-color: #dc4747;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 92px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+  right: 145px;
+}
+
+input {
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  height: 49px;
+}
+
+textarea {
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  min-height: 257px;
+}
+/*# sourceMappingURL=styles.css.map */

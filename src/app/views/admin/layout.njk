@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <link rel="icon" href="/static/favicon.ico"/>
+
+    <!-- CSS Stylecheet -->
+    <link rel="stylesheet" href="/css/admin/styles.css"/>
+
+    <title>Foodfy</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+
+    <section class="header">
+      <div class="navbar">
+        <a href="/admin">
+          <img src="/static/white-logo.png" alt="Foodfy Logo"/>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- Nunjucks Content -->
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+
+    <section id="footer">
+      <p>Foodfy. Todos direitos reservados.</p>
+    </section>
+
+    <script src="/scripts.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  </body>
+</html>

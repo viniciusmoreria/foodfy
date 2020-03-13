@@ -1,27 +1,26 @@
 {%extends "layout.njk" %}
 
-<!-- CSS Stylecheets -->
 {% block content %}
 
-  <section class="recipes detailed">
+  <section class="list detailed">
 
     <div class="recipe">
-      <img src="{{item.image}}" alt="Imagem de {{item.title}}"/>
-      <p class="title">{{item.title}}</p>
-      <p class="author">por
-        {{item.author}}</p>
+      <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
+      <p class="title">{{recipe.title}}</p>
+      <p class="chef">por
+        {{recipe.chef}}</p>
     </div>
 
   </section>
 
   <section class="main">
 
-    <div class="recipe-style">
+    <div class="style">
       <div>
         <h2>Ingredientes</h2>
         <a id="hide">ESCONDER</a>
         <ul id="lista0">
-          {% for i in item.ingredients %}
+          {% for i in recipe.ingredients %}
             <li>{{i}}</li>
           {% endfor %}
         </ul>
@@ -29,12 +28,12 @@
 
     </div>
 
-    <div class="recipe-style">
+    <div class="style">
       <div>
         <h2>Modo de preparo</h2>
         <a id="hide">ESCONDER</a>
         <ul id="lista1">
-          {% for i in item.preparation %}
+          {% for i in recipe.preparation %}
             <li class="preparation">{{i}}</li>
           {% endfor %}
         </ul>
@@ -42,11 +41,11 @@
 
     </div>
 
-    <div class="recipe-style">
+    <div class="style">
       <div>
         <h2>Informações adicionais</h2>
         <a id="hide">ESCONDER</a>
-        <p id="lista2">{{item.information}}</p>
+        <p id="lista2">{{recipe.information}}</p>
       </div>
 
     </div>

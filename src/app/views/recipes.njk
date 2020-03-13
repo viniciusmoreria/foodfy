@@ -1,0 +1,19 @@
+{%extends "layout.njk" %}
+{% block content %}
+
+  <section class="list">
+    {% for recipe in recipes %}
+
+      <div class="recipe">
+        <a href="/recipe/{{recipe.id}}">
+          <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
+        </a>
+        <p class="title">{{recipe.title}}</p>
+        <p class="chef">por
+          {{recipe.chef}}</p>
+      </div>
+
+    {% endfor %}
+  </section>
+
+{% endblock %}

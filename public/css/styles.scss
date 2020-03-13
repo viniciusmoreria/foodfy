@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+@import "./_variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 7em;
+}
+
+/* Header Section */
+
+.header {
+  @include flex;
+  @include maxWidth;
+  padding: 20px 0 30px;
+  margin: 36px auto;
+
+  .navbar {
+    margin-left: 140px;
+
+    a {
+      font-size: 16px;
+      padding-right: 30px;
+      color: var(--dark-text);
+      text-decoration: none;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+  }
+}
+
+/* Hero Section */
+
+.hero {
+  @include maxWidth;
+  margin: 36px auto;
+}
+
+.banner {
+  @include grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg-color);
+  border-radius: 8px;
+
+  .texts {
+    align-self: center;
+    width: 316px;
+  }
+
+  h1 {
+    color: var(--dark-text);
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 18px;
+    color: var(--dark-text);
+    opacity: 0.7;
+    line-height: 28px;
+  }
+
+  img {
+    margin-top: 66px;
+    justify-self: end;
+  }
+}
+
+/* Receipts Section */
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  @include maxWidth;
+  margin: 0 auto;
+
+  .title {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 21px;
+    margin-bottom: 5px;
+  }
+
+  .chef {
+    font-size: 14px;
+    color: var(--light-text);
+    line-height: 16px;
+  }
+}
+
+.recipe {
+  img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+}
+
+/* Footer Section */
+
+#footer {
+  background: #eeeeee;
+  width: 100%;
+  padding: 25px;
+  position: absolute;
+  bottom: 0;
+
+  p {
+    font-size: 14px;
+    color: var(--light-text);
+    text-align: center;
+  }
+}
+
+/* About Section */
+#about {
+  @include maxWidth;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 24px;
+    line-height: 28px;
+    color: var(--dark-text);
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+    color: var(--dark-text);
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    color: var(--light-text);
+    line-height: 28px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Detailed Recipe Page */
+
+.detailed {
+  text-align: center;
+
+  img {
+    @include maxWidth;
+    height: 300px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 36px;
+    color: var(--dark-text);
+    line-height: 42px;
+    margin-bottom: 5px;
+  }
+
+  .chef {
+    font-size: 20px;
+    color: var(--light-text);
+    line-height: 24px;
+  }
+}
+
+.main {
+  @include maxWidth;
+  padding: 50px 0 20px;
+  margin: 0 auto;
+
+  .style {
+    h2 {
+      padding: 0 8px 20px 0;
+    }
+
+    p,
+    li {
+      font-size: 18px;
+      color: var(--light-text);
+      line-height: 28px;
+      list-style: inside;
+    }
+
+    li {
+      color: var(--dark-text);
+    }
+
+    h2,
+    a {
+      display: inline-block;
+    }
+
+    a {
+      font-size: 12px;
+      color: var(--light-text);
+      cursor: pointer;
+    }
+
+    .preparation {
+      list-style: none;
+    }
+
+    .hiding {
+      display: none;
+    }
+  }
+}

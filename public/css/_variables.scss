@@ -1,0 +1,21 @@
+:root {
+  --bg-color: #fbdfdb;
+  --dark-text: #000000;
+  --light-text: #777777;
+}
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+}
+
+@mixin grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+@mixin maxWidth {
+  width: 980px;
+}
