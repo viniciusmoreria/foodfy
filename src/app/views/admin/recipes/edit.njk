@@ -4,19 +4,19 @@
 
   <div class="details">
 
-    <form id="form-delete" method="POST" action="/admin?_method=DELETE">
+    <form id="form-delete" method="POST" action="/admin/recipes?_method=DELETE">
       <button class="delete" type="submit">Deletar</button>
 
       <input type="hidden" name="id" value="{{recipe.id}}">
     </form>
 
-    <form method="POST" action="/admin?_method=PUT">
+    <form method="POST" action="/admin/recipes?_method=PUT">
       <div class="heading">
         <h1>Editar receita</h1>
         <button class="save" type="submit">Salvar receita</button>
       </div>
 
-      {% include "admin/fields.njk" %}
+      {% include "admin/recipes/fields.njk" %}
 
       <input type="hidden" name="id" value="{{recipe.id}}">
     </form>

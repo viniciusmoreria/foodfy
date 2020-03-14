@@ -1,0 +1,32 @@
+{%extends "layout.njk" %}
+
+{% block content %}
+
+  <section class="list detailed chef">
+
+    <div>
+      <div class="top"></div>
+      <img src="{{chef.image}}" alt="Imagem de {{chef.name}}"/>
+      <p class="title">{{chef.name}}</p>
+      <p class="recipes">{{chef.total_recipes}}2 receitas</p>
+    </div>
+
+  </section>
+
+  <section class="main">
+
+    <div class="style">
+      <div>
+        <h2>Receitas</h2>
+        <ul>
+          {% for i in chef.total_recipes %}
+            <li>{{i}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+  </section>
+
+{% endblock %}

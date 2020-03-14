@@ -25,6 +25,18 @@ body {
   .navbar {
     @include maxWidth;
     margin: 0 auto;
+
+    a {
+      font-size: 14px;
+      margin-right: 56px;
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .active {
+      font-weight: bold;
+    }
   }
 }
 
@@ -73,7 +85,9 @@ body {
 
   img {
     width: 270px;
+    height: 100px;
     object-fit: cover;
+    object-position: center bottom;
     border-radius: 8px;
     margin-right: 20px;
   }
@@ -86,19 +100,45 @@ body {
   }
 }
 
-/* Footer Section */
+/* Chefs Section */
 
-#footer {
-  background: #eeeeee;
-  width: 100%;
-  padding: 25px;
-  position: absolute;
-  bottom: 0;
+.list.chefs {
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 auto;
 
-  p {
+  .title {
+    font-size: 18px;
+    color: var(--dark-text);
+    margin-bottom: 5px;
+  }
+}
+
+.chef {
+  @include flex;
+  font-size: 14px;
+  color: var(--light-text);
+  line-height: 16px;
+
+  img {
+    height: 64px;
+    width: 64px;
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+  }
+
+  .name {
+    color: var(--dark-text);
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  a {
+    font-weight: bold;
     font-size: 14px;
-    color: var(--light-text);
-    text-align: center;
+    text-decoration: none;
+    color: #6558c3;
   }
 }
 
@@ -192,6 +232,26 @@ body {
   }
 }
 
+/* Detailed Chef Page */
+
+.detailed.chef {
+  justify-content: center;
+  text-align: center;
+
+  img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 51px 0 30px;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .recipes {
+    color: var(--light-text);
+  }
+}
+
 /* New Recipe Section */
 
 form {
@@ -244,4 +304,20 @@ input {
 textarea {
   @include inputForm;
   min-height: 257px;
+}
+
+/* Footer Section */
+
+#footer {
+  background: #eeeeee;
+  width: 100%;
+  padding: 25px;
+  position: absolute;
+  bottom: 0;
+
+  p {
+    font-size: 14px;
+    color: var(--light-text);
+    text-align: center;
+  }
 }

@@ -17,13 +17,21 @@
     <!-- Header -->
 
     <section class="header">
-      <a href="/">
-        <img src="/static/main-logo.png" alt="Foodfy Logo"/>
-      </a>
       <div class="navbar">
-        <a href="/about">Sobre</a>
-        <a href="/recipes">Receitas</a>
+        <a href="/">
+          <img src="/static/main-logo.png" alt="Foodfy Logo"/>
+        </a>
+        <div>
+          <a href="/about">Sobre</a>
+          <a href="/recipes">Receitas</a>
+          <a href="/chefs">Chefs</a>
+        </div>
       </div>
+
+      <form action="/recipes" method="GET">
+        <input type="text" name="filter" placeholder="Buscar uma receita" value="{{filter}}">
+        <button type="submit">Buscar</button>
+      </form>
     </section>
 
     <!-- Nunjucks Content -->
@@ -33,7 +41,7 @@
     <!-- Footer -->
 
     <section id="footer">
-      <p>Foodfy. Todos direitos reservados.</p>
+      <p>Todos direitos reservados, Receitas Foodfy.</p>
     </section>
 
     <script src="/scripts.js"></script>

@@ -32,6 +32,18 @@ body {
   margin: 0 auto;
 }
 
+.header .navbar a {
+  font-size: 14px;
+  margin-right: 56px;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header .navbar .active {
+  font-weight: bold;
+}
+
 /* Receipts Section */
 .hero .top {
   margin: auto;
@@ -90,8 +102,11 @@ body {
 
 .recipe img {
   width: 270px;
+  height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center bottom;
+     object-position: center bottom;
   border-radius: 8px;
   margin-right: 20px;
 }
@@ -103,19 +118,53 @@ body {
   color: #6558c3;
 }
 
-/* Footer Section */
-#footer {
-  background: #eeeeee;
-  width: 100%;
-  padding: 25px;
-  position: absolute;
-  bottom: 0;
+/* Chefs Section */
+.list.chefs {
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  margin: 0 auto;
 }
 
-#footer p {
+.list.chefs .title {
+  font-size: 18px;
+  color: var(--dark-text);
+  margin-bottom: 5px;
+}
+
+.chef {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 14px;
   color: var(--light-text);
-  text-align: center;
+  line-height: 16px;
+}
+
+.chef img {
+  height: 64px;
+  width: 64px;
+  margin-right: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+  border-radius: 50%;
+}
+
+.chef .name {
+  color: var(--dark-text);
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.chef a {
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  color: #6558c3;
 }
 
 /* Detailed Recipe Page */
@@ -225,6 +274,29 @@ body {
   display: none;
 }
 
+/* Detailed Chef Page */
+.detailed.chef {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.detailed.chef img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin: 51px 0 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+}
+
+.detailed.chef .recipes {
+  color: var(--light-text);
+}
+
 /* New Recipe Section */
 form {
   width: 980px;
@@ -310,5 +382,20 @@ textarea {
   border-radius: 4px;
   border: 1px solid #dddddd;
   min-height: 257px;
+}
+
+/* Footer Section */
+#footer {
+  background: #eeeeee;
+  width: 100%;
+  padding: 25px;
+  position: absolute;
+  bottom: 0;
+}
+
+#footer p {
+  font-size: 14px;
+  color: var(--light-text);
+  text-align: center;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,23 @@
+{%extends "layout.njk" %}
+{% block content %}
+
+  <section class="hero">
+
+    <div class="list chefs">
+      {% for chef in chefs %}
+
+        <div class="chef">
+          <a href="/chefs/{{chef.id}}">
+            <img src="{{chef.image}}" alt="Imagem de {{chef.name}}"/>
+          </a>
+
+          <div>
+            <p class="name">{{chef.name}}</p>
+            <p class="recipes">{{chef.total_recipes}}2 receitas</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+{% endblock %}

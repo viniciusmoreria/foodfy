@@ -3,7 +3,7 @@
 Foodfy Challenge - LaunchBase 2020 - Rocketseat
 
 <div align="center">
-  <img src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/mockup.png" width="850px"/>
+  <img src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/mockup.png"/>
 </div>
 
 ## Features
@@ -13,8 +13,8 @@ Foodfy Challenge - LaunchBase 2020 - Rocketseat
 - [x] Overall change in the routes design with the addition of the administrator route.
 - [x] Being able to add new recipes, update and delete them.
 - [x] Consume the data from a JSON file.
-- [ ] Move to a database.
-- [ ] Chefs tab.
+- [x] Move to a database.
+- [x] Chefs tab.
 - [ ] Search recipes.
 - [ ] Upload images to database.
 - [ ] Display new recipes first.

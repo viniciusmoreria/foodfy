@@ -1,0 +1,38 @@
+{%extends "../recipes/layout.njk" %}
+
+{% block content %}
+
+  <section class="detailed list chef">
+
+    <div class="recipe">
+      <div class="top">
+        <h1>Chef:
+          {{chef.name}}
+        </h1>
+        <a class="button" href="/admin/chefs/{{chef.id}}/edit">Editar Chef</a>
+      </div>
+      <img src="{{chef.image}}" alt="Imagem de {{chef.name}}"/>
+      <p class="title">{{chef.name}}</p>
+      <p class="recipes">{{chef.total_recipes}}2 receitas</p>
+
+    </div>
+
+  </section>
+
+  <section class="main">
+
+    <div class="style">
+      <div>
+        <h2>Receitas</h2>
+        <ul>
+          {% for i in chef.total_recipes %}
+            <li>{{i}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+  </section>
+
+{% endblock %}

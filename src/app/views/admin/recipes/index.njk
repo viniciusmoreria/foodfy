@@ -4,23 +4,21 @@
   <section class="hero">
 
     <div class="top">
-      <h1>Gerenciar receitas</h1>
-      <a class="button" href="/admin/create">Nova receita</a>
+      <h1>Gerenciar Receitas</h1>
+      <a class="button" href="/admin/create">Nova Receita</a>
     </div>
 
     <div class="list">
       {% for recipe in recipes %}
 
         <div class="recipe">
-          <a href="/admin/recipe/{{recipe.id}}">
-            <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
-          </a>
+          <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
 
           <div>
             <p class="title">{{recipe.title}}</p>
             <p class="chef">por
               {{recipe.chef}}</p>
-            <a href="/admin/recipe/{{recipe.id}}">Visualizar</a>
+            <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
           </div>
         </div>
 

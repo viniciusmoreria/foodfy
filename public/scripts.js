@@ -24,12 +24,15 @@ for (let i = 0; i < hide.length; i++) {
 
 //Delete confirmation
 const formDelete = document.querySelector("#form-delete");
-formDelete.addEventListener("submit", function(event) {
-  const confirmation = confirm("Deseja deletar a receita?");
-  if (!confirmation) {
-    event.preventDefault();
-  }
-});
+
+if (formDelete) {
+  formDelete.addEventListener("submit", function(event) {
+    const confirmation = confirm("Deseja deletar a receita?");
+    if (!confirmation) {
+      event.preventDefault();
+    }
+  });
+}
 
 //Adding new ingredients and new steps for the recipes
 

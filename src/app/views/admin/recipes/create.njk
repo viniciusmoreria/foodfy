@@ -2,14 +2,14 @@
 
 {% block content %}
 
-  <form method="POST" action="/admin">
+  <form method="POST" action="/admin/recipes">
 
     <div class="details new">
       <h1>Criando receita</h1>
       <button class="save" type="submit">Salvar receita</button>
     </div>
 
-    {% include "admin/fields.njk" %}
+    {% include "admin/recipes/fields.njk" %}
 
   </form>
 

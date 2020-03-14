@@ -1,0 +1,16 @@
+{%extends "../recipes/layout.njk" %}
+
+{% block content %}
+
+  <form method="POST" action="/admin/chefs">
+
+    <div class="details new">
+      <h1>Criando Chef</h1>
+      <button class="save" type="submit">Salvar</button>
+    </div>
+
+    {% include "admin/chefs/fields.njk" %}
+
+  </form>
+
+{% endblock content %}

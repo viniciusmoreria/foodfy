@@ -1,30 +1,6 @@
 {
   "recipes": [
     {
-      "id": 1,
-      "title": "Triplo Bacon Burger",
-      "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/burger.png",
-      "chef": "Jorge Relato",
-      "ingredients": [
-        "3 kg de carne moída (escolha uma carne magra e macia)",
-        "300 g de bacon moído",
-        "1 ovo",
-        "3 colheres (sopa) de farinha de trigo",
-        "3 colheres (sopa) de tempero caseiro: feito com alho, sal, cebola, pimenta e cheiro verde processados no liquidificador",
-        "30 ml de água gelada"
-      ],
-      "preparation": [
-        "Misture todos os ingredientes muito bem e amasse para que fique tudo muito bem misturado.",
-        "Faça porções de 90 g a 100 g.",
-        "Forre um plástico molhado em uma bancada e modele os hambúrgueres utilizando um aro como base.",
-        "Faça um de cada vez e retire o aro logo em seguida.",
-        "Forre uma assadeira de metal com plástico, coloque os hambúrgueres e intercale camadas de carne e plásticos (sem apertar).",
-        "Faça no máximo 4 camadas por forma e leve para congelar.",
-        "Retire do congelador, frite ou asse e está pronto."
-      ],
-      "information": "Preaqueça a chapa, frigideira ou grelha por 10 minutos antes de levar os hambúrgueres. Adicione um pouquinho de óleo ou manteiga e não amasse os hambúrgueres! Você sabia que a receita que precede o hambúrguer surgiu no século XIII, na Europa? A ideia de moer a carne chegou em Hamburgo no século XVII, onde um açougueiro resolveu também temperá-la. Assim, a receita foi disseminada nos Estados Unidos por alemães da região. Lá surgiu a ideia de colocar o hambúrguer no meio do pão e adicionar outros ingredientes, como queijo, tomates e alface."
-    },
-    {
       "id": 2,
       "title": "Pizza 4 estações",
       "image": "https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/launchbase/receitas/pizza.png",
@@ -138,6 +114,31 @@
         "açúcar de confeiteiro e corte em quadrados."
       ],
       "information": ""
+    },
+    {
+      "id": 7,
+      "title": "Cajuzinho de Festa",
+      "image": "https://img.itdg.com.br/tdg/images/recipes/000/169/638/333187/333187_original.jpg?mode=crop&width=710&height=400",
+      "chef": "Vinícius Moreira",
+      "ingredients": [
+        "150 g de amendoim (sem sal e sem pele) torrado e moído",
+        "1/2 xícara de açúcar",
+        "1/2 lata de leite condensado",
+        "2 colheres de chocolate em pó (achocolatado comum se preferir mais doce) ou (chocolate em pó solúvel)",
+        "1 colher de manteiga para untar as mãos",
+        "1 xícara de açúcar cristal ou demerara (prefiro demerara) para passar os doces",
+        "50 g de grãos de amendoim para enfeitar"
+      ],
+      "preparation": [
+        "Existem no mercado algumas marcas de amendoim torrado e moído. Se você as preferir, como eu, preste atenção para não comprar amendoim salgado.",
+        "Caso prefira torrar em casa, a receita vai demorar um pouco mais (1 hora e meia). Você precisará descascar o amendoim e tirar a pele. Dispor os grãos em uma forma grande (retangular) de alumínio e torrá-los por cerca de 30 minutos no fogo alto.",
+        "Depois leve ao liquidificador, sem líquidos e triture-os.",
+        "Em uma tigela misture todos os ingredientes até a massa ficar homogênea e atingir o ponto de enrolar.",
+        "Unte as mãos com manteiga e modele os docinhos para ficarem no formato de pequenos cajús.",
+        "Passe os docinhos no açúcar (cristal ou demerara) e coloque um grão para se assemelhar à castanha do caju.",
+        "Coloque em forminhas."
+      ],
+      "information": "CAJUZINHO DE FESTA RÁPIDO, DELICIOSO E SEM FOGÃO"
     }
   ]
 }
