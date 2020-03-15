@@ -62,6 +62,22 @@ module.exports = {
       }
     );
   },
+  findBy(filter, callback) {
+    db.query(
+      `
+      SELECT recipes.*, chefs.name AS chef_name
+      FROM recipes 
+      LEFT JOIN chefs on (recipes.chef_id = chefs.id)
+      WHERE recipes.title ILIKE '%${filter}%'
+      OR chefs.name ILIKE '%${filter}%'
+      ORDER BY created_at DESC`,
+      function(err, results) {
+        if (err) throw `Recipe not found! ${err}`;
+
+        callback(results.rows);
+      }
+    );
+  },
   update(data, callback) {
     const query = `
     UPDATE recipes SET

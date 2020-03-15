@@ -3,9 +3,17 @@ const Recipe = require("../models/Recipe");
 module.exports = {
   // Logged-out routes
   home(req, res) {
-    Recipe.all(function(recipes, recipe) {
-      return res.render("index", { recipes, recipe });
-    });
+    const { filter } = req.query;
+
+    if (filter) {
+      Recipe.findBy(filter, function(recipes) {
+        return res.render("index", { recipes });
+      });
+    } else {
+      Recipe.all(function(recipes, recipe) {
+        return res.render("index", { recipes, recipe });
+      });
+    }
   },
   about(req, res) {
     return res.render("about");

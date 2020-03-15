@@ -15,9 +15,10 @@ Foodfy Challenge - LaunchBase 2020 - Rocketseat
 - [x] Consume the data from a JSON file.
 - [x] Move to a database.
 - [x] Chefs tab.
-- [ ] Search recipes.
+- [x] Display new recipes first.
+- [x] Search recipes.
+- [ ] Pagination
 - [ ] Upload images to database.
-- [ ] Display new recipes first.
 - [ ] Login system.
 
 ## Getting Started
