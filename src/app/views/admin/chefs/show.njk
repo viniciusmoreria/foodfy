@@ -2,26 +2,25 @@
 
 {% block content %}
 
-  <section class="detailed list chef">
+  <section class="chef_profile">
 
-    <div class="recipe">
-      <div class="top">
+    <div class="chef">
+      <div class="page_title">
         <h1>Chef:
           {{chef.name}}
         </h1>
         <a class="button" href="/admin/chefs/{{chef.id}}/edit">Editar Chef</a>
       </div>
-      <img src="{{chef.image}}" alt="Imagem de {{chef.name}}"/>
-      <p class="title">{{chef.name}}</p>
-      <p class="recipes">{{chef.total_recipes}}2 receitas</p>
 
+      <img src="{{chef.image}}" alt="Imagem de {{chef.name}}"/>
+      <h2>{{chef.name}}</h2>
+      <p>{{chef.total_recipes}}2 receitas</p>
     </div>
 
   </section>
 
-  <section class="main">
-
-    <div class="style">
+  <section>
+    <div class="chef_recipes">
       <div>
         <h2>Receitas</h2>
         <ul>
@@ -30,9 +29,7 @@
           {% endfor %}
         </ul>
       </div>
-
     </div>
-
   </section>
 
 {% endblock %}

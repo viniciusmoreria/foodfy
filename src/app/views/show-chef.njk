@@ -2,20 +2,18 @@
 
 {% block content %}
 
-  <section class="list detailed chef">
+  <section class="chef_profile">
 
     <div>
-      <div class="top"></div>
       <img src="{{chef.image}}" alt="Imagem de {{chef.name}}"/>
-      <p class="title">{{chef.name}}</p>
-      <p class="recipes">{{chef.total_recipes}}2 receitas</p>
+      <h2>{{chef.name}}</h2>
+      <p>{{chef.total_recipes}}2 receitas</p>
     </div>
 
   </section>
 
-  <section class="main">
-
-    <div class="style">
+  <section>
+    <div class="chef_recipes">
       <div>
         <h2>Receitas</h2>
         <ul>
@@ -24,9 +22,7 @@
           {% endfor %}
         </ul>
       </div>
-
     </div>
-
   </section>
 
 {% endblock %}

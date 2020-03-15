@@ -27,7 +27,7 @@ body {
     margin: 0 auto;
 
     a {
-      font-size: 14px;
+      font-size: 15px;
       margin-right: 56px;
       color: #ffffff;
       text-decoration: none;
@@ -40,203 +40,193 @@ body {
   }
 }
 
-/* Receipts Section */
+/* Recipes Section */
 
-.hero {
-  .top {
-    margin: auto;
+.page_title {
+  @include flex;
+  @include maxWidth;
+  justify-content: space-between;
+  margin: auto;
 
-    h1 {
-      @include maxWidth;
-      margin: 36px auto;
-      color: var(--dark-text);
-    }
+  h1 {
+    @include maxWidth;
+    margin: 36px auto;
+    font-size: 25px;
+    color: var(--dark-text);
+  }
 
-    a {
-      @include primaryBtn;
-      text-decoration: none;
-    }
+  a {
+    @include primaryBtn;
+    text-decoration: none;
   }
 }
 
-.list {
+.recipe_box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   @include maxWidth;
   margin: 0 auto;
 
-  .title {
+  h3 {
     font-size: 18px;
+    font-weight: normal;
     color: var(--dark-text);
     line-height: 21px;
     margin-bottom: 5px;
   }
 
-  .chef {
+  p {
     font-size: 14px;
     color: var(--light-text);
     line-height: 16px;
   }
-}
 
-.recipe {
-  @include flex;
+  .recipe {
+    @include flex;
 
-  img {
-    width: 270px;
-    height: 100px;
-    object-fit: cover;
-    object-position: center bottom;
-    border-radius: 8px;
-    margin-right: 20px;
-  }
+    img {
+      width: 270px;
+      height: 100px;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 15px;
+      margin-right: 20px;
+    }
 
-  a {
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none;
-    color: #6558c3;
+    p {
+      margin-bottom: 10px;
+    }
+
+    a {
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #6558c3;
+    }
   }
 }
 
 /* Chefs Section */
 
-.list.chefs {
-  grid-template-columns: repeat(4, 1fr);
-  margin: 0 auto;
-
-  .title {
-    font-size: 18px;
-    color: var(--dark-text);
-    margin-bottom: 5px;
-  }
-}
-
-.chef {
-  @include flex;
-  font-size: 14px;
-  color: var(--light-text);
-  line-height: 16px;
-
-  img {
-    height: 64px;
-    width: 64px;
-    margin-right: 20px;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 50%;
-  }
-
-  .name {
-    color: var(--dark-text);
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  a {
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none;
-    color: #6558c3;
-  }
-}
-
-/* Detailed Recipe Page */
-
-.detailed.list {
+.chef_box {
   @include maxWidth;
-  margin: 30px auto;
-
-  img {
-    @include maxWidth;
-    height: 300px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    margin-right: 0;
-  }
-
-  .title {
-    font-size: 36px;
-    color: var(--dark-text);
-    line-height: 42px;
-    margin-bottom: 5px;
-  }
+  @include grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: stretch;
+  margin: 50px auto;
 
   .chef {
-    font-size: 20px;
-    color: var(--light-text);
-    line-height: 24px;
+    @include flex;
+
+    img {
+      height: 64px;
+      width: 64px;
+      margin-right: 20px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: normal;
+      color: var(--dark-text);
+    }
+
+    a {
+      font-size: 14px;
+      font-weight: bold;
+      color: #6558c3;
+      text-decoration: none;
+    }
   }
 }
 
-.detailed .recipe {
-  display: flex;
-  flex-direction: column;
+/* Recipe Profile Page */
+
+.recipe_profile {
+  text-align: center;
+
+  .recipe {
+    .page_title {
+      text-align: left;
+    }
+
+    img {
+      @include maxWidth;
+      height: 280px;
+      border-radius: 15px;
+      margin-bottom: 50px;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    h2 {
+      font-size: 36px;
+      color: var(--dark-text);
+      line-height: 42px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 20px;
+      color: var(--light-text);
+      line-height: 24px;
+    }
+  }
 }
 
-.top {
-  @include flex;
-  @include maxWidth;
-  justify-content: space-between;
-
-  h1 {
-    margin: 25px 0 24px;
-  }
-
-  a {
-    @include primaryBtn;
-  }
-}
-
-.main {
+.recipe_info {
   @include maxWidth;
   padding: 50px 0 20px;
   margin: 0 auto;
 
-  .style {
-    h2 {
-      padding: 0 8px 20px 0;
-    }
+  h2 {
+    font-size: 24px;
+    padding: 31px 8px 19px 0;
+    display: inline-block;
+  }
 
-    p,
-    li {
-      font-size: 18px;
-      color: var(--light-text);
-      line-height: 28px;
-      list-style: inside;
-    }
+  a {
+    font-size: 12px;
+    color: var(--light-text);
+    cursor: pointer;
+  }
 
-    li {
-      color: var(--dark-text);
-    }
+  li {
+    font-size: 18px;
+    list-style: inside;
+    list-style-type: quote($string: "- ");
+    color: var(--light-text);
+  }
 
-    h2,
-    a {
-      display: inline-block;
-    }
+  p {
+    font-size: 18px;
+    color: var(--light-text);
+    line-height: 28px;
+    list-style: inside;
+  }
 
-    a {
-      font-size: 12px;
-      color: var(--light-text);
-      cursor: pointer;
-    }
-
-    .preparation {
-      list-style: none;
-    }
-
-    .hiding {
-      display: none;
-    }
+  .hiding {
+    display: none;
   }
 }
 
-/* Detailed Chef Page */
+/* Chef Profile Page */
 
-.detailed.chef {
-  justify-content: center;
+.chef_profile {
   text-align: center;
+
+  .page_title {
+    text-align: left;
+  }
+
+  h1 {
+    color: var(--dark-text);
+    font-size: 24px;
+  }
 
   img {
     height: 200px;
@@ -247,12 +237,26 @@ body {
     object-position: center top;
   }
 
-  .recipes {
+  h2 {
+    font-size: 36px;
+    color: var(--dark-text);
+    line-height: 42px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 20px;
     color: var(--light-text);
+    line-height: 24px;
   }
 }
 
-/* New Recipe Section */
+.chef_recipes {
+  @include maxWidth;
+  margin: 50px auto 30px;
+}
+
+/* New Recipe and Chef Form Section */
 
 form {
   @include maxWidth;
@@ -260,6 +264,7 @@ form {
   position: relative;
 
   h3 {
+    font-size: 16px;
     margin: 30px 0 10px;
   }
 
@@ -270,45 +275,36 @@ form {
     color: #6558c3;
     cursor: pointer;
   }
+
+  input {
+    @include inputForm;
+    height: 49px;
+  }
+
+  textarea {
+    @include inputForm;
+    min-height: 257px;
+  }
 }
 
-.details.new {
-  display: flex;
+.form_header {
+  @include flex;
   justify-content: space-between;
 }
 
-.details {
-  margin-bottom: 30px;
-
-  button.save {
-    @include primaryBtn;
-  }
-
-  .heading {
-    @include flex;
-    justify-content: space-between;
-  }
-
-  .delete {
-    @include secondaryBtn;
-    position: absolute;
-    right: 145px;
-  }
+.save {
+  @include primaryBtn;
 }
 
-input {
-  @include inputForm;
-  height: 49px;
-}
-
-textarea {
-  @include inputForm;
-  min-height: 257px;
+.delete {
+  @include secondaryBtn;
+  position: absolute;
+  right: 145px;
 }
 
 /* Footer Section */
 
-#footer {
+.footer {
   background: #eeeeee;
   width: 100%;
   padding: 25px;

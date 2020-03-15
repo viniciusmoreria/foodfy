@@ -60,118 +60,47 @@ body {
   }
 }
 
-/* Hero Section */
+/* Banner Section */
 
-.hero {
+.banner_box {
   @include maxWidth;
   margin: 36px auto;
-}
 
-.banner {
-  @include grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--bg-color);
-  border-radius: 30px;
+  .banner {
+    @include grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--bg-color);
+    border-radius: 30px;
 
-  .texts {
-    align-self: center;
-    width: 316px;
-  }
+    .banner_info {
+      align-self: center;
+      width: 316px;
+    }
 
-  h1 {
-    color: var(--dark-text);
-    font-size: 32px;
-    line-height: 38px;
-    margin-bottom: 10px;
-  }
+    h1 {
+      color: var(--dark-text);
+      font-size: 32px;
+      line-height: 38px;
+      margin-bottom: 10px;
+    }
 
-  p {
-    font-size: 18px;
-    color: var(--dark-text);
-    opacity: 0.7;
-    line-height: 28px;
-  }
+    p {
+      font-size: 18px;
+      color: var(--dark-text);
+      opacity: 0.7;
+      line-height: 28px;
+    }
 
-  img {
-    margin-top: 66px;
-    justify-self: end;
-  }
-}
-
-/* Receipts Section */
-
-.list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  @include maxWidth;
-  margin: 0 auto;
-
-  .title {
-    font-size: 18px;
-    color: var(--dark-text);
-    line-height: 21px;
-    margin-bottom: 5px;
-  }
-
-  .chef {
-    font-size: 14px;
-    color: var(--light-text);
-    line-height: 16px;
-  }
-}
-
-.recipe {
-  img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    object-position: center center;
-    border-radius: 15px;
-  }
-}
-
-/* Chefs Section */
-
-.list.chefs {
-  grid-template-columns: repeat(4, 1fr);
-  margin: 0 auto;
-
-  .title {
-    font-size: 18px;
-    color: var(--dark-text);
-    margin-bottom: 5px;
-  }
-}
-
-.chef {
-  @include flex;
-  font-size: 14px;
-  color: var(--light-text);
-  line-height: 16px;
-
-  img {
-    height: 64px;
-    width: 64px;
-    margin-right: 20px;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 50%;
-  }
-
-  .name {
-    color: var(--dark-text);
-    font-size: 18px;
-  }
-
-  p {
-    margin-top: 5px;
-    font-size: 14px;
+    img {
+      margin-top: 66px;
+      justify-self: end;
+    }
   }
 }
 
 /* About Section */
-#about {
+
+.about_box {
   @include maxWidth;
   margin: 0 auto;
 
@@ -196,78 +125,148 @@ body {
   }
 }
 
-/* Detailed Recipe Page */
+/* Recipes Section */
 
-.detailed {
-  text-align: center;
+.recipe_box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  @include maxWidth;
+  margin: 0 auto;
 
-  img {
-    @include maxWidth;
-    height: 300px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-  }
+  .recipe {
+    img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
 
-  .title {
-    font-size: 36px;
-    color: var(--dark-text);
-    line-height: 42px;
-    margin-bottom: 5px;
-  }
+    h3 {
+      font-weight: normal;
+      font-size: 18px;
+      color: var(--dark-text);
+      line-height: 21px;
+      margin-bottom: 5px;
+    }
 
-  .chef {
-    font-size: 20px;
-    color: var(--light-text);
-    line-height: 24px;
+    p {
+      font-size: 14px;
+      color: var(--light-text);
+      line-height: 16px;
+    }
   }
 }
 
-.main {
+/* Chefs Section */
+
+.chef_box {
+  @include maxWidth;
+  @include grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: stretch;
+  margin: 50px auto;
+}
+
+.chef {
+  @include flex;
+  font-size: 14px;
+  color: var(--light-text);
+  line-height: 16px;
+
+  img {
+    height: 64px;
+    width: 64px;
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: normal;
+    color: var(--dark-text);
+  }
+
+  p {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+}
+
+/* Recipe Profile Page */
+
+.recipe_profile {
+  text-align: center;
+
+  .recipe {
+    img {
+      @include maxWidth;
+      height: 280px;
+      border-radius: 15px;
+      margin-bottom: 50px;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    h2 {
+      font-size: 36px;
+      color: var(--dark-text);
+      line-height: 42px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 20px;
+      color: var(--light-text);
+      line-height: 24px;
+    }
+  }
+}
+
+.recipe_info {
   @include maxWidth;
   padding: 50px 0 20px;
   margin: 0 auto;
 
-  .style {
-    h2 {
-      padding: 0 8px 20px 0;
-    }
+  h2 {
+    font-size: 24px;
+    padding: 31px 8px 19px 0;
+    display: inline-block;
+  }
 
-    p,
-    li {
-      font-size: 18px;
-      color: var(--light-text);
-      line-height: 28px;
-      list-style: inside;
-    }
+  a {
+    font-size: 12px;
+    color: var(--light-text);
+    cursor: pointer;
+  }
 
-    li {
-      color: var(--dark-text);
-    }
+  li {
+    font-size: 18px;
+    list-style: inside;
+    list-style-type: quote($string: "- ");
+    color: var(--light-text);
+  }
 
-    h2,
-    a {
-      display: inline-block;
-    }
+  p {
+    font-size: 18px;
+    color: var(--light-text);
+    line-height: 28px;
+    list-style: inside;
+  }
 
-    a {
-      font-size: 12px;
-      color: var(--light-text);
-      cursor: pointer;
-    }
-
-    .preparation {
-      list-style: none;
-    }
-
-    .hiding {
-      display: none;
-    }
+  .hiding {
+    display: none;
   }
 }
 
-/* Detailed Chef Page */
+/* Chef Profile Page */
 
-.detailed.chef {
+.chef_profile {
   justify-content: center;
   text-align: center;
 
@@ -279,11 +278,29 @@ body {
     object-fit: cover;
     object-position: center top;
   }
+
+  h2 {
+    font-size: 36px;
+    color: var(--dark-text);
+    line-height: 42px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 20px;
+    color: var(--light-text);
+    line-height: 24px;
+  }
+}
+
+.chef_recipes {
+  @include maxWidth;
+  margin: 50px auto 30px;
 }
 
 /* Footer Section */
 
-#footer {
+.footer {
   background: #eeeeee;
   width: 100%;
   padding: 25px;

@@ -1,29 +1,26 @@
 {%extends "./layout.njk" %}
 {% block content %}
 
-  <section class="hero">
+  <div class="page_title">
+    <h1>Gerenciar Receitas</h1>
+    <a class="button" href="/admin/create">Nova Receita</a>
+  </div>
 
-    <div class="top">
-      <h1>Gerenciar Receitas</h1>
-      <a class="button" href="/admin/create">Nova Receita</a>
-    </div>
+  <div class="recipe_box">
+    {% for recipe in recipes %}
 
-    <div class="list">
-      {% for recipe in recipes %}
+      <div class="recipe">
+        <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
 
-        <div class="recipe">
-          <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
-
-          <div>
-            <p class="title">{{recipe.title}}</p>
-            <p class="chef">por
-              {{recipe.chef}}</p>
-            <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
-          </div>
+        <div>
+          <h3>{{recipe.title}}</h3>
+          <p>por
+            {{recipe.chef}}</p>
+          <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
         </div>
+      </div>
 
-      {% endfor %}
-    </div>
-  </section>
+    {% endfor %}
+  </div>
 
 {% endblock %}

@@ -1,15 +1,15 @@
 {%extends "layout.njk" %}
 {% block content %}
 
-  <section class="list">
+  <section class="recipe_box">
     {% for recipe in recipes %}
 
       <div class="recipe">
         <a href="/recipes/{{recipe.id}}">
           <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
         </a>
-        <p class="title">{{recipe.title}}</p>
-        <p class="chef">por
+        <h3>{{recipe.title}}</h3>
+        <p>por
           {{recipe.chef}}</p>
       </div>
 

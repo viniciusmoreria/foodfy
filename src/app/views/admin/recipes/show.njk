@@ -2,10 +2,10 @@
 
 {% block content %}
 
-  <section class="detailed list">
+  <section class="recipe_profile">
 
     <div class="recipe">
-      <div class="top">
+      <div class="page_title">
         <h1>Receita:
           {{recipe.title}}
         </h1>
@@ -13,49 +13,41 @@
       </div>
 
       <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
-      <p class="title">{{recipe.title}}</p>
-      <p class="chef">por
+      <h2>{{recipe.title}}</h2>
+      <p>por Jorge Relato
         {{recipe.chef}}</p>
     </div>
 
   </section>
 
-  <section class="main">
+  <section class="recipe_info">
 
-    <div class="style">
-      <div>
-        <h2>Ingredientes</h2>
-        <a id="hide">ESCONDER</a>
-        <ul id="lista0">
-          {% for i in recipe.ingredients %}
-            <li>{{i}}</li>
-          {% endfor %}
-        </ul>
-      </div>
-
+    <div>
+      <h2>Ingredientes</h2>
+      <a id="hide">ESCONDER</a>
+      <ul id="lista0">
+        {% for i in recipe.ingredients %}
+          <li>{{i}}</li>
+        {% endfor %}
+      </ul>
     </div>
 
-    <div class="style">
-      <div>
-        <h2>Modo de preparo</h2>
-        <a id="hide">ESCONDER</a>
-        <ul id="lista1">
-          {% for i in recipe.preparation %}
-            <li class="preparation">{{i}}</li>
-          {% endfor %}
-        </ul>
-      </div>
-
+    <div>
+      <h2>Modo de preparo</h2>
+      <a id="hide">ESCONDER</a>
+      <ul id="lista1">
+        {% for i in recipe.preparation %}
+          <li>{{i}}</li>
+        {% endfor %}
+      </ul>
     </div>
 
-    <div class="style">
-      <div>
-        <h2>Informações adicionais</h2>
-        <a id="hide">ESCONDER</a>
-        <p id="lista2">{{recipe.information}}</p>
-      </div>
-
+    <div>
+      <h2>Informações adicionais</h2>
+      <a id="hide">ESCONDER</a>
+      <p id="lista2">{{recipe.information}}</p>
     </div>
+
   </section>
 
 {% endblock %}

@@ -1,9 +1,9 @@
 {%extends "layout.njk" %}
 {% block content %}
 
-  <section class="hero">
+  <section class="banner_box">
     <div class="banner">
-      <div class="texts">
+      <div class="banner_info">
         <h1>As melhores receitas</h1>
         <p>
           Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.
@@ -15,16 +15,16 @@
     </div>
   </section>
 
-  <section class="list">
+  <section class="recipe_box">
 
     {% for recipe in recipes %}
       <div class="recipe">
         <a href="/recipes/{{recipe.id}}">
           <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
         </a>
-        <p class="title">{{recipe.title}}</p>
-        <p class="chef">por
-          {{recipe.chef}}</p>
+        <h3>{{recipe.title}}</h3>
+        <p>por
+          {{chef.name}}</p>
       </div>
     {% endfor %}
 
