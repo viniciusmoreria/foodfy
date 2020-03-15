@@ -275,6 +275,10 @@ body {
   line-height: 24px;
 }
 
+.recipe_profile .recipe a {
+  text-decoration: none;
+}
+
 .recipe_info {
   width: 980px;
   padding: 50px 0 20px;
@@ -345,7 +349,39 @@ body {
 
 .chef_recipes {
   width: 980px;
-  margin: 50px auto 30px;
+  margin: auto;
+}
+
+.chef_recipes .recipe_box {
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  margin-top: 30px;
+}
+
+.chef_recipes .recipe_box .recipe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chef_recipes .recipe_box .recipe img {
+  width: 270px;
+  height: 100px;
+  margin: 0 20px 0 0;
+}
+
+.chef_recipes .recipe_box .recipe p {
+  margin-bottom: 10px;
+}
+
+.chef_recipes .recipe_box .recipe a {
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #6558c3;
 }
 
 /* Footer Section */

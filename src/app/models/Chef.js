@@ -3,11 +3,20 @@ const db = require("../../config/db");
 
 module.exports = {
   all(callback) {
-    db.query(`SELECT * FROM chefs`, function(err, results) {
-      if (err) throw `Chef not found! ${err}`;
+    db.query(
+      `
+    SELECT chefs.*, count(recipes) AS total_recipes
+    FROM chefs
+    LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+    GROUP BY chefs.id
+    ORDER BY total_recipes DESC
+    `,
+      function(err, results) {
+        if (err) throw `Chef not found! ${err}`;
 
-      callback(results.rows);
-    });
+        callback(results.rows);
+      }
+    );
   },
   create(data, callback) {
     const query = `
@@ -30,15 +39,18 @@ module.exports = {
   find(id, callback) {
     db.query(
       `
-      SELECT * 
-      FROM chefs 
-      WHERE id = $1
+      SELECT chefs.*, 
+      (SELECT count(*) FROM recipes WHERE recipes.chef_id = chefs.id) AS total_recipes,
+      recipes.id AS recipe_id, recipes.title AS recipe_title, recipes.image AS recipe_image
+      FROM chefs
+      LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+      WHERE chefs.id = $1
       `,
       [id],
       function(err, results) {
         if (err) throw `Chef not found! ${err}`;
 
-        callback(results.rows[0]);
+        callback(results.rows[0], results.rows);
       }
     );
   },

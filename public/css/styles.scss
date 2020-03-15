@@ -225,6 +225,10 @@ body {
       color: var(--light-text);
       line-height: 24px;
     }
+
+    a {
+      text-decoration: none;
+    }
   }
 }
 
@@ -295,7 +299,33 @@ body {
 
 .chef_recipes {
   @include maxWidth;
-  margin: 50px auto 30px;
+  margin: auto;
+
+  .recipe_box {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 30px;
+
+    .recipe {
+      @include flex;
+
+      img {
+        width: 270px;
+        height: 100px;
+        margin: 0 20px 0 0;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      a {
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #6558c3;
+      }
+    }
+  }
 }
 
 /* Footer Section */

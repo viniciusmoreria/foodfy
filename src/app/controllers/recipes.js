@@ -3,16 +3,16 @@ const Recipe = require("../models/Recipe");
 module.exports = {
   // Logged-out routes
   home(req, res) {
-    Recipe.all(function(recipes) {
-      return res.render("index", { recipes });
+    Recipe.all(function(recipes, recipe) {
+      return res.render("index", { recipes, recipe });
     });
   },
   about(req, res) {
     return res.render("about");
   },
   recipes(req, res) {
-    Recipe.all(function(recipes) {
-      return res.render("recipes", { recipes });
+    Recipe.all(function(recipes, recipe) {
+      return res.render("recipes", { recipes, recipe });
     });
   },
   recipe(req, res) {
@@ -30,7 +30,9 @@ module.exports = {
     });
   },
   create(req, res) {
-    return res.render("admin/recipes/create");
+    Recipe.chefName(function(options) {
+      return res.render("admin/recipes/create", { chefs: options });
+    });
   },
   show(req, res) {
     Recipe.find(req.params.id, function(recipe) {
@@ -43,7 +45,9 @@ module.exports = {
     Recipe.find(req.params.id, function(recipe) {
       if (!recipe) return res.send("Recipe not found!");
 
-      return res.render("admin/recipes/edit", { recipe });
+      Recipe.chefName(function(options) {
+        return res.render("admin/recipes/edit", { recipe, chefs: options });
+      });
     });
   },
   post(req, res) {

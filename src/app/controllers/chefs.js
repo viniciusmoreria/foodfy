@@ -8,10 +8,10 @@ module.exports = {
     });
   },
   chef(req, res) {
-    Chef.find(req.params.id, function(chef) {
-      if (!chef) return res.send("Recipe not found!");
+    Chef.find(req.params.id, function(chef, recipes) {
+      if (!chef) return res.send("Chef not found!");
 
-      return res.render("show-chef", { chef });
+      return res.render("show-chef", { chef, recipes });
     });
   },
 
@@ -25,10 +25,10 @@ module.exports = {
     return res.render("admin/chefs/create");
   },
   show(req, res) {
-    Chef.find(req.params.id, function(chef) {
+    Chef.find(req.params.id, function(chef, recipes) {
       if (!chef) return res.send("Chef not found!");
 
-      return res.render("admin/chefs/show", { chef });
+      return res.render("admin/chefs/show", { chef, recipes });
     });
   },
   edit(req, res) {
