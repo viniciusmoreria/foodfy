@@ -4,13 +4,13 @@
 
   <div class="forms_box">
 
-    <form id="form-delete" method="POST" action="/admin/chefs?_method=DELETE">
+    <form class="chef_form" id="form-delete" method="POST" action="/admin/chefs?_method=DELETE">
       <button class="delete" type="submit">Deletar</button>
 
       <input type="hidden" name="id" value="{{chef.id}}">
     </form>
 
-    <form method="POST" action="/admin/chefs?_method=PUT">
+    <form class="chef_form" method="POST" action="/admin/chefs?_method=PUT">
       <div class="form_header">
         <h1>Editar Chef</h1>
         <button class="save" type="submit">Salvar</button>

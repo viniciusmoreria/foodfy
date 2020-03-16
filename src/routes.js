@@ -2,26 +2,30 @@ const express = require("express");
 const routes = express.Router();
 const recipe = require("./app/controllers/recipes");
 const chef = require("./app/controllers/chefs");
+const site = require("./app/controllers/site");
 
-// Logged-out routes
-routes.get("/", recipe.home);
-routes.get("/about", recipe.about);
-routes.get("/recipes/:id", recipe.recipe);
-routes.get("/recipes", recipe.recipes);
+// Site routes
+routes.get("/", site.index);
+routes.get("/about", site.about);
+routes.get("/recipes", site.recipes);
+routes.get("/recipes/:id", site.recipe);
+routes.get("/chefs", site.chefs);
+routes.get("/chefs/:id", site.chef);
 
-// Logged-in routes
+// Admin Recipes routes
+routes.get("/admin", function(req, res) {
+  return res.redirect("admin/recipes");
+});
 routes.get("/admin/recipes", recipe.index);
-routes.get("/admin/create", recipe.create);
+routes.get("/admin/recipes/create", recipe.create);
 routes.get("/admin/recipes/:id", recipe.show);
 routes.get("/admin/recipes/:id/edit", recipe.edit);
 routes.post("/admin/recipes", recipe.post);
 routes.put("/admin/recipes", recipe.put);
 routes.delete("/admin/recipes", recipe.delete);
 
-//Chefs routes
-routes.get("/chefs", chef.index);
-routes.get("/chefs/:id", chef.chef);
-routes.get("/admin/chefs", chef.indexAdmin);
+//Admin Chefs routes
+routes.get("/admin/chefs", chef.index);
 routes.get("/admin/chefs/create", chef.create);
 routes.get("/admin/chefs/:id", chef.show);
 routes.get("/admin/chefs/:id/edit", chef.edit);

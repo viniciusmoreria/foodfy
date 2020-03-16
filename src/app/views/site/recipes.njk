@@ -1,7 +1,16 @@
-{%extends "layout.njk" %}
+{%extends "./layout.njk" %}
 {% block content %}
 
+  {% if filter %}
+    <div class="page_title">
+      <h1>Buscando por
+        {{filter}}
+      </h1>
+    </div>
+  {% endif %}
+
   <section class="recipe_box">
+
     {% for recipe in recipes %}
 
       <div class="recipe">

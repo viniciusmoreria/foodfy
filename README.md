@@ -17,7 +17,7 @@ Foodfy Challenge - LaunchBase 2020 - Rocketseat
 - [x] Chefs tab.
 - [x] Display new recipes first.
 - [x] Search recipes.
-- [ ] Pagination
+- [x] Pagination
 - [ ] Upload images to database.
 - [ ] Login system.
 

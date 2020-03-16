@@ -3,13 +3,13 @@
 
   <div class="page_title">
     <h1>Gerenciar Receitas</h1>
-    <a class="button" href="/admin/create">Nova Receita</a>
+    <a class="button" href="/admin/recipes/create">Nova Receita</a>
   </div>
 
-  <div class="recipe_box">
+  <div class="recipe_box adm">
     {% for recipe in recipes %}
 
-      <div class="recipe">
+      <div class="recipe adm">
         <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
 
         <div>
@@ -22,5 +22,7 @@
 
     {% endfor %}
   </div>
+
+  <div class="pagination" data-page="{{pagination.page}}" data-total="{{pagination.total}}" data-filter="{{filter}}"></div>
 
 {% endblock %}

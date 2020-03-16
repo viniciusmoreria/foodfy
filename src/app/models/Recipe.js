@@ -116,5 +116,33 @@ module.exports = {
     } catch (err) {
       throw new Error(err);
     }
+  },
+  paginate(params) {
+    const { filter, limit, offset } = params;
+
+    let query = "",
+      filterQuery = "",
+      totalQuery = `(SELECT count(*) FROM recipes) AS total`;
+
+    if (filter) {
+      filterQuery = `
+      WHERE recipes.title ILIKE '%${filter}%'
+      OR chefs.name ILIKE '%${filter}%'`;
+
+      totalQuery = `(
+      SELECT count (*) FROM recipes
+      ${filterQuery}
+      ) as total`;
+    }
+
+    query = `
+        SELECT recipes.*, ${totalQuery}, chefs.name AS chef_name
+        FROM recipes
+        LEFT JOIN chefs ON(recipes.chef_id = chefs.id)
+        ${filterQuery}
+        ORDER BY created_at DESC
+        LIMIT $1 OFFSET $2`;
+
+    return db.query(query, [limit, offset]);
   }
 };

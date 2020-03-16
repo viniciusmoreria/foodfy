@@ -1,25 +1,8 @@
 const Chef = require("../models/Chef");
 
 module.exports = {
-  // Logged-out routes
-  async index(req, res) {
-    let results = await Chef.all(req.body);
-    const chefs = results.rows;
-
-    return res.render("chefs", { chefs });
-  },
-  async chef(req, res) {
-    let results = await Chef.find(req.params.id);
-
-    let chef = results.rows[0];
-
-    const recipes = results.rows;
-
-    return res.render("show-chef", { chef, recipes });
-  },
-
   // Logged-in routes
-  async indexAdmin(req, res) {
+  async index(req, res) {
     let results = await Chef.all(req.body);
     const chefs = results.rows;
 
