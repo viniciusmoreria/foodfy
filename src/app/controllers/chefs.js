@@ -2,43 +2,49 @@ const Chef = require("../models/Chef");
 
 module.exports = {
   // Logged-out routes
-  index(req, res) {
-    Chef.all(function(chefs) {
-      return res.render("chefs", { chefs });
-    });
-  },
-  chef(req, res) {
-    Chef.find(req.params.id, function(chef, recipes) {
-      if (!chef) return res.send("Chef not found!");
+  async index(req, res) {
+    let results = await Chef.all(req.body);
+    const chefs = results.rows;
 
-      return res.render("show-chef", { chef, recipes });
-    });
+    return res.render("chefs", { chefs });
+  },
+  async chef(req, res) {
+    let results = await Chef.find(req.params.id);
+
+    let chef = results.rows[0];
+
+    const recipes = results.rows;
+
+    return res.render("show-chef", { chef, recipes });
   },
 
   // Logged-in routes
-  indexAdmin(req, res) {
-    Chef.all(function(chefs) {
-      return res.render("admin/chefs/index", { chefs });
-    });
+  async indexAdmin(req, res) {
+    let results = await Chef.all(req.body);
+    const chefs = results.rows;
+
+    return res.render("admin/chefs/index", { chefs });
   },
   create(req, res) {
     return res.render("admin/chefs/create");
   },
-  show(req, res) {
-    Chef.find(req.params.id, function(chef, recipes) {
-      if (!chef) return res.send("Chef not found!");
+  async show(req, res) {
+    let results = await Chef.find(req.params.id);
 
-      return res.render("admin/chefs/show", { chef, recipes });
-    });
-  },
-  edit(req, res) {
-    Chef.find(req.params.id, function(chef) {
-      if (!chef) return res.send("Chef not found!");
+    let chef = results.rows[0];
 
-      return res.render("admin/chefs/edit", { chef });
-    });
+    const recipes = results.rows;
+
+    return res.render("admin/chefs/show", { chef, recipes });
   },
-  post(req, res) {
+  async edit(req, res) {
+    let results = await Chef.find(req.params.id);
+
+    let chef = results.rows[0];
+
+    return res.render("admin/chefs/edit", { chef });
+  },
+  async post(req, res) {
     const keys = Object.keys(req.body);
 
     for (key of keys) {
@@ -47,11 +53,11 @@ module.exports = {
       }
     }
 
-    Chef.create(req.body, function(chef) {
-      return res.redirect(`/admin/chefs/${chef.id}`);
-    });
+    await Chef.create(req.body);
+
+    return res.redirect(`/admin/chefs/${chef.id}`);
   },
-  put(req, res) {
+  async put(req, res) {
     const keys = Object.keys(req.body);
 
     for (key of keys) {
@@ -60,13 +66,13 @@ module.exports = {
       }
     }
 
-    Chef.update(req.body, function() {
-      return res.redirect(`/admin/chefs/${req.body.id}`);
-    });
+    await Chef.update(req.body);
+
+    return res.redirect(`/admin/chefs/${req.body.id}`);
   },
-  delete(req, res) {
-    Chef.delete(req.body.id, function() {
-      return res.redirect("/admin/chefs");
-    });
+  async delete(req, res) {
+    await Chef.delete(req.body.id);
+
+    return res.redirect("/admin/chefs");
   }
 };

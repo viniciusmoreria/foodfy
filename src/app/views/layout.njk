@@ -7,32 +7,18 @@
 
     <link rel="icon" href="/static/favicon.ico"/>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS Stylecheet -->
     <link rel="stylesheet" href="/css/styles.css"/>
 
     <title>Foodfy</title>
+
   </head>
 
   <body>
     <!-- Header -->
 
-    <section class="header">
-      <div class="navbar">
-        <a href="/">
-          <img src="/static/main-logo.png" alt="Foodfy Logo"/>
-        </a>
-        <div>
-          <a href="/about">Sobre</a>
-          <a href="/recipes">Receitas</a>
-          <a href="/chefs">Chefs</a>
-        </div>
-      </div>
-
-      <form action="/" method="GET">
-        <input type="text" name="filter" placeholder="Buscar uma receita" value="{{filter}}">
-        <button type="submit">Buscar</button>
-      </form>
-    </section>
+    {% include "parts/header.njk" %}
 
     <!-- Nunjucks Content -->
 
