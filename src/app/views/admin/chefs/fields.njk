@@ -6,8 +6,12 @@
 </div>
 
 <div>
-  <h3>Imagem de perfil</h3>
+  <h3>Imagem de Perfil</h3>
   <div>
-    <input type="url" name="image" value="{{chef.image}}">
+    <div class="photos_upload">
+      <input class="photos_input" type="file" multiple="multiple" name="images" accept="image/*" value="{{recipe.image}}" onchange="PhotosUpload.handleFileInput(event)">
+      <p>Selecione até 6 imagens</p>
+    </div>
+    <div class="photos_preview"></div>
   </div>
 </div>

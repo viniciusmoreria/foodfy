@@ -8,7 +8,7 @@ Foodfy Challenge - LaunchBase 2020 - Rocketseat
 
 ## Goal
 
-The objective of this challenge is to fix the content presented throughout the bootcamp. Where we should create a recipe site from zero with several features, as shown below.
+The objective of this challenge is to help fixate the content presented throughout the bootcamp. Where we should create a recipe site from zero with several features, as shown below.
 
 ## Features
 
@@ -26,8 +26,8 @@ The objective of this challenge is to fix the content presented throughout the b
 - [ ] Login system.
 
 ## Techs
-HTML, SCSS, Javascript, Node.js, PostgresSQL, Express, Nunjucks, Browser-Sync, Nodemon e Multer.
 
+HTML, SCSS, Javascript, Node.js, PostgresSQL, Express, Nunjucks, Browser-Sync, Nodemon and Multer.
 
 ## Getting Started
 
@@ -44,11 +44,13 @@ HTML, SCSS, Javascript, Node.js, PostgresSQL, Express, Nunjucks, Browser-Sync, N
    ```
 
 3. The database can be found on the projects root folder.
- 
+
+   ```bash
+   foodfy.sql
+   ```
 
 4. Fire up the server and watch files
 
    ```bash
    npm start
    ```
-

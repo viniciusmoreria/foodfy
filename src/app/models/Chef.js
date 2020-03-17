@@ -14,7 +14,7 @@ module.exports = {
       `
       );
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
     }
   },
   create(data) {
@@ -32,7 +32,7 @@ module.exports = {
 
       return db.query(query, values);
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
     }
   },
   find(id) {
@@ -49,7 +49,7 @@ module.exports = {
         [id]
       );
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
     }
   },
   update(data) {
@@ -65,14 +65,14 @@ module.exports = {
 
       return db.query(query, values);
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
     }
   },
   delete(id) {
     try {
       return db.query(`DELETE FROM chefs WHERE id = $1`, [id]);
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
     }
   }
 };

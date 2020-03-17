@@ -11,6 +11,19 @@ module.exports = {
   create(req, res) {
     return res.render("admin/chefs/create");
   },
+  async post(req, res) {
+    const keys = Object.keys(req.body);
+
+    for (key of keys) {
+      if (req.body[key] == "") {
+        return res.send("Please, fill all fields!");
+      }
+    }
+
+    await Chef.create(req.body);
+
+    return res.redirect(`/admin/chefs/${chef.id}`);
+  },
   async show(req, res) {
     let results = await Chef.find(req.params.id);
 
@@ -26,19 +39,6 @@ module.exports = {
     let chef = results.rows[0];
 
     return res.render("admin/chefs/edit", { chef });
-  },
-  async post(req, res) {
-    const keys = Object.keys(req.body);
-
-    for (key of keys) {
-      if (req.body[key] == "") {
-        return res.send("Please, fill all fields!");
-      }
-    }
-
-    await Chef.create(req.body);
-
-    return res.redirect(`/admin/chefs/${chef.id}`);
   },
   async put(req, res) {
     const keys = Object.keys(req.body);

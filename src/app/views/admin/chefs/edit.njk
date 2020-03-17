@@ -10,7 +10,7 @@
       <input type="hidden" name="id" value="{{chef.id}}">
     </form>
 
-    <form class="chef_form" method="POST" action="/admin/chefs?_method=PUT">
+    <form class="chef_form" method="POST" action="/admin/chefs?_method=PUT" enctype="multipart/form-data">
       <div class="form_header">
         <h1>Editar Chef</h1>
         <button class="save" type="submit">Salvar</button>

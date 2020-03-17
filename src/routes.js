@@ -1,5 +1,6 @@
 const express = require("express");
 const routes = express.Router();
+const multer = require("./app/middlewares/multer");
 const recipe = require("./app/controllers/recipes");
 const chef = require("./app/controllers/chefs");
 const site = require("./app/controllers/site");
@@ -20,8 +21,8 @@ routes.get("/admin/recipes", recipe.index);
 routes.get("/admin/recipes/create", recipe.create);
 routes.get("/admin/recipes/:id", recipe.show);
 routes.get("/admin/recipes/:id/edit", recipe.edit);
-routes.post("/admin/recipes", recipe.post);
-routes.put("/admin/recipes", recipe.put);
+routes.post("/admin/recipes", multer.array("images", 6), recipe.post);
+routes.put("/admin/recipes", multer.array("images", 6), recipe.put);
 routes.delete("/admin/recipes", recipe.delete);
 
 //Admin Chefs routes
@@ -29,8 +30,8 @@ routes.get("/admin/chefs", chef.index);
 routes.get("/admin/chefs/create", chef.create);
 routes.get("/admin/chefs/:id", chef.show);
 routes.get("/admin/chefs/:id/edit", chef.edit);
-routes.post("/admin/chefs", chef.post);
-routes.put("/admin/chefs", chef.put);
+routes.post("/admin/chefs", multer.array("images", 1), chef.post);
+routes.put("/admin/chefs", multer.array("images", 1), chef.put);
 routes.delete("/admin/chefs", chef.delete);
 
 module.exports = routes;

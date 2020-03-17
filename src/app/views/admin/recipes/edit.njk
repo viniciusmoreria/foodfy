@@ -10,7 +10,7 @@
       <input type="hidden" name="id" value="{{recipe.id}}">
     </form>
 
-    <form class="recipe_form" method="POST" action="/admin/recipes?_method=PUT">
+    <form class="recipe_form" method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
       <div class="form_header">
         <h1>Editar receita</h1>
         <button class="save" type="submit">Salvar receita</button>
