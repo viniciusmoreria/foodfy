@@ -22,7 +22,7 @@ The objective of this challenge is to help fixate the content presented througho
 - [x] Display new recipes first.
 - [x] Search recipes.
 - [x] Pagination
-- [ ] Upload images to database.
+- [x] Upload images to database using Multer.
 - [ ] Login system.
 
 ## Techs
@@ -43,7 +43,7 @@ HTML, SCSS, Javascript, Node.js, PostgresSQL, Express, Nunjucks, Browser-Sync, N
    npm install
    ```
 
-3. The database can be found on the projects root folder.
+3. The database structure can be found on the projects root folder.
 
    ```bash
    foodfy.sql
