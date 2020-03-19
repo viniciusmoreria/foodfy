@@ -12,7 +12,7 @@
         <a class="button" href="/admin/chefs/{{chef.id}}/edit">Editar Chef</a>
       </div>
 
-      <img src="{{chef.image}}" alt="Imagem de {{chef.name}}"/>
+      <img src="{{images[0].src}}" alt="Imagem de {{chef.name}}"/>
       <h2>{{chef.name}}</h2>
       <p>{{chef.total_recipes}}
         receitas</p>
@@ -27,7 +27,7 @@
         {% for recipe in recipes %}
           {% if recipe.total_recipes > 0 %}
             <div class="recipe">
-              <img src="{{recipe.recipe_image}}" alt="Imagem de {{recipe.recipe_title}}">
+              <img src="{{recipeImg.src}}" alt="Imagem de {{recipe.recipe_title}}">
               <div>
                 <h3>{{recipe.recipe_title}}</h3>
                 <a href="/recipes/{{recipe.recipe_id}}">Visualizar</a>

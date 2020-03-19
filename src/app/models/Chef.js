@@ -39,12 +39,11 @@ module.exports = {
     try {
       return db.query(
         `
-          SELECT chefs.*, 
-          (SELECT count(*) FROM recipes WHERE recipes.chef_id = chefs.id) AS total_recipes,
-          recipes.id AS recipe_id, recipes.title AS recipe_title
+          SELECT chefs.*, count(recipes) AS total_recipes
           FROM chefs
           LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
           WHERE chefs.id = $1
+          GROUP BY chefs.id
           `,
         [id]
       );
@@ -71,6 +70,16 @@ module.exports = {
   delete(id) {
     try {
       return db.query(`DELETE FROM chefs WHERE id = $1`, [id]);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  recipes() {
+    try {
+      return db.query(`
+      SELECT id, chef_id, title
+      FROM recipes
+      ORDER BY updated_at DESC`);
     } catch (err) {
       console.error(err);
     }

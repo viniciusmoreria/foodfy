@@ -18,7 +18,7 @@ module.exports = {
 
       return results.rows[0].id;
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
     }
   },
   async delete(id) {

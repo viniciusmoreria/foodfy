@@ -1,5 +1,6 @@
 const Chef = require("../models/Chef");
 const File = require("../models/File");
+const Recipe = require("../models/Recipe");
 
 module.exports = {
   // Logged-in routes
@@ -17,22 +18,41 @@ module.exports = {
 
     for (key of keys) {
       if (req.body[key] == "") {
-        return res.send("Please, fill all fields!");
+        return res.send("Por favor preencha todos os campos");
       }
     }
 
-    await Chef.create(req.body);
+    if (req.files.length == 0)
+      return res.send("Por favor envie ao menos uma imagem");
 
-    return res.redirect(`/admin/chefs/${chef.id}`);
+    let results = await File.create(req.files[0]);
+
+    const chef = {
+      ...req.body,
+      fileId: results
+    };
+
+    await Chef.create(chef);
+
+    return res.redirect(`/admin/chefs`);
   },
   async show(req, res) {
     let results = await Chef.find(req.params.id);
-
     let chef = results.rows[0];
+    let recipes = results.rows;
 
-    const recipes = results.rows;
+    if (!chef) return res.send("Chef não encontrado");
 
-    return res.render("admin/chefs/show", { chef, recipes });
+    results = await Chef.files(chef.id);
+    const images = results.rows.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace(
+        "public",
+        ""
+      )}`
+    }));
+
+    return res.render("admin/chefs/show", { chef, images, recipes });
   },
   async edit(req, res) {
     let results = await Chef.find(req.params.id);
