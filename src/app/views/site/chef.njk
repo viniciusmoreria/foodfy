@@ -5,7 +5,7 @@
   <section class="chef_profile">
 
     <div>
-      <img src="{{image.src if image.src else ' https://flyinryanhawks.org/wp-content/uploads/2016/08/profile-placeholder.png'}}" alt="Imagem de {{recipe.title}}"/>
+      <img src="{{image.src}}" alt="Imagem de {{recipe.title}}"/>
       <h2>{{chef.name}}</h2>
       <p>{{chef.total_recipes}}
         receitas</p>
@@ -20,7 +20,7 @@
         {% for recipe in recipes %}
           {% if chef.id == recipe.chef_id %}
             <div class="recipe">
-              <img src="{{recipe.src if recipe.src else ' https://flyinryanhawks.org/wp-content/uploads/2016/08/profile-placeholder.png'}}" alt="Imagem de {{recipe.title}}"/>
+              <img src="{{recipe.src}}" alt="Imagem de {{recipe.title}}"/>
               <div>
                 <h3>{{recipe.title}}</h3>
                 <a href="/recipes/{{recipe.id}}">Visualizar</a>

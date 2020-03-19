@@ -79,7 +79,7 @@ module.exports = {
       return db.query(`
       SELECT id, chef_id, title
       FROM recipes
-      ORDER BY updated_at DESC`);
+      ORDER BY created_at DESC`);
     } catch (err) {
       console.error(err);
     }

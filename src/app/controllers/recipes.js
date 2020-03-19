@@ -87,7 +87,7 @@ module.exports = {
     let results = await Recipe.find(req.params.id);
     const recipe = results.rows[0];
 
-    if (!recipe) return res.send("Recipe not found!");
+    if (!recipe) return res.send("Receita não encontrada");
 
     results = await Recipe.files(recipe.id);
     const images = results.rows.map(file => ({
@@ -104,7 +104,7 @@ module.exports = {
     let results = await Recipe.find(req.params.id);
     let recipe = results.rows[0];
 
-    if (!recipe) return res.send("Recipe not found!");
+    if (!recipe) return res.send("Receita não encontrada");
 
     const options = await Recipe.chefName();
     const chefs = options.rows;

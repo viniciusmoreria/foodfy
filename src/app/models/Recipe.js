@@ -9,7 +9,7 @@ module.exports = {
         SELECT recipes.*, chefs.name AS chef_name
         FROM recipes 
         LEFT JOIN chefs on (recipes.chef_id = chefs.id)
-        ORDER BY updated_at DESC`
+        ORDER BY created_at DESC`
       );
     } catch (err) {
       console.error(err);
@@ -123,7 +123,8 @@ module.exports = {
     if (filter) {
       filterQuery = `
       WHERE recipes.title ILIKE '%${filter}%'
-      OR chefs.name ILIKE '%${filter}%'`;
+      OR chefs.name ILIKE '%${filter}%'
+      `;
 
       totalQuery = `(
       SELECT count (*) FROM recipes
@@ -136,7 +137,7 @@ module.exports = {
         FROM recipes
         LEFT JOIN chefs ON(recipes.chef_id = chefs.id)
         ${filterQuery}
-        ORDER BY updated_at ASC
+        ORDER BY created_at DESC
         LIMIT $1 OFFSET $2`;
 
     return db.query(query, [limit, offset]);

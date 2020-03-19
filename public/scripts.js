@@ -1,4 +1,4 @@
-//Active Tab Logic
+//---------- Active Tab Logic ----------//
 const currentPage = location.pathname;
 const menuItems = document.querySelectorAll(".navbar a");
 
@@ -8,7 +8,8 @@ for (item of menuItems) {
   }
 }
 
-//Hide Detail Toggle
+//---------- Hide Detail Toggle ----------//
+
 const hide = document.querySelectorAll("#hide");
 for (let i = 0; i < hide.length; i++) {
   hide[i].addEventListener("click", function() {
@@ -22,7 +23,8 @@ for (let i = 0; i < hide.length; i++) {
   });
 }
 
-//Delete confirmation
+//---------- Delete confirmation ----------//
+
 const formDelete = document.querySelector("#form-delete");
 
 if (formDelete) {
@@ -34,7 +36,7 @@ if (formDelete) {
   });
 }
 
-//Adding new ingredients and new steps for the recipes
+//---------- Adding new ingredients and new steps for the recipes ----------//
 
 const addIngredientBtn = document.querySelector(".add-ingredient");
 const addStepBtn = document.querySelector(".add-step");
@@ -77,7 +79,7 @@ if (addIngredientBtn && addStepBtn) {
   }
 }
 
-// Pagination
+//---------- Pagination ----------//
 
 function paginate(selectedPage, totalPages) {
   let pages = [],
@@ -138,7 +140,7 @@ if (pagination) {
   createPagination(pagination);
 }
 
-// Photo Upload Logic
+//---------- Photo Upload Logic ----------//
 
 const PhotosUpload = {
   input: "",
@@ -243,5 +245,41 @@ const PhotosUpload = {
     }
 
     photoDiv.remove();
+  }
+};
+
+//---------- Image Gallery and Lightbox Logic ----------//
+
+const ImageGallery = {
+  highlight: document.querySelector(".highlight > img"),
+  previews: document.querySelectorAll(".gallery_preview img"),
+  setImage(e) {
+    const { target } = e;
+
+    ImageGallery.previews.forEach(preview =>
+      preview.classList.remove("active")
+    );
+    target.classList.add("active");
+
+    ImageGallery.highlight.src = target.src;
+    Lightbox.image.src = target.src;
+  }
+};
+
+const Lightbox = {
+  target: document.querySelector(".lightbox_target"),
+  image: document.querySelector(".lightbox_target img"),
+  closeBtn: document.querySelector(".lightbox_target .lightbox_close"),
+  open() {
+    Lightbox.target.style.opacity = 1;
+    Lightbox.target.style.top = 0;
+    Lightbox.target.style.bottom = 0;
+    Lightbox.closeBtn.style.top = 0;
+  },
+  close() {
+    Lightbox.target.style.opacity = 0;
+    Lightbox.target.style.top = "-100%";
+    Lightbox.target.style.bottom = "initial";
+    Lightbox.closeBtn.style.top = "-80px";
   }
 };

@@ -27,7 +27,7 @@
         {% for recipe in recipes %}
           {% if chef.id == recipe.chef_id %}
             <div class="recipe">
-              <img src="{{recipe.src if recipe.src else ' https://flyinryanhawks.org/wp-content/uploads/2016/08/profile-placeholder.png'}}" alt="Imagem de {{recipe.title}}"/>
+              <img src="{{recipe.src}}" alt="Imagem de {{recipe.title}}"/>
               <div>
                 <h3>{{recipe.title}}</h3>
                 <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
