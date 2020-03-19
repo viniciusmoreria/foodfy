@@ -25,31 +25,83 @@ module.exports = {
       filter
     };
 
-    return res.render("site/index", { recipes, pagination });
+    async function getImage(recipeId) {
+      let results = await Recipe.files(recipeId);
+      const images = results.rows.map(
+        file =>
+          `${req.protocol}://${req.headers.host}${file.path.replace(
+            "public",
+            ""
+          )}`
+      );
+
+      return images[0];
+    }
+
+    const filesPromise = recipes.map(async recipe => {
+      recipe.img = await getImage(recipe.id);
+      return recipe;
+    });
+
+    const recipesPromise = await Promise.all(filesPromise);
+
+    return res.render("site/index", { recipes: recipesPromise, pagination });
   },
   about(req, res) {
     return res.render("site/about");
   },
   async recipes(req, res) {
-    const { filter } = req.query;
+    let { filter } = req.query;
 
-    if (filter) {
-      let results = await Recipe.findBy(filter);
-      const recipes = results.rows;
+    const params = {
+      filter
+    };
 
-      return res.render("site/recipes", { recipes, filter });
-    } else {
-      let results = await Recipe.all();
+    let results = await Recipe.paginate(params);
+    const recipes = results.rows;
 
-      const recipes = results.rows;
-      return res.render("site/recipes", { recipes });
+    async function getImage(recipeId) {
+      let results = await Recipe.files(recipeId);
+      const images = results.rows.map(
+        file =>
+          `${req.protocol}://${req.headers.host}${file.path.replace(
+            "public",
+            ""
+          )}`
+      );
+
+      return images[0];
     }
+
+    const filesPromise = recipes.map(async recipe => {
+      recipe.img = await getImage(recipe.id);
+      return recipe;
+    });
+
+    const recipesPromise = await Promise.all(filesPromise);
+
+    if (recipes[0] == undefined) {
+      return res.render("site/recipes", { recipes, filter });
+    }
+
+    return res.render("site/recipes", { recipes: recipesPromise, filter });
   },
   async recipe(req, res) {
     let results = await Recipe.find(req.params.id);
     let recipe = results.rows[0];
 
-    return res.render("site/recipe", { recipe });
+    if (!recipe) return res.send("Recipe not found!");
+
+    results = await Recipe.files(recipe.id);
+    const images = results.rows.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace(
+        "public",
+        ""
+      )}`
+    }));
+
+    return res.render("site/recipe", { recipe, images });
   },
   async chefs(req, res) {
     let results = await Chef.all(req.body);

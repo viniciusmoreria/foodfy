@@ -22,13 +22,13 @@ module.exports = {
       const query = `
       INSERT INTO chefs (
         name,
-        image,
-        created_at
+        created_at,
+        file_id
       ) VALUES ($1, $2, $3)
       RETURNING id
     `;
 
-      const values = [data.name, data.image, date(Date.now()).iso];
+      const values = [data.name, date(Date.now()).iso, data.fileId];
 
       return db.query(query, values);
     } catch (err) {
@@ -41,7 +41,7 @@ module.exports = {
         `
           SELECT chefs.*, 
           (SELECT count(*) FROM recipes WHERE recipes.chef_id = chefs.id) AS total_recipes,
-          recipes.id AS recipe_id, recipes.title AS recipe_title, recipes.image AS recipe_image
+          recipes.id AS recipe_id, recipes.title AS recipe_title
           FROM chefs
           LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
           WHERE chefs.id = $1
@@ -57,11 +57,11 @@ module.exports = {
       const query = `
       UPDATE chefs SET
       name=($1),
-      image=($2)
+      file_id=($2)
       WHERE id = $3
       `;
 
-      const values = [data.name, data.image, data.id];
+      const values = [data.name, data.fileId, data.id];
 
       return db.query(query, values);
     } catch (err) {
@@ -74,5 +74,15 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
+  },
+  files(id) {
+    return db.query(
+      `
+    SELECT *
+    FROM files 
+    LEFT JOIN chefs ON (files.id = chefs.file_id)
+    WHERE chefs.id = $1`,
+      [id]
+    );
   }
 };

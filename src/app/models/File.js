@@ -2,20 +2,21 @@ const db = require("../../config/db");
 const fs = require("fs");
 
 module.exports = {
-  create({ filename, path, recipe_id }) {
+  async create({ filename, path }) {
     try {
       const query = `
       INSERT INTO files (
         name,
-        path,
-        recipe_id
-      ) VALUES ($1, $2, $3)
+        path
+      ) VALUES ($1, $2)
       RETURNING id
     `;
 
-      const values = [filename, path, recipe_id];
+      const values = [filename, path];
 
-      return db.query(query, values);
+      const results = await db.query(query, values);
+
+      return results.rows[0].id;
     } catch (err) {
       throw new Error(err);
     }

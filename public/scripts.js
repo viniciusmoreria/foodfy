@@ -143,7 +143,7 @@ if (pagination) {
 const PhotosUpload = {
   input: "",
   preview: document.querySelector(".photos_preview"),
-  uploadLimit: 6,
+  uploadLimit: 5,
   files: [],
   handleFileInput(event) {
     const { files: fileList } = event.target;
@@ -187,7 +187,7 @@ const PhotosUpload = {
 
     const totalPhotos = fileList.length + photosDiv.length;
     if (totalPhotos > uploadLimit) {
-      alert("Limite máximo de fotos atingido");
+      alert("Limite máximo de imagens atingido");
       event.preventDefault();
       return true;
     }

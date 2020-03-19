@@ -9,7 +9,7 @@ module.exports = {
         SELECT recipes.*, chefs.name AS chef_name
         FROM recipes 
         LEFT JOIN chefs on (recipes.chef_id = chefs.id)
-        ORDER BY created_at DESC`
+        ORDER BY updated_at DESC`
       );
     } catch (err) {
       console.error(err);
@@ -21,19 +21,17 @@ module.exports = {
       INSERT INTO recipes (
         chef_id,
         title,
-        image,
         ingredients,
         preparation,
         information,
         created_at
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+      ) VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id
     `;
 
       const values = [
         data.chef,
         data.title,
-        data.image,
         data.ingredients,
         data.preparation,
         data.information,
@@ -69,7 +67,7 @@ module.exports = {
         LEFT JOIN chefs on (recipes.chef_id = chefs.id)
         WHERE recipes.title ILIKE '%${filter}%'
         OR chefs.name ILIKE '%${filter}%'
-        ORDER BY created_at DESC`
+        ORDER BY updated_at ASC`
       );
     } catch (err) {
       console.error(err);
@@ -81,17 +79,15 @@ module.exports = {
       UPDATE recipes SET
       chef_id=($1),
       title=($2),
-      image=($3),
-      ingredients=($4),
-      preparation=($5),
-      information=($6)
-      WHERE id = $7
+      ingredients=($3),
+      preparation=($4),
+      information=($5)
+      WHERE id = $6
       `;
 
       const values = [
         data.chef,
         data.title,
-        data.image,
         data.ingredients,
         data.preparation,
         data.information,
@@ -140,7 +136,7 @@ module.exports = {
         FROM recipes
         LEFT JOIN chefs ON(recipes.chef_id = chefs.id)
         ${filterQuery}
-        ORDER BY created_at DESC
+        ORDER BY updated_at ASC
         LIMIT $1 OFFSET $2`;
 
     return db.query(query, [limit, offset]);
@@ -148,7 +144,10 @@ module.exports = {
   files(id) {
     return db.query(
       `
-    SELECT * FROM files WHERE recipe_id = $1`,
+    SELECT files.*, recipe_files.recipe_id as recipe_id
+    FROM files 
+    LEFT JOIN recipe_files ON (files.id = recipe_files.file_id)
+    WHERE recipe_files.recipe_id = $1`,
       [id]
     );
   }

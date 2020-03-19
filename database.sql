@@ -1,6 +1,6 @@
 CREATE TABLE "recipes" (
   "id" SERIAL PRIMARY KEY,
-  "chef_id" int,
+  "chef_id" INTEGER REFERENCES chefs(id),
   "title" text,
   "image" text,
   "ingredients" text[],
@@ -19,10 +19,13 @@ CREATE TABLE "chefs" (
 CREATE TABLE "files" (
 "id" SERIAL PRIMARY KEY,
 "name" text,
-"path" text,
-"recipe_id" int unique
+"path" text NOT NULL
 );
 
-ALTER TABLE "recipes" ADD FOREIGN KEY ("chef_id") REFERENCES "chefs" ("id");
+CREATE TABLE "recipe_files" (
+"id" SERIAL PRIMARY KEY,
+"recipe_id" INTEGER REFERENCES recipes(id),
+"file_id" INTEGER REFERENCES files(id)
+);
 
-ALTER TABLE "files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id");
+

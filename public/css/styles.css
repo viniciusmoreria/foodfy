@@ -238,7 +238,7 @@ body {
       grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   justify-items: stretch;
-  margin: 50px auto;
+  margin: auto;
 }
 
 .chef {
@@ -280,22 +280,62 @@ body {
   text-align: center;
 }
 
-.recipe_profile .recipe img {
+.recipe_profile .recipe .gallery {
   width: 980px;
+  margin: auto;
+}
+
+.recipe_profile .recipe .gallery .highlight > img {
+  width: 100%;
   height: 280px;
   border-radius: 15px;
-  margin-bottom: 50px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center center;
      object-position: center center;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.recipe_profile .recipe .gallery .gallery_preview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.recipe_profile .recipe .gallery .gallery_preview img {
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1px solid #dddddd;
+  border-radius: 3.5px;
+  margin: 8px 10px 0 0;
+  cursor: pointer;
+  opacity: 0.6;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.recipe_profile .recipe .gallery .gallery_preview img:hover {
+  opacity: 1;
+}
+
+.recipe_profile .recipe .gallery .gallery_preview img .active {
+  opacity: 1;
 }
 
 .recipe_profile .recipe h2 {
   font-size: 36px;
   color: var(--dark-text);
   line-height: 42px;
-  margin-bottom: 5px;
+  margin: 50px 0 5px;
 }
 
 .recipe_profile .recipe p {
@@ -424,7 +464,7 @@ body {
 
 /* Paginate Section */
 .pagination {
-  margin: 50px 0 0;
+  margin: 75px 0 0;
   text-align: center;
 }
 
@@ -657,29 +697,23 @@ body {
 }
 
 /* Photos Upload Section */
-form .photos_upload {
+form .upload_gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form .upload_gallery .photos_upload {
   position: relative;
   display: block;
-  overflow: hidden;
-  width: 250px;
+  width: 149px;
+  margin-right: 10px;
 }
 
-form .photos_upload p {
-  background-color: #6558c3;
-  color: #fff;
-  border-radius: 4px;
-  padding: 10px;
-  width: 136px;
-  font-size: 16px;
-  font-weight: normal;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-form .photos_upload .photos_input {
+form .upload_gallery .photos_upload .photos_input {
   position: absolute;
   top: 0;
   left: 0;
@@ -691,7 +725,25 @@ form .photos_upload .photos_input {
   cursor: pointer;
 }
 
-form .photos_preview {
+form .upload_gallery .photos_upload i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 28px;
+  color: #777777;
+  width: 149px;
+  height: 149px;
+  border: 1px solid #dddddd;
+  border-radius: 3.5px;
+}
+
+form .upload_gallery .photos_preview {
   display: -ms-grid;
   display: grid;
   -webkit-box-pack: center;
@@ -701,25 +753,25 @@ form .photos_preview {
       -ms-flex-align: center;
           align-items: center;
   justify-items: center;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
   gap: 8px;
   width: 100%;
   margin: 8px 0;
 }
 
-form .photos_preview img {
+form .upload_gallery .photos_preview img {
   width: 100%;
   height: 150px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-form .photos_preview .photo {
+form .upload_gallery .photos_preview .photo {
   position: relative;
 }
 
-form .photos_preview .photo i {
+form .upload_gallery .photos_preview .photo i {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -743,7 +795,40 @@ form .photos_preview .photo i {
   opacity: 0;
 }
 
-form .photos_preview .photo i:hover {
+form .upload_gallery .photos_preview .photo i:hover {
   opacity: 1;
+}
+
+form .photos_upload.chef {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 139px;
+}
+
+form .photos_upload.chef .photos_input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+form .photos_upload.chef p {
+  background-color: #6558c3;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 136px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
 }
 /*# sourceMappingURL=styles.css.map */

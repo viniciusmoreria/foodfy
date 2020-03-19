@@ -1,5 +1,6 @@
 const Recipe = require("../models/Recipe");
 const File = require("../models/File");
+const RecipeFile = require("../models/RecipeFile");
 
 module.exports = {
   // Logged-in routes
@@ -37,31 +38,46 @@ module.exports = {
 
     for (key of keys) {
       if (req.body[key] == "" && key != "information") {
-        return res.send("Please, fill all fields!");
+        return res.send("Por favor preencha todos os campos");
       }
     }
 
     if (req.files.length == 0)
-      return res.send("Please, send at least one image");
+      return res.send("Por favor envie ao menos uma imagem");
 
     let results = await Recipe.create(req.body);
     const recipeId = results.rows[0].id;
 
-    const filesPromise = req.files.map(file =>
-      File.create({
-        ...file,
-        recipe_id: recipeId
+    const filesPromise = req.files.map(file => File.create({ ...file }));
+    const filesId = await Promise.all(filesPromise);
+
+    const relationPromise = filesId.map(fileId =>
+      RecipeFile.create({
+        recipe_id: recipeId,
+        file_id: fileId
       })
     );
-    await Promise.all(filesPromise);
+
+    await Promise.all(relationPromise);
 
     return res.redirect(`/admin/recipes/${recipeId}`);
   },
   async show(req, res) {
     let results = await Recipe.find(req.params.id);
-    let recipe = results.rows[0];
+    const recipe = results.rows[0];
 
-    return res.render("admin/recipes/show", { recipe });
+    if (!recipe) return res.send("Recipe not found!");
+
+    results = await Recipe.files(recipe.id);
+    const images = results.rows.map(file => ({
+      ...file,
+      src: `${req.protocol}://${req.headers.host}${file.path.replace(
+        "public",
+        ""
+      )}`
+    }));
+
+    return res.render("admin/recipes/show", { recipe, images });
   },
   async edit(req, res) {
     let results = await Recipe.find(req.params.id);
@@ -93,16 +109,22 @@ module.exports = {
         key != "removed_files" &&
         key != "information"
       ) {
-        return res.send("Please, fill all fields!");
+        return res.send("Por favor preencha todos os campos!");
       }
     }
 
     if (req.files.length != 0) {
-      const newFilesPromise = req.files.map(file =>
-        File.create({ ...file, recipe_id: req.body.id })
+      const newFilesPromise = req.files.map(file => File.create(file));
+      const filesId = await Promise.all(newFilesPromise);
+
+      const relationPromise = filesId.map(fileId =>
+        RecipeFile.create({
+          recipe_id: req.body.id,
+          file_id: fileId
+        })
       );
 
-      await Promise.all(newFilesPromise);
+      await Promise.all(relationPromise);
     }
 
     if (req.body.removed_files) {

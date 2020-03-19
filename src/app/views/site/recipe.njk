@@ -5,7 +5,22 @@
   <section class="recipe_profile">
 
     <div class="recipe">
-      <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
+      <div class="gallery">
+        <div class="highlight">
+          {% if not images[0] %}
+            <img src="https://saocarlosemrede.com.br/wp-content/uploads/2020/01/placeholder-1200x500-1.png"/>
+          {% else %}
+            <img src="{{images[0].src}}" alt="Imagem de {{images[0].name}}"/>
+          {% endif %}
+        </div>
+
+        <div class="gallery_preview">
+          {% for image in images %}
+            <img src="{{image.src}}" alt="{{image.name}}" {% if loop.index0 == 0 %} class="active" {% endif %}>
+          {% endfor %}
+        </div>
+      </div>
+
       <h2>{{recipe.title}}</h2>
       <a href="/chefs/{{recipe.chef_id}}">
         <p>por

@@ -21,8 +21,8 @@ routes.get("/admin/recipes", recipe.index);
 routes.get("/admin/recipes/create", recipe.create);
 routes.get("/admin/recipes/:id", recipe.show);
 routes.get("/admin/recipes/:id/edit", recipe.edit);
-routes.post("/admin/recipes", multer.array("images", 6), recipe.post);
-routes.put("/admin/recipes", multer.array("images", 6), recipe.put);
+routes.post("/admin/recipes", multer.array("images", 5), recipe.post);
+routes.put("/admin/recipes", multer.array("images", 5), recipe.put);
 routes.delete("/admin/recipes", recipe.delete);
 
 //Admin Chefs routes
