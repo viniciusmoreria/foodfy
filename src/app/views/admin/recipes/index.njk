@@ -10,7 +10,7 @@
     {% for recipe in recipes %}
 
       <div class="recipe adm">
-        <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}"/>
+        <img src="{{recipe.img}}" alt="Imagem de {{recipe.title}}"/>
 
         <div>
           <h3>{{recipe.title}}</h3>
@@ -23,6 +23,6 @@
     {% endfor %}
   </div>
 
-  <div class="pagination" data-page="{{pagination.page}}" data-total="{{pagination.total}}" data-filter="{{filter}}"></div>
+  <div class="pagination" data-page="{{pagination.page}}" data-total="{{pagination.total}}"></div>
 
 {% endblock %}

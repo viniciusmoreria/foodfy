@@ -12,7 +12,7 @@
         <a class="button" href="/admin/chefs/{{chef.id}}/edit">Editar Chef</a>
       </div>
 
-      <img src="{{images[0].src}}" alt="Imagem de {{chef.name}}"/>
+      <img src="{{image.src}}" alt="Imagem de {{chef.name}}"/>
       <h2>{{chef.name}}</h2>
       <p>{{chef.total_recipes}}
         receitas</p>
@@ -25,12 +25,12 @@
       <h2>Receitas</h2>
       <div class="recipe_box">
         {% for recipe in recipes %}
-          {% if recipe.total_recipes > 0 %}
+          {% if chef.id == recipe.chef_id %}
             <div class="recipe">
-              <img src="{{recipeImg.src}}" alt="Imagem de {{recipe.recipe_title}}">
+              <img src="{{recipe.src if recipe.src else ' https://flyinryanhawks.org/wp-content/uploads/2016/08/profile-placeholder.png'}}" alt="Imagem de {{recipe.title}}"/>
               <div>
-                <h3>{{recipe.recipe_title}}</h3>
-                <a href="/recipes/{{recipe.recipe_id}}">Visualizar</a>
+                <h3>{{recipe.title}}</h3>
+                <a href="/admin/recipes/{{recipe.id}}">Visualizar</a>
               </div>
             </div>
           {% endif %}

@@ -20,7 +20,7 @@
     {% for recipe in recipes %}
       <div class="recipe">
         <a href="/recipes/{{recipe.id}}">
-          <img src="{{recipe.img if recipe.img else 'https://saocarlosemrede.com.br/wp-content/uploads/2020/01/placeholder-1200x500-1.png'}}" alt="Imagem de {{recipe.title}}"/>
+          <img src="{{recipe.img}}" alt="Imagem de {{recipe.title}}"/>
         </a>
         <h3>{{recipe.title}}</h3>
         <p>por

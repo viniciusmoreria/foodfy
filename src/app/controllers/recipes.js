@@ -5,13 +5,12 @@ const RecipeFile = require("../models/RecipeFile");
 module.exports = {
   // Logged-in routes
   async index(req, res) {
-    let { filter, page, limit } = req.query;
+    let { page, limit } = req.query;
     page = page || 1;
     limit = limit || 6;
     let offset = limit * (page - 1);
 
     const params = {
-      filter,
       page,
       limit,
       offset
@@ -22,11 +21,33 @@ module.exports = {
 
     const pagination = {
       total: Math.ceil(recipes[0].total / limit),
-      page,
-      filter
+      page
     };
 
-    return res.render("admin/recipes/index", { recipes, pagination });
+    async function getImage(recipeId) {
+      let results = await Recipe.files(recipeId);
+      const images = results.rows.map(
+        file =>
+          `${req.protocol}://${req.headers.host}${file.path.replace(
+            "public",
+            ""
+          )}`
+      );
+
+      return images[0];
+    }
+
+    const filesPromise = recipes.map(async recipe => {
+      recipe.img = await getImage(recipe.id);
+      return recipe;
+    });
+
+    const recipesPromise = await Promise.all(filesPromise);
+
+    return res.render("admin/recipes/index", {
+      recipes: recipesPromise,
+      pagination
+    });
   },
   async create(req, res) {
     const options = await Recipe.chefName();
