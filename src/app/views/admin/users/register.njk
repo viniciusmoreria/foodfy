@@ -1,0 +1,16 @@
+{% extends "../layout.njk" %}
+
+{% block content %}
+
+  <form class="recipe_form" method="POST" action="/users/register">
+
+    <div class="form_header">
+      <h1>Abra uma conta</h1>
+      <button class="save" type="submit">Cadastre-se</button>
+    </div>
+
+    {% include "admin/users/fields.njk" %}
+
+  </form>
+
+{% endblock content %}

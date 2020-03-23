@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 :root {
   --bg-color: #fbdfdb;
   --dark-text: #000000;
@@ -78,6 +77,23 @@ body {
   text-decoration: none;
 }
 
+.header .navbar .login {
+  -webkit-transition: 400ms;
+  transition: 400ms;
+}
+
+.header .navbar .login:hover {
+  background-color: #6558c3;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 136px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+}
+
 .header .navbar .active {
   font-weight: bold;
 }
@@ -85,7 +101,7 @@ body {
 /* Banner Section */
 .banner_box {
   width: 980px;
-  margin: 36px auto;
+  margin: auto;
 }
 
 .banner_box .banner {
@@ -329,8 +345,9 @@ body {
 }
 
 .recipe_profile .recipe .gallery .highlight .lightbox_target img {
-  margin: auto;
   position: absolute;
+  margin: auto;
+  padding: 20px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -354,8 +371,9 @@ body {
   position: absolute;
   width: 50px;
   height: 50px;
-  top: -80px;
+  top: 0;
   right: 0;
+  opacity: 0;
   -webkit-transition: 400ms;
   transition: 400ms;
 }
@@ -566,6 +584,14 @@ body {
   margin: 0;
 }
 
+.header.adm a {
+  font-size: 15px;
+  margin-right: 30px;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .header.adm .navbar {
   width: 980px;
   margin: 0 auto;
@@ -625,7 +651,7 @@ body {
   -o-object-position: center center;
      object-position: center center;
   border-radius: 15px;
-  margin-right: 20px;
+  margin: 0 20px 0 0;
 }
 
 .recipe_box.adm .recipe.adm p {
@@ -690,6 +716,7 @@ body {
   width: 100%;
   border-radius: 4px;
   border: 1px solid #dddddd;
+  padding: 0 5px;
   height: 49px;
 }
 
@@ -699,6 +726,7 @@ body {
   width: 100%;
   border-radius: 4px;
   border: 1px solid #dddddd;
+  padding: 0 5px;
   min-height: 257px;
 }
 
@@ -708,6 +736,7 @@ body {
   width: 100%;
   border-radius: 4px;
   border: 1px solid #dddddd;
+  padding: 0 5px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -894,4 +923,4 @@ form .photos_upload.chef p {
   width: 100%;
   font-size: 16px;
 }
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=index.css.map */

@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-    <link rel="icon" href="/static/favicon.ico"/>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- CSS Stylecheet -->
-    <link rel="stylesheet" href="/css/styles.css"/>
+    {% include "../admin/parts/styles.njk"%}
 
     <title>Foodfy</title>
 
@@ -27,6 +23,7 @@
           <a href="/about">Sobre</a>
           <a href="/recipes">Receitas</a>
           <a href="/chefs">Chefs</a>
+          <a class="login" href="/accounts">Entrar</a>
         </div>
       </div>
 
@@ -43,7 +40,7 @@
     <!-- Footer -->
 
     <section class="footer">
-      <p>Todos direitos reservados, Receitas Foodfy.</p>
+      <p>Todos os direitos reservados, Receitas Foodfy.</p>
     </section>
 
     <script src="/scripts.js"></script>

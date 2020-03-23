@@ -1,4 +1,4 @@
-{%extends "./layout.njk" %}
+{% extends "../layout.njk" %}
 
 {% block content %}
 
@@ -17,13 +17,22 @@
           {% if not images[0] %}
             <img src="https://saocarlosemrede.com.br/wp-content/uploads/2020/01/placeholder-1200x500-1.png"/>
           {% else %}
-            <img src="{{images[0].src}}" alt="Imagem de {{images[0].name}}"/>
+            <img src="{{images[0].src}}" alt="Imagem de {{images[0].name}}" onclick="Lightbox.open()"/>
           {% endif %}
+          <div class="lightbox_target">
+            <div class="lightbox_img">
+              <img src="{{images[0].src}}" alt="Imagem de {{images[0].name}}">
+              <a href="#" class="lightbox_close">
+                <i class="material-icons" onclick="Lightbox.close()">close</i>
+              </a>
+            </div>
+
+          </div>
         </div>
 
         <div class="gallery_preview">
           {% for image in images %}
-            <img src="{{image.src}}" alt="{{image.name}}" {% if loop.index0 == 0 %} class="active" {% endif %}>
+            <img src="{{image.src}}" alt="{{image.name}}" {% if loop.index0 == 0 %} {% endif %} onclick="ImageGallery.setImage(event)">
           {% endfor %}
         </div>
       </div>
