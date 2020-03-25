@@ -1,0 +1,23 @@
+{% extends "../layout.njk" %}
+
+{% block content %}
+
+  <div class="user_form">
+    <button class="delete" type="submit">Deletar</button>
+  </div>
+
+  <form class="user_form" action="/admin/profile?_method=PUT" method="POST">
+    <div class="form_header">
+      <h1>Bem vindo(a)
+        {{user.name}}
+      </h1>
+
+      <button class="save" type="submit">Salvar</button>
+    </div>
+
+    {% include "admin/profile/fields.njk" %}
+
+    <input type="hidden" name="id" value="{{user.id}}">
+  </form>
+
+{% endblock content %}

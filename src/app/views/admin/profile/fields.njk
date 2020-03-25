@@ -1,0 +1,32 @@
+<div class="fields">
+
+  <div>
+    <h3>Nome</h3>
+    <div>
+      <input type="text" name="name" value="{{user.name}}" required="required">
+    </div>
+  </div>
+
+  <div>
+    <h3>E-mail</h3>
+    <div>
+      <input type="email" name="email" value="{{user.email}}" onblur="Validate.apply(this, 'isEmail')" required="required">
+    </div>
+  </div>
+
+  <div>
+    <h3>Senha</h3>
+    <div>
+      <input type="password" name="password">
+    </div>
+  </div>
+
+  {% if not user.id %}
+    <div>
+      <h3>Repetir senha</h3>
+      <div>
+        <input type="password" name="passwordRepeat">
+      </div>
+    </div>
+  {% endif %}
+</div>

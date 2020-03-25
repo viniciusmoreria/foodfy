@@ -2,6 +2,7 @@
   --bg-color: #fbdfdb;
   --dark-text: #000000;
   --light-text: #777777;
+  --accent: #6558c3;
 }
 
 @mixin flex {
@@ -21,7 +22,7 @@
 }
 
 @mixin primaryBtn {
-  background-color: #6558c3;
+  background-color: var(--accent);
   color: #fff;
   border-radius: 4px;
   padding: 10px;

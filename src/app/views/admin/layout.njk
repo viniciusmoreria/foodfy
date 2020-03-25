@@ -15,25 +15,35 @@
 
     <section class="header adm">
       <div class="navbar">
-        <a href="/admin/recipes">
-          <img src="/static/white-logo.png" alt="Foodfy Logo"/>
-        </a>
-        <a href="/admin/recipes">Receitas</a>
-        <a href="/admin/chefs">Chefs</a>
-        <a href="/admin/users">Usuários</a>
+        <img src="/static/white-logo.png" alt="Foodfy Logo"/>
+
+        {% if session.userId %}
+          <a href="/admin/recipes">Receitas</a>
+          <a href="/admin/chefs">Chefs</a>
+        {% endif %}
+
+        <a href="/admin/profile">Usuários</a>
+
       </div>
       <div>
-        <a class="login" href="/">Sair</a>
+        {% if session.userId %}
+          <form action="/admin/logout" method="POST">
+            <button class="logout" type="submit">Sair</button>
+          </form>
+        {% else %}
+          <a class="login" href="/">Início</a>
+        {% endif %}
       </div>
-
     </section>
-
-    {% include "./parts/messages.njk"%}
 
     <!-- Nunjucks Content -->
 
+    {% include "./parts/messages.njk"%}
+
     <section>
+
       {% block content %}{% endblock %}
+
     </section>
 
     <!-- Footer -->

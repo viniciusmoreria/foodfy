@@ -21,7 +21,9 @@
   "homepage": "https://github.com/viniciusmoreeira/foodfy#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "connect-pg-simple": "^6.1.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "method-override": "^3.0.0",
     "multer": "^1.4.2",
     "nunjucks": "^3.2.0",

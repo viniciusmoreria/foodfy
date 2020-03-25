@@ -1,0 +1,386 @@
+:root {
+  --bg-color: #fbdfdb;
+  --dark-text: #000000;
+  --light-text: #777777;
+  --accent: #6558c3;
+}
+
+.header form input {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  width: 246px;
+  font-size: 14px;
+  padding: 10px;
+}
+
+.header form button {
+  background-color: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 136px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  width: 91px;
+  height: 100%;
+  padding: 10px;
+}
+
+.header form .logout {
+  background-color: #000000;
+  border: none;
+}
+
+/* New Recipe and Chef Form Section */
+.recipe_form,
+.chef_form {
+  width: 980px;
+  margin: 55px auto;
+  position: relative;
+}
+
+.recipe_form h3,
+.chef_form h3 {
+  font-size: 16px;
+  margin: 30px 0 10px;
+}
+
+.recipe_form a,
+.chef_form a {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #6558c3;
+  cursor: pointer;
+}
+
+.recipe_form input,
+.chef_form input {
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  padding: 0 5px;
+  height: 49px;
+}
+
+.recipe_form textarea,
+.chef_form textarea {
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  padding: 0 5px;
+  min-height: 257px;
+}
+
+.recipe_form select,
+.chef_form select {
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  padding: 0 5px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e5e5e5));
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
+  padding: 5px;
+}
+
+.form_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.save {
+  background-color: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 136px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+}
+
+.delete {
+  background-color: #dc4747;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 92px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+  right: 145px;
+}
+
+/* Photos Upload Form Section */
+form .upload_gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form .upload_gallery .photos_upload {
+  position: relative;
+  display: block;
+  width: 149px;
+  margin-right: 10px;
+}
+
+form .upload_gallery .photos_upload .photos_input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+form .upload_gallery .photos_upload i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 28px;
+  color: #777777;
+  width: 149px;
+  height: 149px;
+  border: 1px solid #dddddd;
+  border-radius: 3.5px;
+}
+
+form .upload_gallery .photos_preview {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  width: 100%;
+  margin: 8px 0;
+}
+
+form .upload_gallery .photos_preview img {
+  width: 100%;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+form .upload_gallery .photos_preview .photo {
+  position: relative;
+}
+
+form .upload_gallery .photos_preview .photo i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.2);
+  color: red;
+  width: 100%;
+  height: 100%;
+  font-size: 500%;
+  cursor: pointer;
+  -webkit-transition: opacity 200ms;
+  transition: opacity 200ms;
+  opacity: 0;
+}
+
+form .upload_gallery .photos_preview .photo i:hover {
+  opacity: 1;
+}
+
+form .photos_upload.chef {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 139px;
+}
+
+form .photos_upload.chef .photos_input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+form .photos_upload.chef p {
+  background-color: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 136px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* Register Form Section */
+.register_form {
+  width: 500px;
+  margin: 146px auto;
+  position: relative;
+  text-align: center;
+}
+
+.register_form .form_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.register_form h3 {
+  font-size: 16px;
+  margin: 35px 0 10px;
+  text-align: left;
+}
+
+.register_form a {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.register_form .fields input {
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  padding: 0 5px;
+  width: 500px;
+  height: 49px;
+}
+
+.register_form .action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 35px;
+}
+
+.register_form .action a {
+  font-size: 16px;
+  color: var(--light-text);
+  text-decoration: none;
+}
+
+.register_form .action a:hover {
+  color: var(--accent);
+}
+
+/* User Form Section */
+.user_form {
+  width: 980px;
+  margin: 55px auto;
+  position: relative;
+}
+
+.user_form h3 {
+  font-size: 16px;
+  margin: 30px 0 10px;
+}
+
+.user_form a {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #6558c3;
+  cursor: pointer;
+}
+
+.user_form .fields {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  justify-items: stretch;
+  -webkit-column-gap: 40px;
+          column-gap: 40px;
+}
+
+.user_form .fields input {
+  font-size: 16px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+  padding: 0 5px;
+  height: 49px;
+}
+/*# sourceMappingURL=forms.css.map */

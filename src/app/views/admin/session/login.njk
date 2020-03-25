@@ -1,0 +1,21 @@
+{% extends "../../site/layout.njk" %}
+
+{% block content %}
+
+  <form class="register_form" method="POST" action="/admin/login">
+
+    <div class="form_header">
+      <h1>Iniciar Sessão</h1>
+    </div>
+
+    {% include "admin/session/fields.njk" %}
+
+    <div class="action">
+      <a href="/admin/register">Registre-se</a>
+      <a href="/admin/forgot-password">Perdeu a senha?</a>
+      <button class="save" type="submit">Acessar</button>
+    </div>
+
+  </form>
+
+{% endblock content %}

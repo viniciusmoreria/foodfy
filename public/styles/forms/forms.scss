@@ -1,0 +1,274 @@
+@import "../main/_variables.scss";
+
+.header {
+  form {
+    input {
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      width: 246px;
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    button {
+      @include primaryBtn;
+      width: 91px;
+      height: 100%;
+      padding: 10px;
+    }
+
+    .logout {
+      background-color: #000000;
+      border: none;
+    }
+  }
+}
+
+/* New Recipe and Chef Form Section */
+
+.recipe_form,
+.chef_form {
+  @include maxWidth;
+  margin: 55px auto;
+  position: relative;
+
+  h3 {
+    font-size: 16px;
+    margin: 30px 0 10px;
+  }
+
+  a {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #6558c3;
+    cursor: pointer;
+  }
+
+  input {
+    @include inputForm;
+    height: 49px;
+  }
+
+  textarea {
+    @include inputForm;
+    min-height: 257px;
+  }
+
+  select {
+    @include inputForm;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+      linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+    padding: 5px;
+  }
+}
+
+.form_header {
+  @include flex;
+  justify-content: space-between;
+}
+
+.save {
+  @include primaryBtn;
+}
+
+.delete {
+  @include secondaryBtn;
+  position: absolute;
+  right: 145px;
+}
+
+/* Photos Upload Form Section */
+form {
+  .upload_gallery {
+    @include flex;
+
+    .photos_upload {
+      position: relative;
+      display: block;
+      width: 149px;
+      margin-right: 10px;
+
+      .photos_input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      i {
+        @include flex;
+        justify-content: center;
+        font-size: 28px;
+        color: #777777;
+        width: 149px;
+        height: 149px;
+        border: 1px solid #dddddd;
+        border-radius: 3.5px;
+      }
+    }
+
+    .photos_preview {
+      @include grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      width: 100%;
+      margin: 8px 0;
+
+      img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .photo {
+        position: relative;
+
+        i {
+          @include flex;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: rgba(255, 255, 255, 0.2);
+          color: red;
+          width: 100%;
+          height: 100%;
+          font-size: 500%;
+          cursor: pointer;
+          transition: opacity 200ms;
+          opacity: 0;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+form {
+  .photos_upload.chef {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 139px;
+
+    .photos_input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    p {
+      @include primaryBtn;
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+}
+
+/* Register Form Section */
+
+.register_form {
+  width: 500px;
+  margin: 146px auto;
+  position: relative;
+  text-align: center;
+
+  .form_header {
+    @include flex;
+    justify-content: center;
+  }
+
+  h3 {
+    font-size: 16px;
+    margin: 35px 0 10px;
+    text-align: left;
+  }
+
+  a {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: var(--accent);
+    cursor: pointer;
+  }
+
+  .fields {
+    input {
+      @include inputForm;
+      width: 500px;
+      height: 49px;
+    }
+  }
+
+  .action {
+    @include flex;
+    justify-content: space-between;
+    margin-top: 35px;
+
+    a {
+      font-size: 16px;
+      color: var(--light-text);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+  }
+}
+
+/* User Form Section */
+
+.user_form {
+  @include maxWidth;
+  margin: 55px auto;
+  position: relative;
+
+  h3 {
+    font-size: 16px;
+    margin: 30px 0 10px;
+  }
+
+  a {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #6558c3;
+    cursor: pointer;
+  }
+
+  .fields {
+    @include grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: stretch;
+    column-gap: 40px;
+
+    input {
+      @include inputForm;
+      height: 49px;
+    }
+  }
+}
