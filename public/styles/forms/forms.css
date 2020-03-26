@@ -338,6 +338,11 @@ form .photos_upload.chef p {
   color: var(--accent);
 }
 
+.register_form .recover {
+  margin-top: 35px;
+  text-align: right;
+}
+
 /* User Form Section */
 .user_form {
   width: 980px;

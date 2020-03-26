@@ -44,7 +44,6 @@ CREATE TABLE "users" (
 );
 
 -- foreign key
-
 ALTER TABLE "recipes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
 -- create procedure
