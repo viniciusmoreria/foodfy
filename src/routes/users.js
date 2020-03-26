@@ -19,11 +19,7 @@ routes.post("/logout", onlyUsers, SessionController.logout);
 // Forgot Password - Reset
 routes.get("/forgot-password", SessionController.forgotForm);
 routes.get("/password-reset", SessionController.resetForm);
-routes.post(
-  "/forgot-password",
-  SessionValidator.forgot,
-  SessionController.forgot
-);
+routes.post("/forgot-password", SessionValidator.forgot, SessionController.forgot);
 routes.post("/password-reset", SessionValidator.reset, SessionController.reset);
 
 // User Profile
@@ -33,8 +29,8 @@ routes.get("/profile", UserValidator.show, ProfileController.show);
 routes.put("/profile", UserValidator.update, ProfileController.put);
 
 // Admin Profile
-// routes.get("/index", UserController.show);
+routes.get("/users", UserController.list);
 // routes.put("/", UserController.update);
-// routes.delete("/", UserController.delete);
+routes.delete("/profile", ProfileController.delete);
 
 module.exports = routes;

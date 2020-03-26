@@ -2,6 +2,9 @@ const db = require("../../config/db");
 const { date } = require("../../lib/utils");
 const { hash } = require("bcryptjs");
 
+const fs = require("fs");
+const Recipe = require("../models/Recipe");
+
 module.exports = {
   async findOne(filter) {
     try {
@@ -68,5 +71,21 @@ module.exports = {
 
     await db.query(query);
     return;
+  },
+  async delete(id) {
+    let results = await db.query("SELECT * FROM recipes WHERE user_id = $1", [
+      id
+    ]);
+    const recipes = results.rows;
+
+    const allFilesPromise = recipes.map(recipe => Recipe.files(recipe.id));
+
+    let promiseResults = await Promise.all(allFilesPromise);
+
+    await db.query("DELETE FROM users WHERE id = $1", [id]);
+
+    promiseResults.map(results => {
+      results.rows.map(file => fs.unlinkSync(file.path));
+    });
   }
 };

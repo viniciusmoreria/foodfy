@@ -24,7 +24,7 @@ The objective of this challenge is to help fixate the content presented througho
 - [x] Pagination
 - [x] Upload images to database using Multer.
 - [x] Image Gallery with Lightbox feature.
-- [ ] Login system.
+- [x] Login system.
 
 ## Techs
 

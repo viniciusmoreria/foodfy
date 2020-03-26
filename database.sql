@@ -4,6 +4,7 @@ CREATE DATABASE foodfy;
 CREATE TABLE "recipes" (
   "id" SERIAL PRIMARY KEY,
   "chef_id" INTEGER REFERENCES chefs(id),
+  "user_id" INTEGER REFERENCES users(id),
   "title" text,
   "ingredients" text[],
   "preparation" text[],
@@ -26,9 +27,9 @@ CREATE TABLE "files" (
 );
 
 CREATE TABLE "recipe_files" (
-"id" SERIAL PRIMARY KEY,
-"recipe_id",
-"file_id" 
+  "id" SERIAL PRIMARY KEY,
+  "recipe_id" INTEGER REFERENCES files(id),
+  "file_id" INTEGER REFERENCES files(id)
 );
 
 CREATE TABLE "users" (
@@ -43,8 +44,6 @@ CREATE TABLE "users" (
   "updated_at" timestamp DEFAULT (now())
 );
 
--- foreign key
-ALTER TABLE "recipes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
 -- create procedure
 CREATE FUNCTION trigger_set_timestamp()
@@ -77,3 +76,20 @@ CREATE TABLE "session" (
 
 WITH (OIDS=FALSE);
 ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+-- cascade effect on delete user and recipe
+
+ALTER TABLE "recipes"
+DROP CONSTRAINT recipes_user_id_fkey,
+ADD CONSTRAINT recipes_user_id_fkey
+FOREIGN KEY ("user_id")
+REFERENCES "users" ("id")
+ON DELETE CASCADE;
+
+ALTER TABLE "recipe_files"
+DROP CONSTRAINT recipe_files_file_id_fkey,
+ADD CONSTRAINT recipe_files_file_id_fkey
+FOREIGN KEY ("file_id")
+REFERENCES "files" ("id")
+ON UPDATE CASCADE
+ON DELETE CASCADE;
