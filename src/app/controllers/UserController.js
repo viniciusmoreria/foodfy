@@ -5,8 +5,13 @@ module.exports = {
     return res.render("admin/users/register");
   },
   async list(req, res) {
-    const id = req.params.id;
-    const user = await User.findOne({ where: { id } });
+    let results = await User.all(req.body);
+    const users = results.rows;
+
+    return res.render("admin/users/index", { users });
+  },
+  async show(req, res) {
+    const { user } = req;
 
     return res.render("admin/users/index", { user });
   },

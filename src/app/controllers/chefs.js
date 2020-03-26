@@ -3,7 +3,6 @@ const File = require("../models/File");
 const Recipe = require("../models/Recipe");
 
 module.exports = {
-  // Logged-in routes
   async index(req, res) {
     let results = await Chef.all(req.body);
     const chefs = results.rows;

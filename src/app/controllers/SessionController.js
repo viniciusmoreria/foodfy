@@ -10,6 +10,7 @@ module.exports = {
   },
   login(req, res) {
     req.session.userId = req.user.id;
+    req.session.admin = req.user.is_admin;
 
     return res.redirect("/admin/profile");
   },

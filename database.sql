@@ -93,3 +93,11 @@ FOREIGN KEY ("file_id")
 REFERENCES "files" ("id")
 ON UPDATE CASCADE
 ON DELETE CASCADE;
+
+ALTER TABLE "recipe_files"
+DROP CONSTRAINT recipe_files_recipe_id_fkey,
+ADD CONSTRAINT recipe_files_recipe_id_fkey
+FOREIGN KEY ("recipe_id")
+REFERENCES "recipes" ("id")
+ON UPDATE CASCADE
+ON DELETE CASCADE;

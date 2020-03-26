@@ -17,15 +17,17 @@
       <div class="navbar">
         <img src="/static/white-logo.png" alt="Foodfy Logo"/>
 
-        {% if session.userId %}
+        {% if session.userId or session.admin %}
           <a href="/admin/recipes">Receitas</a>
           <a href="/admin/chefs">Chefs</a>
         {% endif %}
 
-        <a href="/admin/profile">Usuários</a>
+        {% if session.admin %}
+          <a href="/admin/users">Usuários</a>
+        {% endif %}
 
-      </div>
-      <div>
+        <a href="/admin/profile">Minha conta</a>
+
         {% if session.userId %}
           <form action="/admin/logout" method="POST">
             <button class="logout" type="submit">Sair</button>
@@ -33,7 +35,9 @@
         {% else %}
           <a class="login" href="/">Início</a>
         {% endif %}
+
       </div>
+
     </section>
 
     <!-- Nunjucks Content -->

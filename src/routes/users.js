@@ -9,7 +9,7 @@ const ProfileValidator = require("../app/validators/profile");
 const SessionValidator = require("../app/validators/session");
 const UserValidator = require("../app/validators/user");
 
-const { onlyUsers } = require("../app/middlewares/session");
+const { onlyAdmin, onlyUsers } = require("../app/middlewares/session");
 
 // Login - Logout
 routes.get("/login", SessionController.loginForm);
@@ -19,17 +19,22 @@ routes.post("/logout", onlyUsers, SessionController.logout);
 // Forgot Password - Reset
 routes.get("/forgot-password", SessionController.forgotForm);
 routes.get("/password-reset", SessionController.resetForm);
-routes.post("/forgot-password", SessionValidator.forgot, SessionController.forgot);
+routes.post(
+  "/forgot-password",
+  SessionValidator.forgot,
+  SessionController.forgot
+);
 routes.post("/password-reset", SessionValidator.reset, SessionController.reset);
 
 // User Profile
 routes.get("/register", ProfileController.registerForm);
-routes.post("/register", UserValidator.post, ProfileController.post);
-routes.get("/profile", UserValidator.show, ProfileController.show);
-routes.put("/profile", UserValidator.update, ProfileController.put);
+routes.post("/register", ProfileValidator.post, ProfileController.post);
+routes.get("/profile", ProfileValidator.show, ProfileController.show);
+routes.put("/profile", ProfileValidator.update, ProfileController.put);
 
 // Admin Profile
-routes.get("/users", UserController.list);
+routes.get("/users", onlyAdmin, UserController.list);
+routes.get("/users/:id", onlyAdmin, UserController.show);
 // routes.put("/", UserController.update);
 routes.delete("/profile", ProfileController.delete);
 

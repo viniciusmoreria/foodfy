@@ -6,6 +6,18 @@ const fs = require("fs");
 const Recipe = require("../models/Recipe");
 
 module.exports = {
+  all() {
+    try {
+      return db.query(
+        `
+      SELECT * FROM users
+      ORDER BY updated_at DESC
+      `
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  },
   async findOne(filter) {
     try {
       let query = "SELECT * FROM users";

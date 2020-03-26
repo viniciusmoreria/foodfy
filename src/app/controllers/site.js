@@ -19,6 +19,10 @@ module.exports = {
     let results = await Recipe.paginate(params);
     const recipes = results.rows;
 
+    if (recipes[0] == undefined) {
+      return res.render("site/index");
+    }
+
     const pagination = {
       total: Math.ceil(recipes[0].total / limit),
       page,

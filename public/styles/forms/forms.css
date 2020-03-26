@@ -14,7 +14,7 @@
   padding: 10px;
 }
 
-.header form button {
+.header form .search {
   background-color: var(--accent);
   color: #fff;
   border-radius: 4px;
@@ -30,8 +30,12 @@
 }
 
 .header form .logout {
-  background-color: #000000;
   border: none;
+  background-color: #000000;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 /* New Recipe and Chef Form Section */

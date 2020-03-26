@@ -11,7 +11,7 @@
       padding: 10px;
     }
 
-    button {
+    .search {
       @include primaryBtn;
       width: 91px;
       height: 100%;
@@ -19,8 +19,12 @@
     }
 
     .logout {
-      background-color: #000000;
       border: none;
+      background-color: #000000;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+      cursor: pointer;
     }
   }
 }
