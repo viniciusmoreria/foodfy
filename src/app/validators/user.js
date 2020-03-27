@@ -2,7 +2,6 @@ const User = require("../models/User");
 const { compare } = require("bcryptjs");
 
 function checkAllFields(body) {
-  //Check fields
   const keys = Object.keys(body);
 
   for (key of keys) {
@@ -17,14 +16,12 @@ function checkAllFields(body) {
 
 module.exports = {
   async post(req, res, next) {
-    //Check fields
     const fillAllFields = checkAllFields(req.body);
 
     if (fillAllFields) {
       return res.render("admin/profile/register", fillAllFields);
     }
 
-    //Check if user exists
     let { email, password, passwordRepeat } = req.body;
 
     const user = await User.findOne({ where: { email } });
@@ -36,7 +33,6 @@ module.exports = {
       });
     }
 
-    //Check if passwords match
     if (password != passwordRepeat)
       return res.render("admin/profile/register", {
         user: req.body,
@@ -62,7 +58,6 @@ module.exports = {
   },
 
   async update(req, res, next) {
-    //Check fields
     const fillAllFields = checkAllFields(req.body);
     if (fillAllFields) {
       return res.render("admin/profile/index", fillAllFields);

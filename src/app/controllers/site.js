@@ -2,7 +2,6 @@ const Recipe = require("../models/Recipe");
 const Chef = require("../models/Chef");
 
 module.exports = {
-  // Logged-out routes
   async index(req, res) {
     let { filter, page, limit } = req.query;
     page = page || 1;

@@ -35,7 +35,7 @@ routes.put("/profile", ProfileValidator.update, ProfileController.put);
 // Admin Profile
 routes.get("/users", onlyAdmin, UserController.list);
 routes.get("/users/:id", onlyAdmin, UserController.show);
-// routes.put("/", UserController.update);
-routes.delete("/profile", ProfileController.delete);
+routes.put("/users", UserController.update);
+routes.delete("/users", UserController.delete);
 
 module.exports = routes;

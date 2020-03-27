@@ -3,7 +3,6 @@ const File = require("../models/File");
 const RecipeFile = require("../models/RecipeFile");
 
 module.exports = {
-  // Logged-in routes
   async index(req, res) {
     let { page, limit } = req.query;
     page = page || 1;

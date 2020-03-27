@@ -39,23 +39,5 @@ module.exports = {
         error: "Algo de errado ocorreu, por favor tente novamente"
       });
     }
-  },
-
-  async delete(req, res) {
-    try {
-      await User.delete(req.body.id);
-
-      req.session.destroy();
-
-      return res.render("admin/session/login", {
-        success: "Conta deletada com sucesso"
-      });
-    } catch (err) {
-      console.error(err);
-      return res.render("admin/profile/index", {
-        user: req.body,
-        error: "Algo de errado ocorreu, por favor tente novamente"
-      });
-    }
   }
 };
