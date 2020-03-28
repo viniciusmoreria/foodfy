@@ -177,26 +177,16 @@ body {
 .user_box {
   @include maxWidth;
   @include grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
   justify-items: stretch;
+  gap: 52px 250px;
   margin: 30px auto;
 }
 
 .user {
-  @include flex;
   font-size: 14px;
   color: var(--light-text);
   line-height: 16px;
-
-  img {
-    height: 64px;
-    width: 64px;
-    margin-right: 20px;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: 50%;
-  }
 
   h3 {
     font-size: 18px;
@@ -218,9 +208,9 @@ body {
     color: var(--accent);
     text-decoration: none;
     margin-right: 16px;
+  }
 
-    &:last-child {
-      color: #f55a5a;
-    }
+  .remove {
+    color: #f55a5a;
   }
 }

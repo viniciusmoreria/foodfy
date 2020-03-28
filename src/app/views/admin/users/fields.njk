@@ -3,30 +3,19 @@
   <div>
     <h3>Nome</h3>
     <div>
-      <input type="text" name="name" value="{{user.name}}" placeholder="Digite seu nome" required="required">
+      <input type="text" name="name" value="{{user.name}}" placeholder="Digite o nome completo" required="required">
     </div>
   </div>
 
   <div>
     <h3>E-mail</h3>
     <div>
-      <input type="email" name="email" value="{{user.email}}" onblur="Validate.apply(this, 'isEmail')" placeholder="Digite seu e-mail" required="required">
+      <input type="email" name="email" value="{{user.email}}" onblur="Validate.apply(this, 'isEmail')" placeholder="Digite o e-mail" required="required">
     </div>
   </div>
 
-  <div>
-    <h3>Senha</h3>
-    <div>
-      <input type="password" name="password" placeholder="Digite sua senha">
-    </div>
+  <div class="checkbox">
+    <input type="checkbox" name="admin" value="true" {% if user.is_admin == true %} checked="checked" {% endif %}>
+    <p>Administrador</p>
   </div>
-
-  {% if not user.id %}
-    <div>
-      <h3>Repetir senha</h3>
-      <div>
-        <input type="password" name="passwordRepeat" placeholder="Repita sua senha">
-      </div>
-    </div>
-  {% endif %}
 </div>

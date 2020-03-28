@@ -20,7 +20,7 @@
 
     .logout {
       border: none;
-      background-color: #000000;
+      background-color: #111111;
       color: #fff;
       text-transform: uppercase;
       font-size: 16px;
@@ -46,7 +46,7 @@
     font-size: 16px;
     font-weight: bold;
     margin-top: 15px;
-    color: #6558c3;
+    color: var(--accent);
     cursor: pointer;
   }
 
@@ -88,6 +88,11 @@
   @include secondaryBtn;
   position: absolute;
   right: 145px;
+}
+
+.cancel {
+  @include primaryBtn;
+  background-color: #8a8a8a;
 }
 
 /* Photos Upload Form Section */
@@ -265,7 +270,7 @@ form {
     font-size: 16px;
     font-weight: bold;
     margin-top: 15px;
-    color: #6558c3;
+    color: var(--accent);
     cursor: pointer;
   }
 
@@ -278,6 +283,19 @@ form {
     input {
       @include inputForm;
       height: 49px;
+    }
+
+    .checkbox {
+      @include flex;
+
+      input {
+        width: 15px;
+        margin-right: 8px;
+      }
+
+      p {
+        font-weight: bold;
+      }
     }
   }
 }

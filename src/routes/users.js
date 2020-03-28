@@ -1,12 +1,12 @@
 const express = require("express");
 const routes = express.Router();
 
-const ProfileController = require("../app/controllers/ProfileController");
 const SessionController = require("../app/controllers/SessionController");
+const ProfileController = require("../app/controllers/ProfileController");
 const UserController = require("../app/controllers/UserController");
 
-const ProfileValidator = require("../app/validators/profile");
 const SessionValidator = require("../app/validators/session");
+const ProfileValidator = require("../app/validators/profile");
 const UserValidator = require("../app/validators/user");
 
 const { onlyAdmin, onlyUsers } = require("../app/middlewares/session");
@@ -34,8 +34,10 @@ routes.put("/profile", ProfileValidator.update, ProfileController.put);
 
 // Admin Profile
 routes.get("/users", onlyAdmin, UserController.list);
-routes.get("/users/:id", onlyAdmin, UserController.show);
-routes.put("/users", UserController.update);
-routes.delete("/users", UserController.delete);
+routes.get("/users/create", onlyAdmin, UserController.create);
+routes.post("/users", onlyAdmin, UserController.post);
+routes.get("/users/:id", onlyAdmin, UserValidator.show, UserController.show);
+routes.put("/users", onlyAdmin, UserController.put);
+routes.delete("/users", onlyAdmin, UserController.delete);
 
 module.exports = routes;

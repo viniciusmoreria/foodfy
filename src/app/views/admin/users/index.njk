@@ -1,14 +1,10 @@
 {% extends "../layout.njk" %}
 {% block content %}
 
-  {% if session.userId %}
-
-    <div class="page_title">
-      <h1>Gerenciar Usuários</h1>
-      <a class="button" href="/admin/user/create">Novo Usuário</a>
-    </div>
-
-  {% endif %}
+  <div class="page_title">
+    <h1>Usuários</h1>
+    <a class="button" href="/admin/users/create">Novo</a>
+  </div>
 
   <div class="user_box adm">
     {% for user in users %}
@@ -16,8 +12,14 @@
         <div>
           <h3>{{user.name}}</h3>
           <h4>{{user.email}}</h4>
-          <a href="/admin/user/{{user.id}}">Editar</a>
-          <a href="/admin/user/{{user.id}}">Remover</a>
+
+          {% if session.admin %}
+            <a href="/admin/users/{{user.id}}">Editar</a>
+          {% endif %}
+          {% if session.admin and session.userId != user.id %}
+            <a class="remove" href="/admin/users/{{user.id}}">Remover</a>
+          {% endif %}
+
         </div>
       </div>
     {% endfor %}

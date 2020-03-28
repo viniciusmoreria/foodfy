@@ -133,8 +133,15 @@ module.exports = {
     return res.redirect(`/admin/chefs/${req.body.id}`);
   },
   async delete(req, res) {
-    await Chef.delete(req.body.id);
+    try {
+      let results = await Chef.files(req.body.id);
+      files = results.rows[0].id;
+      await File.delete(files);
+      await Chef.delete(req.body.id);
 
-    return res.redirect("/admin/chefs");
+      return res.redirect("/admin/chefs");
+    } catch (err) {
+      console.error(err);
+    }
   }
 };

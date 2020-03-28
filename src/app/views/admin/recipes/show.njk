@@ -9,7 +9,9 @@
         <h1>Receita:
           {{recipe.title}}
         </h1>
-        <a class="button" href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
+        {% if session.admin or session.userId == recipe.user_id %}
+          <a class="button" href="/admin/recipes/{{recipe.id}}/edit">Editar receita</a>
+        {% endif %}
       </div>
 
       <div class="gallery">

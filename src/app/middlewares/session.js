@@ -19,6 +19,7 @@ module.exports = {
     if (!req.session.userId) return res.redirect("/admin/login");
 
     let id = req.params.id;
+    if (!id) id = req.body.id;
 
     const results = await Recipe.find(id);
     const recipe = results.rows[0].user_id;

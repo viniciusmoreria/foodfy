@@ -24,9 +24,9 @@
 
         {% if session.admin %}
           <a href="/admin/users">Usuários</a>
+        {% else %}
+          <a href="/admin/profile">Minha conta</a>
         {% endif %}
-
-        <a href="/admin/profile">Minha conta</a>
 
         {% if session.userId %}
           <form action="/admin/logout" method="POST">

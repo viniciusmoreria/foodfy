@@ -4,7 +4,7 @@ module.exports = {
   registerForm(req, res) {
     return res.render("admin/profile/register");
   },
-  async post(req, res, next) {
+  async post(req, res) {
     const userId = await User.create(req.body);
 
     const user = await User.findOne({ where: { id: userId } });

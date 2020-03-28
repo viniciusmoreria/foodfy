@@ -1,0 +1,25 @@
+{% extends "../layout.njk" %}
+
+{% block content %}
+
+  <form class="user_form" id="form-delete" method="POST" action="/admin/users?_method=DELETE">
+    {% if session.admin and session.userId != user.id %}
+      <button class="delete" type="submit">Deletar</button>
+    {% endif %}
+
+    <input type="hidden" name="id" value="{{user.id}}">
+  </form>
+
+  <form class="user_form" action="/admin/users?_method=PUT" method="POST">
+    <div class="form_header">
+      <h1>Atualizar Usuário</h1>
+
+      <button class="save" type="submit">Salvar</button>
+    </div>
+
+    {% include "admin/users/fields.njk" %}
+
+    <input type="hidden" name="id" value="{{user.id}}">
+  </form>
+
+{% endblock content %}

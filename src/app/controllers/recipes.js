@@ -166,7 +166,15 @@ module.exports = {
     return res.redirect(`/admin/recipes/${req.body.id}`);
   },
   async delete(req, res) {
-    await Recipe.delete(req.body.id);
-    return res.redirect("/admin");
+    try {
+      let results = await Recipe.files(req.body.id);
+      files = results.rows[0].id;
+      await File.delete(files);
+      await Recipe.delete(req.body.id);
+
+      return res.redirect("/admin/recipes");
+    } catch (err) {
+      console.error(err);
+    }
   }
 };

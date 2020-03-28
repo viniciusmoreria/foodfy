@@ -3,14 +3,14 @@ const routes = express.Router();
 const multer = require("../app/middlewares/multer");
 const chef = require("../app/controllers/chefs");
 
-const { onlyAdmin } = require("../app/middlewares/session");
+const { onlyAdmin, onlyUsers } = require("../app/middlewares/session");
 
-routes.get("/chefs", chef.index);
+routes.get("/chefs", onlyUsers, chef.index);
 routes.get("/chefs/create", onlyAdmin, chef.create);
-routes.get("/chefs/:id", chef.show);
+routes.get("/chefs/:id", onlyUsers, chef.show);
 routes.get("/chefs/:id/edit", onlyAdmin, chef.edit);
 routes.post("/chefs", multer.array("images", 1), chef.post);
-routes.put("/chefs", onlyAdmin, multer.array("images", 1), chef.put);
-routes.delete("/chefs", chef.delete);
+routes.put("/chefs", multer.array("images", 1), onlyAdmin, chef.put);
+routes.delete("/chefs", onlyAdmin, chef.delete);
 
 module.exports = routes;

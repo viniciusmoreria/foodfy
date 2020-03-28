@@ -12,7 +12,7 @@ module.exports = {
     req.session.userId = req.user.id;
     req.session.admin = req.user.is_admin;
 
-    return res.redirect("/admin/profile");
+    return res.redirect("/admin/users");
   },
   logout(req, res) {
     req.session.destroy();
@@ -39,9 +39,12 @@ module.exports = {
         to: user.email,
         from: "no-reply@foodfy.com.br",
         subject: "Recuperação de senha",
-        html: `<h2>Recuperar senha</h2>
+        html: `<h2>Olá ${user.name},</h2>
+
         <p>Uma solicitação de recuperação de senha foi realizada para sua conta. Se você não foi o autor, apenas descarte esse e-mail.</p>
+        
         <p>Para continuar com a recuperação de senha clique no botão abaixo para criar uma nova senha. Ah, esse link expira em 24h.</p>
+
         <p>
           <a href="http://localhost:3000/admin/password-reset?token=${token}" target="_blank">Criar nova senha</a>
         </p>
