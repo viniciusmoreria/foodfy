@@ -1,10 +1,14 @@
-const { date } = require("../../lib/utils");
 const db = require("../../config/db");
 
+const Base = require("./Base");
+
+Base.init({ table: "chefs" });
+
 module.exports = {
-  all() {
+  ...Base,
+  async all() {
     try {
-      return db.query(
+      const results = await db.query(
         `
       SELECT chefs.*, count(recipes) AS total_recipes
       FROM chefs
@@ -13,85 +17,50 @@ module.exports = {
       ORDER BY total_recipes DESC
       `
       );
+      return results.rows;
     } catch (err) {
       console.error(err);
     }
   },
-  create(data) {
+  async find(id) {
     try {
-      const query = `
-      INSERT INTO chefs (
-        name,
-        created_at,
-        file_id
-      ) VALUES ($1, $2, $3)
-      RETURNING id
-    `;
-
-      const values = [data.name, date(Date.now()).iso, data.fileId];
-
-      return db.query(query, values);
-    } catch (err) {
-      console.error(err);
-    }
-  },
-  find(id) {
-    try {
-      return db.query(
+      const results = await db.query(
         `
-          SELECT chefs.*, count(recipes) AS total_recipes
-          FROM chefs
-          LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
-          WHERE chefs.id = $1
-          GROUP BY chefs.id
-          `,
+        SELECT chefs.*, count(recipes) AS total_recipes
+        FROM chefs
+        LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+        WHERE chefs.id = $1
+        GROUP BY chefs.id
+        ORDER BY total_recipes DESC
+        `,
         [id]
       );
-    } catch (err) {
-      console.error(err);
-    }
-  },
-  update(data) {
-    try {
-      const query = `
-      UPDATE chefs SET
-      name=($1),
-      file_id=($2)
-      WHERE id = $3
-      `;
 
-      const values = [data.name, data.fileId, data.id];
-
-      return db.query(query, values);
+      return results.rows[0];
     } catch (err) {
       console.error(err);
     }
   },
-  delete(id) {
+  async recipes() {
     try {
-      return db.query(`DELETE FROM chefs WHERE id = $1`, [id]);
-    } catch (err) {
-      console.error(err);
-    }
-  },
-  recipes() {
-    try {
-      return db.query(`
+      const results = await db.query(`
       SELECT id, chef_id, title
       FROM recipes
       ORDER BY created_at DESC`);
+
+      return results.rows;
     } catch (err) {
       console.error(err);
     }
   },
-  files(id) {
-    return db.query(
+  async files(id) {
+    const results = await db.query(
       `
-    SELECT *
-    FROM files 
+    SELECT * FROM files
     LEFT JOIN chefs ON (files.id = chefs.file_id)
     WHERE chefs.id = $1`,
       [id]
     );
+    return results.rows;
   }
 };

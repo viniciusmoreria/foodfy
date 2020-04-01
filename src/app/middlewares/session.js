@@ -21,12 +21,12 @@ module.exports = {
     let id = req.params.id;
     if (!id) id = req.body.id;
 
-    const results = await Recipe.find(id);
-    const recipe = results.rows[0].user_id;
+    const recipe = await Recipe.find(id);
+    user = recipe.user_id;
 
     if (
       req.session.userId &&
-      recipe != req.session.userId &&
+      user != req.session.userId &&
       req.session.admin == false
     )
       return res.redirect(`/admin/recipes/${id}`);

@@ -7,14 +7,10 @@
     <div class="recipe">
       <div class="gallery">
         <div class="highlight">
-          {% if not images[0] %}
-            <img src="https://saocarlosemrede.com.br/wp-content/uploads/2020/01/placeholder-1200x500-1.png"/>
-          {% else %}
-            <img src="{{images[0].src}}" alt="Imagem de {{images[0].name}}" onclick="Lightbox.open()"/>
-          {% endif %}
+          <img src="{{images[0].src}}" alt="Imagem de {{recipe.title}}" onclick="Lightbox.open()"/>
           <div class="lightbox_target">
             <div class="lightbox_img">
-              <img src="{{images[0].src}}" alt="Imagem de {{images[0].name}}">
+              <img src="{{images[0].src}}" alt="Imagem de {{recipe.title}}">
               <a href="#" class="lightbox_close">
                 <i class="material-icons" onclick="Lightbox.close()">close</i>
               </a>
@@ -25,7 +21,7 @@
 
         <div class="gallery_preview">
           {% for image in images %}
-            <img src="{{image.src}}" alt="{{image.name}}" {% if loop.index0 == 0 %} {% endif %} onclick="ImageGallery.setImage(event)">
+            <img src="{{image.src}}" alt="{{recipe.title}}" {% if loop.index0 == 0 %} {% endif %} onclick="ImageGallery.setImage(event)">
           {% endfor %}
         </div>
       </div>

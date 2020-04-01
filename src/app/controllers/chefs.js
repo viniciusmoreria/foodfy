@@ -4,29 +4,20 @@ const Recipe = require("../models/Recipe");
 
 module.exports = {
   async index(req, res) {
-    let results = await Chef.all(req.body);
-    const chefs = results.rows;
+    try {
+      let chefs = await Chef.all(req.body);
 
-    async function getImage(chefId) {
-      let results = await Chef.files(chefId);
-      const images = results.rows.map(
-        file =>
-          `${req.protocol}://${req.headers.host}${file.path.replace(
-            "public",
-            ""
-          )}`
-      );
-      return images[0];
+      const filesPromise = chefs.map(async chef => {
+        const files = await Chef.files(chef.id);
+        if (files[0]) chef.img = files[0].path.replace("public", "");
+      });
+
+      await Promise.all(filesPromise);
+
+      return res.render("admin/chefs/index", { chefs });
+    } catch (err) {
+      console.error(err);
     }
-
-    const filesPromise = chefs.map(async chef => {
-      chef.img = await getImage(chef.id);
-      return chef;
-    });
-
-    const chefsPromise = await Promise.all(filesPromise);
-
-    return res.render("admin/chefs/index", { chefs: chefsPromise });
   },
   create(req, res) {
     return res.render("admin/chefs/create");
@@ -55,24 +46,17 @@ module.exports = {
     return res.redirect(`/admin/chefs`);
   },
   async show(req, res) {
-    let results = await Chef.find(req.params.id);
-    let chef = results.rows[0];
-
+    let chef = await Chef.find(req.params.id);
     if (!chef) return res.send("Chef não encontrado");
 
-    profile = await Chef.files(chef.id);
-    let image = profile.rows[0].path;
-    image = {
-      ...chef,
-      src: image.replace("public", "")
-    };
+    let image = await Chef.files(chef.id);
+    if (image[0]) image.src = image[0].path.replace("public", "");
 
-    const files = await Chef.recipes();
-    const recipes = files.rows;
+    const recipes = await Chef.recipes();
 
     const itemsPromise = recipes.map(async recipe => {
       const files = await Recipe.files(recipe.id);
-      recipe.src = files.rows[0].path.replace("public", "");
+      if (files[0]) recipe.src = files[0].path.replace("public", "");
     });
 
     await Promise.all(itemsPromise);

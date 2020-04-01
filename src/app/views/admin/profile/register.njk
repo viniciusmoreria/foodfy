@@ -2,14 +2,17 @@
 
 {% block content %}
 
-  <form class="recipe_form" method="POST" action="/admin/register">
+  <form class="register_form" method="POST" action="/admin/register">
 
     <div class="form_header">
       <h1>Abra uma conta</h1>
-      <button class="save" type="submit">Cadastre-se</button>
     </div>
 
     {% include "admin/profile/fields.njk" %}
+
+    <div class="recover">
+      <button class="save" type="submit">Cadastre-se</button>
+    </div>
 
   </form>
 

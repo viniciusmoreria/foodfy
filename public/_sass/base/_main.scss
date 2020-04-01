@@ -33,6 +33,10 @@ body {
       text-decoration: none;
     }
 
+    .login {
+      border-bottom: 2px solid var(--accent);
+    }
+
     .active {
       font-weight: bold;
     }
@@ -107,14 +111,14 @@ body {
 /* Paginate Section */
 
 .pagination {
-  margin: 75px 0 0;
+  margin: 100px auto 0;
   text-align: center;
 
   a {
     text-decoration: none;
     text-align: center;
     margin-right: 15px;
-    color: #000;
+    color: var(--dark-text);
 
     &:hover {
       color: var(--accent);

@@ -19,7 +19,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   @include maxWidth;
-  margin: 0 auto;
+  margin: auto;
 
   .recipe {
     img {

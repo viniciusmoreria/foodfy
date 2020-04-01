@@ -1,15 +1,20 @@
-const User = require("../models/User");
-
 const { hash } = require("bcryptjs");
+const { unlinkSync } = require("fs");
 const crypto = require("crypto");
 const mailer = require("../../lib/mailer");
 
+const User = require("../models/User");
+const Recipe = require("../models/Recipe");
+
 module.exports = {
   async list(req, res) {
-    let results = await User.all(req.body);
-    const users = results.rows;
+    try {
+      let users = await User.findAll(req.body);
 
-    return res.render("admin/users/index", { users });
+      return res.render("admin/users/index", { users });
+    } catch (err) {
+      console.error(err);
+    }
   },
   create(req, res) {
     return res.render("admin/users/create");
@@ -60,8 +65,7 @@ module.exports = {
         `
       });
 
-      let results = await User.all(req.body);
-      const users = results.rows;
+      let users = await User.findAll(req.body);
 
       return res.render("admin/users/index", {
         users,
@@ -76,18 +80,21 @@ module.exports = {
     }
   },
   async show(req, res) {
-    const { user } = req;
+    try {
+      const { user } = req;
 
-    return res.render("admin/users/show", { user });
+      return res.render("admin/users/show", { user });
+    } catch (err) {
+      console.error(err);
+    }
   },
   async put(req, res) {
     try {
-      let { id, name, email, admin } = req.body;
+      let { id, name, email, admin = false } = req.body;
 
       await User.update(id, { name, email, is_admin: admin });
 
-      let results = await User.all(req.body);
-      const users = results.rows;
+      let users = await User.findAll(req.body);
 
       return res.render("admin/users/index", {
         users,
@@ -96,17 +103,29 @@ module.exports = {
     } catch (err) {
       console.error(err);
       return res.render("admin/users/index", {
-        users,
         error: "Algo de errado ocorreu, por favor tente novamente"
       });
     }
   },
   async delete(req, res) {
     try {
+      const recipes = await Recipe.findAll({ where: { user_id: req.body.id } });
+
+      const allFilesPromise = recipes.map(recipe => Recipe.files(recipe.id));
+
+      let promiseResults = await Promise.all(allFilesPromise);
+
       await User.delete(req.body.id);
 
-      let results = await User.all(req.body);
-      const users = results.rows;
+      promiseResults.map(results => {
+        results.rows.map(file => {
+          try {
+            unlinkSync(file.path);
+          } catch (err) {
+            console.error(err);
+          }
+        });
+      });
 
       return res.render("admin/users/index", {
         users,

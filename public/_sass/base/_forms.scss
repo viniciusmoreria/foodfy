@@ -19,6 +19,7 @@
     }
 
     .logout {
+      padding: 15px 0;
       border: none;
       background-color: #111111;
       color: #fff;
@@ -153,7 +154,7 @@ form {
           top: 0;
           left: 0;
           background: rgba(255, 255, 255, 0.2);
-          color: red;
+          color: #f55a5a;
           width: 100%;
           height: 100%;
           font-size: 500%;
@@ -201,7 +202,7 @@ form {
 
 .register_form {
   width: 500px;
-  margin: 146px auto;
+  margin: 100px auto 50px;
   position: relative;
   text-align: center;
 
@@ -258,7 +259,7 @@ form {
 
 .user_form {
   @include maxWidth;
-  margin: 55px auto;
+  margin: 36px auto;
   position: relative;
 
   h3 {

@@ -1,3 +1,6 @@
+const { hash } = require("bcryptjs");
+const { date } = require("../../lib/utils");
+
 const User = require("../models/User");
 
 module.exports = {
@@ -5,20 +8,38 @@ module.exports = {
     return res.render("admin/profile/register");
   },
   async post(req, res) {
-    const userId = await User.create(req.body);
+    try {
+      let { name, email, password, admin = false } = req.body;
 
-    const user = await User.findOne({ where: { id: userId } });
+      const passwordHash = await hash(password, 8);
 
-    req.session.userId = user.id;
-    req.session.admin = user.is_admin;
+      const userId = await User.create({
+        name,
+        email,
+        passwordHash,
+        is_admin: admin,
+        created_at: date(Date.now()).iso
+      });
 
-    return res.redirect("/admin/profile");
+      const user = await User.findOne({ where: { id: userId } });
+
+      req.session.userId = user.id;
+      req.session.admin = user.is_admin;
+
+      return res.redirect("/admin/profile");
+    } catch (err) {
+      console.error(err);
+    }
   },
 
   async show(req, res) {
-    const { user } = req;
+    try {
+      const { user } = req;
 
-    return res.render("admin/profile/index", { user });
+      return res.render("admin/profile/index", { user });
+    } catch (err) {
+      console.error(err);
+    }
   },
 
   async put(req, res) {
