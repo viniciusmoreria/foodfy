@@ -52,8 +52,10 @@ module.exports = {
         subject: "Foodfy - Senha provisória",
         html: `<h2>Olá ${user.name},</h2>
 
-        <p>Você está recebendo uma senha provisória para acessar sua conta no Foodfy.
-        Se você reconhece esta solicitação, utilize a senha provisória abaixo para acessar sua conta.</p>
+        <p>
+        Você recebeu um convite para participar do melhor site de receitas do Brasil, o Foodfy.
+        Utilize a senha provisória abaixo para acessar sua conta.
+        </p>
 
         <p>Seu login é: ${user.email}</p>
         <p>Sua senha provisória é: ${pass}</p>
@@ -65,7 +67,7 @@ module.exports = {
         `
       });
 
-      let users = await User.findAll(req.body);
+      let users = await User.findAll();
 
       return res.render("admin/users/index", {
         users,
@@ -94,7 +96,7 @@ module.exports = {
 
       await User.update(id, { name, email, is_admin: admin });
 
-      let users = await User.findAll(req.body);
+      let users = await User.findAll();
 
       return res.render("admin/users/index", {
         users,
@@ -117,8 +119,8 @@ module.exports = {
 
       await User.delete(req.body.id);
 
-      promiseResults.map(results => {
-        results.rows.map(file => {
+      promiseResults.map(files => {
+        files.map(file => {
           try {
             unlinkSync(file.path);
           } catch (err) {
@@ -126,6 +128,8 @@ module.exports = {
           }
         });
       });
+
+      let users = await User.findAll();
 
       return res.render("admin/users/index", {
         users,

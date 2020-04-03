@@ -7,10 +7,10 @@
     <div class="recipe">
       <div class="gallery">
         <div class="highlight">
-          <img src="{{images[0].src}}" alt="Imagem de {{recipe.title}}" onclick="Lightbox.open()"/>
+          <img src="{{recipe.images[0].src}}" alt="Imagem de {{recipe.title}}" onclick="Lightbox.open()"/>
           <div class="lightbox_target">
             <div class="lightbox_img">
-              <img src="{{images[0].src}}" alt="Imagem de {{recipe.title}}">
+              <img src="{{recipe.images[0].src}}" alt="Imagem de {{recipe.title}}">
               <a href="#" class="lightbox_close">
                 <i class="material-icons" onclick="Lightbox.close()">close</i>
               </a>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="gallery_preview">
-          {% for image in images %}
+          {% for image in recipe.images %}
             <img src="{{image.src}}" alt="{{recipe.title}}" {% if loop.index0 == 0 %} {% endif %} onclick="ImageGallery.setImage(event)">
           {% endfor %}
         </div>

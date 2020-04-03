@@ -13,7 +13,7 @@
     <form class="recipe_form" method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
       <div class="form_header">
         <h1>Editar receita</h1>
-        <button class="save" type="submit">Salvar receita</button>
+        <button class="save" type="submit" onclick="Validate.allFields(event)">Salvar receita</button>
       </div>
 
       {% include "admin/recipes/fields.njk" %}

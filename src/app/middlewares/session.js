@@ -7,9 +7,9 @@ module.exports = {
     next();
   },
   onlyAdmin(req, res, next) {
-    if (!req.session.userId) return res.redirect("/admin/profile");
+    if (!req.session.userId) return res.redirect("/admin/login");
 
-    if (!req.session.admin) {
+    if (req.session.userId && req.session.admin == false) {
       return res.redirect("/admin/profile");
     }
 

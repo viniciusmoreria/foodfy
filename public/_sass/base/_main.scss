@@ -183,7 +183,7 @@ body {
   @include grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: stretch;
-  gap: 52px 250px;
+  gap: 52px 200px;
   margin: 30px auto;
 }
 

@@ -25,7 +25,7 @@ async function createUsers() {
       name: faker.name.findName(),
       email: faker.internet.email().toLowerCase(),
       password,
-      is_admin: false
+      is_admin: true
     });
   }
 
@@ -69,7 +69,7 @@ async function createRecipes() {
     recipes.push({
       chef_id: chefsIds[Math.floor(Math.random() * totalChefs)],
       user_id: usersIds[Math.floor(Math.random() * totalUsers)],
-      title: faker.commerce.productName(),
+      title: faker.commerce.product(),
       ingredients: [faker.lorem.lines(5)],
       preparation: [faker.lorem.lines(5)],
       information: faker.lorem.paragraph()
@@ -83,7 +83,7 @@ async function createRecipes() {
 
   while (files.length < totalRecipes) {
     files.push({
-      name: faker.image.food(),
+      name: faker.commerce.productName(),
       path: "https://source.unsplash.com/collection/251966/640x480"
     });
   }

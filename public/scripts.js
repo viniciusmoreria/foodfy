@@ -29,7 +29,7 @@ const formDelete = document.querySelector("#form-delete");
 
 if (formDelete) {
   formDelete.addEventListener("submit", function(event) {
-    const confirmation = confirm("Deseja prosseguir?");
+    const confirmation = confirm("Tem certeza de que deseja prosseguir?");
     if (!confirmation) {
       event.preventDefault();
     }
@@ -284,7 +284,7 @@ const Lightbox = {
   }
 };
 
-//---------- E-mail Validation ----------//
+//---------- Validation ----------//
 
 const Validate = {
   apply(input, func) {
@@ -324,5 +324,21 @@ const Validate = {
       error,
       value
     };
+  },
+  allFields(e) {
+    const items = document.querySelectorAll("input, select");
+
+    for (item of items) {
+      if (item.value == "") {
+        const message = document.createElement("div");
+        message.classList.add("messages");
+        message.classList.add("error");
+        message.style.position = "fixed";
+        message.innerHTML = "Por favor, preencha todos os campos";
+        document.querySelector("body").append(message);
+
+        e.preventDefault();
+      }
+    }
   }
 };

@@ -67,20 +67,27 @@ const Base = {
   },
   async update(id, fields) {
     try {
-      let update = [];
+      let position = [],
+        values = [],
+        update = [];
 
-      Object.keys(fields).map(key => {
-        const line = `${key} = '${fields[key]}'`;
+      Object.keys(fields).map((key, index, array) => {
+        if (index < array.length) {
+          position = `$${index + 1}`;
+        }
+        values.push(fields[key]);
+
+        let line = `${key} = (${position})`;
         update.push(line);
       });
 
       let query = `UPDATE ${this.table} SET
-      ${update.join(",")} WHERE id = ${id}`;
+        ${update.join(",")} WHERE id = ${id}`;
 
-      await db.query(query);
+      await db.query(query, values);
       return;
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   },
   delete(id) {
@@ -90,7 +97,7 @@ const Base = {
       console.error(err);
     }
   },
-  paginate(params) {
+  async paginate(params) {
     try {
       const { filter, limit, offset } = params;
 
@@ -118,7 +125,8 @@ const Base = {
           ORDER BY updated_at DESC
           LIMIT $1 OFFSET $2`;
 
-      return db.query(query, [limit, offset]);
+      const results = await db.query(query, [limit, offset]);
+      return results.rows;
     } catch (err) {
       console.error(err);
     }

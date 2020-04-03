@@ -1,0 +1,20 @@
+{%extends "../layout.njk" %}
+{% block content %}
+
+  <div class="lottie">
+    <div class="error">
+      <div class="error-lottie"></div>
+      <h2>{{type}}{{action}}
+        >Action< , favor tente novamente!</h2>
+      <a href="#" onclick="history.back()">Tente novamente</a>
+    </div>
+  </div>
+
+  <script src="/lottie.min.js"></script>
+  <script>
+    const element = document.querySelector(".error-lottie")
+
+    lottie.loadAnimation({container: element, renderer: 'svg', loop: false, autoplay: true, path: '/static/error.json'});
+  </script>
+
+{% endblock %}

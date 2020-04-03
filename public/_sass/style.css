@@ -217,7 +217,7 @@ body {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   justify-items: stretch;
-  gap: 52px 250px;
+  gap: 52px 200px;
   margin: 30px auto;
 }
 
@@ -276,12 +276,12 @@ body {
 }
 
 .recipe_box {
+  width: 980px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  width: 980px;
   margin: auto;
 }
 
@@ -526,12 +526,11 @@ body {
 .recipe_box.adm .recipe.adm img {
   width: 270px;
   height: 100px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center center;
-     object-position: center center;
-  border-radius: 15px;
   margin: 0 20px 0 0;
+}
+
+.recipe_box.adm .recipe.adm h3 {
+  width: 190px;
 }
 
 .recipe_box.adm .recipe.adm p {
@@ -1153,5 +1152,76 @@ form .photos_upload.chef p {
 .messages.success {
   background: #01b12a;
   border-radius: 4px;
+}
+
+/* Lottie Animation */
+.lottie {
+  width: 450px;
+  margin: 90px auto;
+  text-align: center;
+}
+
+.lottie a {
+  margin: 20px;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.lottie .success {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  height: 200px;
+}
+
+.lottie .success h2 {
+  color: #31a552;
+}
+
+.lottie .success .success-lottie {
+  height: 100px;
+  width: 100%;
+}
+
+.lottie .error {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  height: 200px;
+}
+
+.lottie .error h2 {
+  color: #f82b57;
+}
+
+.lottie .error .error-lottie {
+  height: 100px;
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

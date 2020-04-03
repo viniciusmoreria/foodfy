@@ -16,7 +16,7 @@ module.exports = {
       const userId = await User.create({
         name,
         email,
-        passwordHash,
+        password: passwordHash,
         is_admin: admin,
         created_at: date(Date.now()).iso
       });

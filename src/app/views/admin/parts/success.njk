@@ -1,0 +1,22 @@
+{%extends "../layout.njk" %}
+{% block content %}
+
+  <div class="lottie">
+    <div class="success">
+      <div class="success-lottie"></div>
+
+      <h2>{{type}}
+        {{action}}
+        com sucesso!</h2>
+      <a href="#" onclick="history.go(-2)">Voltar</a>
+    </div>
+  </div>
+
+  <script src="/lottie.min.js"></script>
+  <script>
+    const element = document.querySelector(".success-lottie")
+
+    lottie.loadAnimation({container: element, renderer: 'svg', loop: false, autoplay: true, path: '/static/success.json'})
+  </script>
+
+{% endblock %}

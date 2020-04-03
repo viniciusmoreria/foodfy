@@ -15,10 +15,10 @@
 }
 
 .recipe_box {
+  @include maxWidth;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  @include maxWidth;
   margin: auto;
 
   .recipe {
@@ -231,10 +231,11 @@
     img {
       width: 270px;
       height: 100px;
-      object-fit: cover;
-      object-position: center center;
-      border-radius: 15px;
       margin: 0 20px 0 0;
+    }
+
+    h3 {
+      width: 190px;
     }
 
     p {
