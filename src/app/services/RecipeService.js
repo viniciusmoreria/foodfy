@@ -2,9 +2,9 @@ const Recipe = require("../models/Recipe");
 
 async function getImages(recipeId) {
   let files = await Recipe.files(recipeId);
-  files = files.map(file => ({
+  files = files.map((file) => ({
     ...file,
-    src: `${file.path.replace("public", "")}`
+    src: `${file.path.replace("public", "")}`,
   }));
 
   return files;
@@ -36,7 +36,7 @@ const LoadService = {
     const recipesPromise = recipes.map(format);
     return Promise.all(recipesPromise);
   },
-  format
+  format,
 };
 
 module.exports = LoadService;

@@ -31,10 +31,6 @@ module.exports = {
       });
     }
 
-    if (req.body.removed_files != "" && req.files[0] == undefined)
-      return res.render("admin/parts/error", {
-        type: "Ao menos uma imagem deve ser enviada!",
-      });
     next();
   },
 };

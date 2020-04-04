@@ -1,8 +1,7 @@
-const { unlinkSync } = require("fs");
-
 const File = require("../models/File");
 const Recipe = require("../models/Recipe");
 const RecipeFile = require("../models/RecipeFile");
+
 const RecipeService = require("../services/RecipeService");
 const DeleteService = require("../services/DeleteService");
 
@@ -156,16 +155,9 @@ module.exports = {
     try {
       const files = await Recipe.files(req.body.id);
 
-      files.map((file) => {
-        try {
-          unlinkSync(file.path);
-        } catch (err) {
-          console.error(err);
-        }
-      });
-
-      await File.delete(files[0].id);
       await Recipe.delete(req.body.id);
+
+      DeleteService.deleteFiles(files);
 
       return res.render("admin/parts/success", {
         type: "Receita",

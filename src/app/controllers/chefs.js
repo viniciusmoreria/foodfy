@@ -1,5 +1,4 @@
 const { date } = require("../../lib/utils");
-const { unlinkSync } = require("fs");
 
 const Chef = require("../models/Chef");
 const ChefService = require("../services/ChefService");
@@ -91,6 +90,11 @@ module.exports = {
         name,
         file_id: fileId,
       });
+    } else {
+      if (req.body.removed_files != "" && req.files[0] == undefined)
+        return res.render("admin/parts/error", {
+          type: "Ao menos uma imagem deve ser enviada!",
+        });
     }
 
     if (req.body.removed_files) {
