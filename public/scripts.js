@@ -324,21 +324,5 @@ const Validate = {
       error,
       value
     };
-  },
-  allFields(e) {
-    const items = document.querySelectorAll("input, select");
-
-    for (item of items) {
-      if (item.value == "") {
-        const message = document.createElement("div");
-        message.classList.add("messages");
-        message.classList.add("error");
-        message.style.position = "fixed";
-        message.innerHTML = "Por favor, preencha todos os campos";
-        document.querySelector("body").append(message);
-
-        e.preventDefault();
-      }
-    }
   }
 };

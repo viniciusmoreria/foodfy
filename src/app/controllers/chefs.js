@@ -4,6 +4,7 @@ const { unlinkSync } = require("fs");
 const Chef = require("../models/Chef");
 const ChefService = require("../services/ChefService");
 const File = require("../models/File");
+const DeleteService = require("../services/DeleteService");
 
 module.exports = {
   async index(req, res) {
@@ -20,26 +21,29 @@ module.exports = {
   },
   async post(req, res) {
     try {
-      const filePromise = req.files.map(file =>
+      const filePromise = req.files.map((file) =>
         File.create({
           name: file.filename,
-          path: file.path
+          path: file.path,
         })
       );
 
       const filesId = await Promise.all(filePromise);
 
-      const relationPromise = filesId.map(fileId =>
+      const relationPromise = filesId.map((fileId) =>
         Chef.create({
           ...req.body,
           created_at: date(Date.now()).iso,
-          file_id: fileId
+          file_id: fileId,
         })
       );
 
       await Promise.all(relationPromise);
 
-      return res.redirect(`/admin/chefs`);
+      return res.render("admin/parts/success", {
+        type: "Chef",
+        action: "cadastrado",
+      });
     } catch (err) {
       console.error(err);
     }
@@ -66,9 +70,9 @@ module.exports = {
       if (!chef) return res.send("Chef não encontrado");
 
       let files = await Chef.files(chef.id);
-      files = files.map(file => ({
+      files = files.map((file) => ({
         ...file,
-        src: files[0].path.replace("public", "")
+        src: files[0].path.replace("public", ""),
       }));
 
       return res.render("admin/chefs/edit", { chef, files });
@@ -77,73 +81,44 @@ module.exports = {
     }
   },
   async put(req, res) {
-    const keys = Object.keys(req.body);
-
-    for (let key of keys) {
-      if (req.body[key] == "" && key != "removed_files") {
-        return res.send("Por favor preencha todos os campos");
-      }
-    }
-
     let { name } = req.body;
 
     if (req.files.length != 0) {
-      const newFilesPromise = req.files.map(file =>
-        File.create({
-          name: file.filename,
-          path: file.path
-        })
-      );
-      const fileId = await Promise.all(newFilesPromise);
+      const file = req.files[0];
+      let fileId = await File.create({ name: file.filename, path: file.path });
 
       await Chef.update(req.body.id, {
         name,
-        file_id: fileId
+        file_id: fileId,
       });
     }
 
     if (req.body.removed_files) {
-      const removedFiles = req.body.removed_files.split(",");
-      const lastIndex = removedFiles.length - 1;
-      removedFiles.splice(lastIndex, 1);
-
-      const removedFilesPromise = removedFiles.map(async id => {
-        try {
-          const file = await File.findOne({ where: { id } });
-          File.delete(id);
-          unlinkSync(file.path);
-        } catch (err) {
-          console.error(err);
-        }
-      });
-
-      await Promise.all(removedFilesPromise);
+      DeleteService.removedFiles(req.body);
     }
 
     await Chef.update(req.body.id, {
-      name
+      name,
     });
 
-    return res.redirect(`/admin/chefs/${req.body.id}`);
+    return res.render("admin/parts/success", {
+      type: "Chef",
+      action: "atualizado",
+    });
   },
   async delete(req, res) {
     try {
       const files = await Chef.files(req.body.id);
-
-      files.map(file => {
-        try {
-          unlinkSync(file.path);
-        } catch (err) {
-          console.error(err);
-        }
-      });
-
-      await File.delete(files[0].id);
       await Chef.delete(req.body.id);
 
-      return res.redirect("/admin/chefs");
+      DeleteService.deleteFiles(files);
+
+      return res.render("admin/parts/success", {
+        type: "Chef",
+        action: "deletado",
+      });
     } catch (err) {
       console.error(err);
     }
-  }
+  },
 };

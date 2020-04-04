@@ -4,6 +4,7 @@ const File = require("../models/File");
 const Recipe = require("../models/Recipe");
 const RecipeFile = require("../models/RecipeFile");
 const RecipeService = require("../services/RecipeService");
+const DeleteService = require("../services/DeleteService");
 
 module.exports = {
   async index(req, res) {
@@ -16,7 +17,7 @@ module.exports = {
       const params = {
         page,
         limit,
-        offset
+        offset,
       };
 
       let recipes = await Recipe.paginate(params);
@@ -25,7 +26,7 @@ module.exports = {
         return res.render("admin/recipes/index");
       }
 
-      const recipesPromise = recipes.map(async recipe => {
+      const recipesPromise = recipes.map(async (recipe) => {
         const files = await RecipeFile.files(recipe.id);
         if (files[0]) recipe.img = files[0].path.replace("public", "");
       });
@@ -34,12 +35,12 @@ module.exports = {
 
       const pagination = {
         total: Math.ceil(recipes[0].total / limit),
-        page
+        page,
       };
 
       return res.render("admin/recipes/index", {
         recipes,
-        pagination
+        pagination,
       });
     } catch (err) {
       console.error(err);
@@ -64,18 +65,18 @@ module.exports = {
         title,
         ingredients,
         preparation,
-        information
+        information,
       });
 
-      const filesPromise = req.files.map(file =>
+      const filesPromise = req.files.map((file) =>
         File.create({ name: file.filename, path: file.path })
       );
       const filesId = await Promise.all(filesPromise);
 
-      const relationPromise = filesId.map(fileId =>
+      const relationPromise = filesId.map((fileId) =>
         RecipeFile.create({
           recipe_id: recipeId,
-          file_id: fileId
+          file_id: fileId,
         })
       );
 
@@ -83,7 +84,7 @@ module.exports = {
 
       return res.render("admin/parts/success", {
         type: "Receita",
-        action: "criada"
+        action: "criada",
       });
     } catch (err) {
       console.error(err);
@@ -116,15 +117,15 @@ module.exports = {
       let { chef, title, ingredients, preparation, information } = req.body;
 
       if (req.files.length != 0) {
-        const newFilesPromise = req.files.map(file =>
+        const newFilesPromise = req.files.map((file) =>
           File.create({ name: file.filename, path: file.path })
         );
         const filesId = await Promise.all(newFilesPromise);
 
-        const relationPromise = filesId.map(fileId =>
+        const relationPromise = filesId.map((fileId) =>
           RecipeFile.create({
             recipe_id: req.body.id,
-            file_id: fileId
+            file_id: fileId,
           })
         );
 
@@ -132,21 +133,7 @@ module.exports = {
       }
 
       if (req.body.removed_files) {
-        const removedFiles = req.body.removed_files.split(",");
-        const lastIndex = removedFiles.length - 1;
-        removedFiles.splice(lastIndex, 1);
-
-        const removedFilesPromise = removedFiles.map(async id => {
-          try {
-            const file = await File.findOne({ where: { id } });
-            File.delete(id);
-            unlinkSync(file.path);
-          } catch (err) {
-            console.error(err);
-          }
-        });
-
-        await Promise.all(removedFilesPromise);
+        DeleteService.removedFiles(req.body);
       }
 
       await Recipe.update(req.body.id, {
@@ -154,12 +141,12 @@ module.exports = {
         title,
         ingredients,
         preparation,
-        information
+        information,
       });
 
       return res.render("admin/parts/success", {
         type: "Receita",
-        action: "atualizada"
+        action: "atualizada",
       });
     } catch (err) {
       console.error(err);
@@ -169,7 +156,7 @@ module.exports = {
     try {
       const files = await Recipe.files(req.body.id);
 
-      files.map(file => {
+      files.map((file) => {
         try {
           unlinkSync(file.path);
         } catch (err) {
@@ -182,10 +169,10 @@ module.exports = {
 
       return res.render("admin/parts/success", {
         type: "Receita",
-        action: "deletada"
+        action: "deletada",
       });
     } catch (err) {
       console.error(err);
     }
-  }
+  },
 };

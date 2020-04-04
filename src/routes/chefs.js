@@ -12,13 +12,7 @@ routes.get("/chefs/create", onlyAdmin, chef.create);
 routes.get("/chefs/:id", onlyUsers, chef.show);
 routes.get("/chefs/:id/edit", onlyAdmin, chef.edit);
 routes.post("/chefs", multer.array("images", 1), Validator.post, chef.post);
-routes.put(
-  "/chefs",
-  multer.array("images", 1),
-  onlyAdmin,
-  Validator.put,
-  chef.put
-);
+routes.put("/chefs", multer.array("images", 1), onlyAdmin, Validator.put, chef.put);
 routes.delete("/chefs", onlyAdmin, chef.delete);
 
 module.exports = routes;

@@ -9,22 +9,20 @@
   <h3>Imagem de Perfil</h3>
   <div>
     <div class="upload_gallery">
-      <div class="upload_gallery">
-        <div class="photos_upload">
-          <input class="photos_input" type="file" multiple="multiple" name="images" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
-          <i class="material-icons">add</i>
-        </div>
-        <div class="photos_preview">
-          {% if files %}
-            {% for image in files %}
-              <div class="photo" id="{{image.id}}">
-                <img src="{{image.src}}" alt="{{image.name}}">
-                <i class="material-icons" onclick="PhotosUpload.removeOldImage(event)">close</i>
-              </div>
-            {% endfor %}
-            <input type="hidden" name="removed_files">
-          {% endif %}
-        </div>
+      <div class="photos_upload">
+        <input class="photos_input" type="file" multiple="multiple" name="images" accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
+        <i class="material-icons">add</i>
+      </div>
+      <div class="photos_preview">
+        {% if files %}
+          {% for image in files %}
+            <div class="photo" id="{{image.file_id}}">
+              <img src="{{image.src}}" alt="{{image.name}}">
+              <i class="material-icons" onclick="PhotosUpload.removeOldImage(event)">close</i>
+            </div>
+          {% endfor %}
+          <input type="hidden" name="removed_files">
+        {% endif %}
       </div>
     </div>
   </div>

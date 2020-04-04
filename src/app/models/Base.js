@@ -5,10 +5,10 @@ function find(filters, table) {
     let query = `SELECT * FROM ${table}`;
 
     if (filters) {
-      Object.keys(filters).map(key => {
+      Object.keys(filters).map((key) => {
         query += ` ${key}`;
 
-        Object.keys(filters[key]).map(field => {
+        Object.keys(filters[key]).map((field) => {
           query += ` ${field} = '${filters[key][field]}'`;
         });
       });
@@ -32,8 +32,16 @@ const Base = {
     const results = await find({ where: { id } }, this.table);
     return results.rows[0];
   },
-  async findOne(filters) {
-    const results = await find(filters, this.table);
+  async findOne(filter) {
+    let query = `SELECT * FROM ${this.table}`;
+    Object.keys(filter).map((key) => {
+      query += ` ${key}`;
+
+      Object.keys(filter[key]).map((field) => {
+        query += ` ${field} = '${filter[key][field]}'`;
+      });
+    });
+    const results = await db.query(query);
     return results.rows[0];
   },
   async findAll(filters) {
@@ -65,7 +73,7 @@ const Base = {
       console.error(`create error ${error}`);
     }
   },
-  async update(id, fields) {
+  update(id, fields) {
     try {
       let position = [],
         values = [],
@@ -84,8 +92,7 @@ const Base = {
       let query = `UPDATE ${this.table} SET
         ${update.join(",")} WHERE id = ${id}`;
 
-      await db.query(query, values);
-      return;
+      return db.query(query, values);
     } catch (error) {
       console.error(error);
     }
@@ -146,7 +153,7 @@ const Base = {
     } catch (err) {
       console.error(err);
     }
-  }
+  },
 };
 
 module.exports = Base;
