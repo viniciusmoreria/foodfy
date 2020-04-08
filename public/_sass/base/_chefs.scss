@@ -2,8 +2,9 @@
 
 .chef_box {
   @include maxWidth;
+  width: 90%;
   @include grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   justify-items: stretch;
   margin: 30px auto;
@@ -11,9 +12,9 @@
 
 .chef {
   @include flex;
-  font-size: 14px;
   color: var(--light-text);
-  line-height: 16px;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
 
   img {
     height: 64px;
@@ -25,9 +26,9 @@
   }
 
   h3 {
-    font-size: 18px;
-    font-weight: normal;
     color: var(--dark-text);
+    font-size: 1.8rem;
+    font-weight: normal;
     margin-bottom: 5px;
   }
 }
@@ -35,6 +36,9 @@
 /* Chef Profile Page */
 
 .chef_profile {
+  @include maxWidth;
+  width: 90%;
+  margin: auto;
   justify-content: center;
   text-align: center;
 
@@ -42,51 +46,77 @@
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    margin: 51px 0 30px;
+    margin-bottom: 30px;
     object-fit: cover;
     object-position: center top;
   }
 
   h2 {
-    font-size: 36px;
     color: var(--dark-text);
-    line-height: 42px;
+    font-size: 3.6rem;
+    line-height: 4.2rem;
     margin-bottom: 5px;
   }
 
   p {
-    font-size: 20px;
     color: var(--light-text);
-    line-height: 24px;
+    font-size: 2rem;
+    line-height: 2.4rem;
   }
 }
 
 .chef_recipes {
   @include maxWidth;
-  margin: 50px auto 30px;
+  width: 90%;
+  margin: auto;
+
+  h2 {
+    color: var(--dark-text);
+    font-size: 2.6rem;
+    line-height: 4.2rem;
+    margin: 50px auto;
+
+    @include breakpoint(phone) {
+      text-align: center;
+    }
+  }
 
   .recipe_box {
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 30px;
+    @include grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    width: 100%;
+    margin: auto;
 
     .recipe {
       @include flex;
 
+      @include breakpoint(phone) {
+        flex-direction: column;
+        text-align: center;
+      }
+
       img {
-        width: 270px;
-        height: 100px;
-        margin: 0 20px 0 0;
+        width: 70%;
+        margin-right: 20px;
+
+        @include breakpoint(phone) {
+          margin-right: 0;
+        }
       }
 
-      p {
-        margin-bottom: 10px;
-      }
+      div {
+        width: 65px;
 
-      a {
-        font-size: 14px;
-        font-weight: bold;
-        text-decoration: none;
-        color: var(--accent);
+        h3 {
+          margin-bottom: 10px;
+        }
+
+        a {
+          color: var(--accent);
+          font-size: 1.4rem;
+          font-weight: bold;
+          text-decoration: none;
+        }
       }
     }
   }
@@ -98,9 +128,9 @@
 
 .chef_box.adm {
   a {
-    font-size: 14px;
-    font-weight: bold;
     color: var(--accent);
+    font-size: 1.4rem;
+    font-weight: bold;
     text-decoration: none;
   }
 }

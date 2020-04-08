@@ -18,18 +18,18 @@ let usersIds = [],
 
 async function createUsers() {
   const users = [];
-  const password = await hash("senha", 8);
+  const password = await hash("pass", 8);
 
   while (users.length < totalUsers) {
     users.push({
       name: faker.name.findName(),
       email: faker.internet.email().toLowerCase(),
       password,
-      is_admin: true
+      is_admin: true,
     });
   }
 
-  const usersPromise = users.map(user => User.create(user));
+  const usersPromise = users.map((user) => User.create(user));
 
   usersIds = await Promise.all(usersPromise);
 }
@@ -41,10 +41,10 @@ async function createChefs() {
   while (files.length < totalChefs) {
     files.push({
       name: faker.name.findName(),
-      path: `https://source.unsplash.com/collection/2013520/640x480`
+      path: `https://source.unsplash.com/collection/2013520/640x480`,
     });
   }
-  const filesPromise = files.map(file => File.create(file));
+  const filesPromise = files.map((file) => File.create(file));
   filesId = await Promise.all(filesPromise);
 
   let chefs = [];
@@ -53,12 +53,12 @@ async function createChefs() {
     chefs.push({
       name: faker.name.findName(),
       created_at: date(Date.now()).iso,
-      file_id: filesId[n]
+      file_id: filesId[n],
     });
     n += 1;
   }
 
-  const chefsPromise = chefs.map(chef => Chef.create(chef));
+  const chefsPromise = chefs.map((chef) => Chef.create(chef));
   chefsIds = await Promise.all(chefsPromise);
 }
 
@@ -72,11 +72,11 @@ async function createRecipes() {
       title: faker.commerce.product(),
       ingredients: [faker.lorem.lines(5)],
       preparation: [faker.lorem.lines(5)],
-      information: faker.lorem.paragraph()
+      information: faker.lorem.paragraph(),
     });
   }
 
-  const recipesPromise = recipes.map(recipe => Recipe.create(recipe));
+  const recipesPromise = recipes.map((recipe) => Recipe.create(recipe));
   recipesIds = await Promise.all(recipesPromise);
 
   let files = [];
@@ -84,11 +84,11 @@ async function createRecipes() {
   while (files.length < totalRecipes) {
     files.push({
       name: faker.commerce.productName(),
-      path: "https://source.unsplash.com/collection/251966/640x480"
+      path: "https://source.unsplash.com/collection/251966/640x480",
     });
   }
 
-  const filesPromise = files.map(file => File.create(file));
+  const filesPromise = files.map((file) => File.create(file));
   recipesImages = await Promise.all(filesPromise);
 }
 
@@ -99,13 +99,13 @@ async function createRecipeFile() {
   while (recipeFiles.length < totalRecipes) {
     recipeFiles.push({
       recipe_id: recipesIds[n],
-      file_id: recipesImages[n]
+      file_id: recipesImages[n],
     });
 
     n += 1;
   }
 
-  const recipeFilesPromise = recipeFiles.map(recipeFile =>
+  const recipeFilesPromise = recipeFiles.map((recipeFile) =>
     RecipeFile.create(recipeFile)
   );
 
