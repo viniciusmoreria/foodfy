@@ -248,10 +248,12 @@
     img {
       width: 70%;
       margin-right: 20px;
+      margin-bottom: 0;
 
       @include breakpoint(phone) {
         width: 100%;
         margin-right: 0;
+        margin-bottom: 20px;
       }
     }
 
@@ -260,7 +262,7 @@
     }
 
     a {
-      font-size: 14px;
+      font-size: 1.4rem;
       font-weight: bold;
       text-decoration: none;
       color: var(--accent);

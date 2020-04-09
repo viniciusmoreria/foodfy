@@ -64,7 +64,6 @@ body {
     border-radius: 30px;
 
     .banner_info {
-      align-self: center;
       width: 316px;
     }
 
@@ -84,7 +83,6 @@ body {
 
     img {
       margin-top: 66px;
-      justify-self: end;
     }
   }
 }
@@ -127,7 +125,6 @@ body {
     color: var(--dark-text);
     font-size: 1.6rem;
     text-decoration: none;
-    text-align: center;
     margin-right: 15px;
 
     &:hover {
@@ -163,9 +160,6 @@ body {
   padding: 30px 0;
   margin: 0;
 
-  @include breakpoint(phone) {
-  }
-
   .navbar {
     @include maxWidth;
     width: 90%;
@@ -173,6 +167,10 @@ body {
     margin: auto;
 
     .links {
+      @include breakpoint(phone) {
+        justify-content: center;
+      }
+
       a {
         color: #ffffff;
         font-size: 1.5rem;
@@ -181,7 +179,7 @@ body {
         text-transform: uppercase;
 
         @include breakpoint(phone) {
-          margin-right: 0;
+          margin-right: 45px;
         }
       }
     }
@@ -193,8 +191,7 @@ body {
     width: fit-content;
 
     @include breakpoint(phone) {
-      position: unset;
-      margin-top: 15px;
+      margin: 46px 5% 0 0;
     }
   }
 }

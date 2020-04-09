@@ -16,6 +16,7 @@
   width: 344px;
   height: 135px;
   margin: 12px 18px 0 0;
+  font-size: 1.4rem;
   color: white;
   opacity: 1;
   animation: hidemessage 400ms 5s ease-out forwards;
@@ -40,9 +41,10 @@
   text-align: center;
 
   a {
+    color: var(--accent);
+    font-size: 1.5rem;
     margin: 20px;
     text-decoration: none;
-    color: var(--accent);
   }
 
   .success {
@@ -55,6 +57,7 @@
 
     h2 {
       color: #31a552;
+      font-size: 2.5rem;
     }
 
     .success-lottie {
@@ -73,6 +76,7 @@
 
     h2 {
       color: #f82b57;
+      font-size: 2.5rem;
     }
 
     .error-lottie {

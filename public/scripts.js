@@ -12,7 +12,7 @@ for (item of menuItems) {
 
 const hide = document.querySelectorAll("#hide");
 for (let i = 0; i < hide.length; i++) {
-  hide[i].addEventListener("click", function() {
+  hide[i].addEventListener("click", function () {
     document.querySelector("#lista" + i).classList.toggle("hiding");
 
     if (document.querySelector("#lista" + i).classList.contains("hiding")) {
@@ -28,7 +28,7 @@ for (let i = 0; i < hide.length; i++) {
 const formDelete = document.querySelector("#form-delete");
 
 if (formDelete) {
-  formDelete.addEventListener("submit", function(event) {
+  formDelete.addEventListener("submit", function (event) {
     const confirmation = confirm("Tem certeza de que deseja prosseguir?");
     if (!confirmation) {
       event.preventDefault();
@@ -153,7 +153,7 @@ const PhotosUpload = {
 
     if (PhotosUpload.hasLimit(event)) return;
 
-    Array.from(fileList).forEach(file => {
+    Array.from(fileList).forEach((file) => {
       PhotosUpload.files.push(file);
 
       const reader = new FileReader();
@@ -183,7 +183,7 @@ const PhotosUpload = {
     }
 
     const photosDiv = [];
-    preview.childNodes.forEach(item => {
+    preview.childNodes.forEach((item) => {
       if (item.classList && item.classList == "photo") photosDiv.push(item);
     });
 
@@ -200,7 +200,7 @@ const PhotosUpload = {
     const dataTransfer =
       new ClipboardEvent("").clipboardData || new DataTransfer();
 
-    PhotosUpload.files.forEach(file => dataTransfer.items.add(file));
+    PhotosUpload.files.forEach((file) => dataTransfer.items.add(file));
 
     return dataTransfer.files;
   },
@@ -245,7 +245,7 @@ const PhotosUpload = {
     }
 
     photoDiv.remove();
-  }
+  },
 };
 
 //---------- Image Gallery and Lightbox Logic ----------//
@@ -256,14 +256,14 @@ const ImageGallery = {
   setImage(e) {
     const { target } = e;
 
-    ImageGallery.previews.forEach(preview =>
+    ImageGallery.previews.forEach((preview) =>
       preview.classList.remove("active")
     );
     target.classList.add("active");
 
     ImageGallery.highlight.src = target.src;
     Lightbox.image.src = target.src;
-  }
+  },
 };
 
 const Lightbox = {
@@ -281,7 +281,7 @@ const Lightbox = {
     Lightbox.target.style.top = "-100%";
     Lightbox.target.style.bottom = "initial";
     Lightbox.closeBtn.style.opacity = 0;
-  }
+  },
 };
 
 //---------- Validation ----------//
@@ -304,6 +304,7 @@ const Validate = {
 
     const inputDiv = document.querySelector("input[type=email]");
     inputDiv.style.outline = "1px solid red";
+    div.style.fontSize = "1.6rem";
 
     input.focus();
   },
@@ -322,7 +323,7 @@ const Validate = {
 
     return {
       error,
-      value
+      value,
     };
-  }
+  },
 };

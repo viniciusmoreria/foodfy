@@ -9,22 +9,24 @@
       width: 246px;
       font-size: 1.4rem;
       padding: 10px;
+
+      @include breakpoint(phone) {
+        width: 100%;
+      }
     }
 
     .search {
       @include primaryBtn;
       width: 91px;
-      height: 100%;
-      padding: 10px;
     }
 
     .logout {
-      padding: 15px 0;
+      padding: 10px 0;
       border: none;
       background-color: #111111;
       color: #fff;
-      text-transform: uppercase;
       font-size: 1.6rem;
+      text-transform: uppercase;
       cursor: pointer;
     }
   }
@@ -80,6 +82,7 @@
 .form_header {
   @include flex;
   justify-content: space-between;
+  font-size: 1.8rem;
 }
 
 .save {
@@ -213,7 +216,6 @@ form {
   }
 
   .form_header {
-    @include flex;
     justify-content: center;
   }
 
@@ -260,8 +262,9 @@ form {
   }
 
   .recover {
+    @include flex;
+    justify-content: space-between;
     margin-top: 35px;
-    text-align: right;
   }
 }
 
@@ -299,6 +302,7 @@ form {
 
     .checkbox {
       @include flex;
+      font-size: 1.5rem;
 
       input {
         width: 15px;
