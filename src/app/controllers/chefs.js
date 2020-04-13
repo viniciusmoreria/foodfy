@@ -112,7 +112,14 @@ module.exports = {
   },
   async delete(req, res) {
     try {
+      let chef = await ChefService.load("chef", req.body.id);
+      if (chef.total_recipes > 0)
+        return res.render("admin/parts/error", {
+          type: "Somente Chefs sem receitas podem ser deletados!",
+        });
+
       const files = await Chef.files(req.body.id);
+
       await Chef.delete(req.body.id);
 
       DeleteService.deleteFiles(files);

@@ -28,6 +28,10 @@
       font-size: 1.6rem;
       text-transform: uppercase;
       cursor: pointer;
+
+      @include breakpoint(phone) {
+        margin-top: 5px;
+      }
     }
   }
 }
@@ -229,7 +233,6 @@ form {
     color: var(--accent);
     font-size: 1.6rem;
     font-weight: bold;
-    margin-top: 15px;
     cursor: pointer;
   }
 

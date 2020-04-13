@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Foodfy" title="#Foodfy" src="public/static/main-logo.png" width="100px" />
+    <img alt="Foodfy" title="#Foodfy" src="public/images/static/main-logo.png" width="100px" />
 </h1>
 
 <h4 align="center"> 

@@ -37,15 +37,16 @@ body {
         font-size: 1.6rem;
         margin-right: 30px;
         text-decoration: none;
-      }
-    }
 
-    .login {
-      border-bottom: 2px solid var(--accent);
+        &:hover {
+          border-bottom: 2px solid var(--accent);
+        }
+      }
     }
 
     .active {
       font-weight: bold;
+      border-bottom: 2px solid var(--accent);
     }
   }
 }
@@ -178,10 +179,18 @@ body {
         text-decoration: none;
         text-transform: uppercase;
 
+        &:hover {
+          border: none;
+        }
+
         @include breakpoint(phone) {
           margin-right: 45px;
         }
       }
+    }
+
+    .active {
+      border: none;
     }
   }
 

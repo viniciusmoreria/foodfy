@@ -60,12 +60,13 @@ body {
   text-decoration: none;
 }
 
-.header .navbar .login {
+.header .navbar .links a:hover {
   border-bottom: 2px solid var(--accent);
 }
 
 .header .navbar .active {
   font-weight: bold;
+  border-bottom: 2px solid var(--accent);
 }
 
 /* Banner Section */
@@ -205,10 +206,18 @@ body {
   text-transform: uppercase;
 }
 
+.header.adm .navbar .links a:hover {
+  border: none;
+}
+
 @media (min-width: 320px) and (max-width: 767px) {
   .header.adm .navbar .links a {
     margin-right: 45px;
   }
+}
+
+.header.adm .navbar .active {
+  border: none;
 }
 
 .header.adm form {
@@ -459,6 +468,10 @@ body {
   width: 91px;
 }
 
+.header form .search:hover {
+  background-color: #4e3fc2;
+}
+
 .header form .logout {
   padding: 10px 0;
   border: none;
@@ -467,6 +480,12 @@ body {
   font-size: 1.6rem;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .header form .logout {
+    margin-top: 5px;
+  }
 }
 
 /* New Recipe and Chef Form Section */
@@ -500,6 +519,7 @@ body {
   border-radius: 4px;
   border: 1px solid #dddddd;
   padding: 0 5px;
+  margin-bottom: 5px;
   height: 49px;
 }
 
@@ -510,6 +530,7 @@ body {
   border-radius: 4px;
   border: 1px solid #dddddd;
   padding: 0 5px;
+  margin-bottom: 5px;
   min-height: 257px;
 }
 
@@ -520,6 +541,7 @@ body {
   border-radius: 4px;
   border: 1px solid #dddddd;
   padding: 0 5px;
+  margin-bottom: 5px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -557,6 +579,10 @@ body {
   cursor: pointer;
 }
 
+.save:hover {
+  background-color: #4e3fc2;
+}
+
 .delete {
   background-color: #dc4747;
   color: #fff;
@@ -572,6 +598,10 @@ body {
   right: 145px;
 }
 
+.delete:hover {
+  background-color: #db3737;
+}
+
 .cancel {
   background-color: var(--accent);
   color: #fff;
@@ -583,6 +613,10 @@ body {
   text-align: center;
   cursor: pointer;
   background-color: #8a8a8a;
+}
+
+.cancel:hover {
+  background-color: #4e3fc2;
 }
 
 /* Photos Upload Form Section */
@@ -721,6 +755,10 @@ form .photos_upload.chef p {
   font-size: 1.6rem;
 }
 
+form .photos_upload.chef p:hover {
+  background-color: #4e3fc2;
+}
+
 /* Register Form Section */
 .register_form {
   width: 500px;
@@ -752,7 +790,6 @@ form .photos_upload.chef p {
   color: var(--accent);
   font-size: 1.6rem;
   font-weight: bold;
-  margin-top: 15px;
   cursor: pointer;
 }
 
@@ -762,6 +799,7 @@ form .photos_upload.chef p {
   border-radius: 4px;
   border: 1px solid #dddddd;
   padding: 0 5px;
+  margin-bottom: 5px;
   width: 500px;
   height: 49px;
 }
@@ -852,6 +890,7 @@ form .photos_upload.chef p {
   border-radius: 4px;
   border: 1px solid #dddddd;
   padding: 0 5px;
+  margin-bottom: 5px;
   height: 49px;
 }
 
@@ -1143,6 +1182,10 @@ form .photos_upload.chef p {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
+}
+
+.page_title a:hover {
+  background-color: #4e3fc2;
 }
 
 .recipe_box.adm {

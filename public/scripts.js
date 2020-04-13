@@ -1,6 +1,6 @@
 //---------- Active Tab Logic ----------//
 const currentPage = location.pathname;
-const menuItems = document.querySelectorAll(".navbar a");
+const menuItems = document.querySelectorAll(".navbar .links a");
 
 for (item of menuItems) {
   if (currentPage.includes(item.getAttribute("href"))) {

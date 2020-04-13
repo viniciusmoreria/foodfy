@@ -31,6 +31,10 @@
   font-weight: normal;
   text-align: center;
   cursor: pointer;
+
+  &:hover {
+    background-color: #4e3fc2;
+  }
 }
 
 @mixin secondaryBtn {
@@ -44,6 +48,10 @@
   text-align: center;
   cursor: pointer;
   z-index: 1;
+
+  &:hover {
+    background-color: #db3737;
+  }
 }
 
 @mixin inputForm {
@@ -52,4 +60,5 @@
   border-radius: 4px;
   border: 1px solid #dddddd;
   padding: 0 5px;
+  margin-bottom: 5px;
 }

@@ -41,7 +41,9 @@ async function createChefs() {
   while (files.length < totalChefs) {
     files.push({
       name: faker.name.findName(),
-      path: `https://source.unsplash.com/collection/2013520/640x480`,
+      path: `https://source.unsplash.com/collection/2013520/${Math.round(
+        Math.random() * 1000
+      )}`,
     });
   }
   const filesPromise = files.map((file) => File.create(file));
@@ -69,7 +71,7 @@ async function createRecipes() {
     recipes.push({
       chef_id: chefsIds[Math.floor(Math.random() * totalChefs)],
       user_id: usersIds[Math.floor(Math.random() * totalUsers)],
-      title: faker.commerce.product(),
+      title: faker.commerce.productName(),
       ingredients: [faker.lorem.lines(5)],
       preparation: [faker.lorem.lines(5)],
       information: faker.lorem.paragraph(),
@@ -83,8 +85,10 @@ async function createRecipes() {
 
   while (files.length < totalRecipes) {
     files.push({
-      name: faker.commerce.productName(),
-      path: "https://source.unsplash.com/collection/251966/640x480",
+      name: faker.commerce.product(),
+      path: `https://source.unsplash.com/collection/251966/${Math.round(
+        Math.random() * 1000
+      )}`,
     });
   }
 

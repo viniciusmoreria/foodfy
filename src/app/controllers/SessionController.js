@@ -32,7 +32,7 @@ module.exports = {
 
       await User.update(user.id, {
         reset_token: token,
-        reset_token_expires: now
+        reset_token_expires: now,
       });
 
       await mailer.sendMail({
@@ -43,27 +43,27 @@ module.exports = {
 
         <p>Uma solicitação de recuperação de senha foi realizada para sua conta. Se você não foi o autor, apenas descarte esse e-mail.</p>
         
-        <p>Para continuar com a recuperação de senha clique no botão abaixo para criar uma nova senha. Ah, esse link expira em 24h.</p>
+        <p>Para continuar com a recuperação de senha clique no botão abaixo. Ah, esse link expira em 24h.</p>
 
         <p>
           <a href="http://localhost:3000/admin/password-reset?token=${token}" target="_blank">Criar nova senha</a>
         </p>
-        `
+        `,
       });
 
       return res.render("admin/session/forgot-password", {
-        success: "Instruções enviadas, verifique seu e-mail"
+        success: "Instruções enviadas, verifique seu e-mail",
       });
     } catch (err) {
       console.error(err);
       return res.render("admin/session/forgot-password", {
-        error: "Algo de errado ocorreu, favor tente novamente"
+        error: "Algo de errado ocorreu, favor tente novamente",
       });
     }
   },
   resetForm(req, res) {
     return res.render("admin/session/password-reset", {
-      token: req.query.token
+      token: req.query.token,
     });
   },
   async reset(req, res) {
@@ -76,20 +76,20 @@ module.exports = {
       await User.update(user.id, {
         password: newPassword,
         reset_token: "",
-        reset_token_expires: ""
+        reset_token_expires: "",
       });
 
       return res.render("admin/session/login", {
         user: req.body,
-        success: "Senha atualizada com sucesso"
+        success: "Senha atualizada com sucesso",
       });
     } catch (err) {
       console.error(err);
       return res.render("admin/session/password-reset", {
         user: req.body,
         token,
-        error: "Algo de errado ocorreu, por favor tente novamente"
+        error: "Algo de errado ocorreu, por favor tente novamente",
       });
     }
-  }
+  },
 };
