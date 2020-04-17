@@ -46,33 +46,33 @@ module.exports = {
   },
   async paginate(params) {
     try {
-      const { filter, limit, offset } = params;
-
-      let query = "",
-        filterQuery = "",
-        totalQuery = `(SELECT count(*) FROM recipes) AS total`;
-
+      const { filter, limit, offset, admin, userId } = params;
+      let order = "ORDER BY created_at DESC";
+      let filterQuery = "";
       if (filter) {
-        filterQuery = `
-        WHERE recipes.title ILIKE '%${filter}%'
-        OR chefs.name ILIKE '%${filter}%'
-        `;
-
-        totalQuery = `(
-        SELECT count (*) FROM recipes
-        ${filterQuery}
-        ) as total`;
+        filterQuery = `WHERE recipes.title ILIKE '%${filter}%'`;
+        order = "ORDER BY updated_at DESC";
       }
 
-      query = `
-          SELECT recipes.*, ${totalQuery}, chefs.name AS chef_name
-          FROM recipes
-          LEFT JOIN chefs ON(recipes.chef_id = chefs.id)
-          ${filterQuery}
-          ORDER BY updated_at DESC
-          LIMIT $1 OFFSET $2`;
+      if (!admin) {
+        if (filter)
+          filterQuery = `${filterQuery} AND recipes.user_id = ${userId}`;
+        else filterQuery = `WHERE recipes.user_id = ${userId}`;
+      }
 
-      const results = await db.query(query, [limit, offset]);
+      const totalQuery = `(
+        SELECT count(*)
+        FROM recipes
+        ${filterQuery}
+      ) as total`;
+
+      const query = `SELECT recipes.*, ${totalQuery}, chefs.name as chef_name
+      FROM recipes
+      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+      ${filterQuery}
+      ${order} LIMIT ${limit} OFFSET ${offset}`;
+
+      const results = await db.query(query);
       return results.rows;
     } catch (err) {
       console.error(err);

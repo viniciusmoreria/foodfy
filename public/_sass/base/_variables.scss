@@ -31,6 +31,7 @@
   font-weight: normal;
   text-align: center;
   cursor: pointer;
+  transition: all 300ms;
 
   &:hover {
     background-color: #4e3fc2;
@@ -48,9 +49,10 @@
   text-align: center;
   cursor: pointer;
   z-index: 1;
+  transition: all 300ms;
 
   &:hover {
-    background-color: #db3737;
+    background-color: #d10000;
   }
 }
 

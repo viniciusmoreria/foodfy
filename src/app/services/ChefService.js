@@ -3,9 +3,9 @@ const Recipe = require("../models/Recipe");
 
 async function getImages(chefId) {
   let files = await Chef.files(chefId);
-  files = files.map(file => ({
+  files = files.map((file) => ({
     ...file,
-    src: `${file.path.replace("public", "")}`
+    src: `${file.path.replace("public", "")}`,
   }));
 
   return files;
@@ -41,7 +41,7 @@ const LoadService = {
   async recipes() {
     const recipes = await Chef.recipes();
 
-    const itemsPromise = recipes.map(async recipe => {
+    const itemsPromise = recipes.map(async (recipe) => {
       const files = await Recipe.files(recipe.id);
       if (files[0]) recipe.src = files[0].path.replace("public", "");
     });
@@ -49,7 +49,7 @@ const LoadService = {
     await Promise.all(itemsPromise);
     return recipes;
   },
-  format
+  format,
 };
 
 module.exports = LoadService;

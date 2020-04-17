@@ -58,6 +58,8 @@ body {
   font-size: 1.6rem;
   margin-right: 30px;
   text-decoration: none;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
 }
 
 .header .navbar .links a:hover {
@@ -465,6 +467,8 @@ body {
   font-weight: normal;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
   width: 91px;
 }
 
@@ -577,6 +581,8 @@ body {
   font-weight: normal;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
 }
 
 .save:hover {
@@ -594,12 +600,14 @@ body {
   text-align: center;
   cursor: pointer;
   z-index: 1;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
   position: absolute;
   right: 145px;
 }
 
 .delete:hover {
-  background-color: #db3737;
+  background-color: #d10000;
 }
 
 .cancel {
@@ -612,6 +620,8 @@ body {
   font-weight: normal;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
   background-color: #8a8a8a;
 }
 
@@ -751,6 +761,8 @@ form .photos_upload.chef p {
   font-weight: normal;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
   width: 100%;
   font-size: 1.6rem;
 }
@@ -1181,6 +1193,8 @@ form .photos_upload.chef p:hover {
   font-weight: normal;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
   text-decoration: none;
 }
 

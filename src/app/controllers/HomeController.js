@@ -31,17 +31,19 @@ module.exports = {
         filter,
         page,
         limit,
-        offset
+        offset,
+        admin: true,
+        userId: null,
       };
 
       let recipes = await Recipe.paginate(params);
       if (recipes[0] == undefined) {
         return res.render("site/recipes", {
-          filter
+          filter,
         });
       }
 
-      const recipesPromise = recipes.map(async recipe => {
+      const recipesPromise = recipes.map(async (recipe) => {
         const files = await RecipeFile.files(recipe.id);
         if (files[0]) recipe.img = files[0].path.replace("public", "");
       });
@@ -51,13 +53,13 @@ module.exports = {
       const pagination = {
         total: Math.ceil(recipes[0].total / limit),
         page,
-        filter
+        filter,
       };
 
       return res.render("site/recipes", {
         recipes,
         pagination,
-        filter
+        filter,
       });
     } catch (err) {
       console.error(err);
@@ -74,23 +76,31 @@ module.exports = {
     }
   },
   async chefs(req, res) {
-    const chefs = await ChefService.load("chefs");
+    try {
+      const chefs = await ChefService.load("chefs");
 
-    return res.render("site/chefs", { chefs });
+      return res.render("site/chefs", { chefs });
+    } catch (err) {
+      console.log(err);
+    }
   },
   async chef(req, res) {
-    let chef = await ChefService.load("chef", req.params.id);
-    if (!chef) return res.send("Chef não encontrado");
+    try {
+      let chef = await ChefService.load("chef", req.params.id);
+      if (!chef) return res.send("Chef não encontrado");
 
-    let image = await Chef.files(chef.id);
-    if (image[0]) image.src = image[0].path.replace("public", "");
+      let image = await Chef.files(chef.id);
+      if (image[0]) image.src = image[0].path.replace("public", "");
 
-    const recipes = await ChefService.load("recipes");
+      const recipes = await ChefService.load("recipes");
 
-    return res.render("site/chef", {
-      chef,
-      image,
-      recipes
-    });
-  }
+      return res.render("site/chef", {
+        chef,
+        image,
+        recipes,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };

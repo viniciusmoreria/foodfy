@@ -62,5 +62,5 @@ module.exports = {
       [id]
     );
     return results.rows;
-  }
+  },
 };

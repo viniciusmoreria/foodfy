@@ -37,6 +37,7 @@ body {
         font-size: 1.6rem;
         margin-right: 30px;
         text-decoration: none;
+        transition: all 150ms;
 
         &:hover {
           border-bottom: 2px solid var(--accent);

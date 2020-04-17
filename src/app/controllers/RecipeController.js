@@ -13,10 +13,15 @@ module.exports = {
       limit = limit || 6;
       let offset = limit * (page - 1);
 
+      let { admin, userId } = req.session;
+      if (!admin) admin = false;
+
       const params = {
         page,
         limit,
         offset,
+        admin,
+        userId,
       };
 
       let recipes = await Recipe.paginate(params);
